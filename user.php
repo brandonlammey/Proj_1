@@ -11,6 +11,11 @@ $tbl_name="Project_1_Table_1"; // Table name
 // Connect to server and select databse.
 mysql_connect("$host", "$username", "$password")or die("cannot connect");
 mysql_select_db("$db_name")or die("cannot select DB");
+
+include 'php/DB.php'; //Methods to interact with the db
+
+//getFromDB(NULL,NULL,NULL);    //Will test the case in which no good information was given. Echos error message
+
 ?>
 
 <html>
