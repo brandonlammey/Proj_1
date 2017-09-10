@@ -83,7 +83,7 @@ include 'php/DB.php'; //Methods to interact with the db
             }
           }
 
-          var PageToSendTo = "saveEventToDB.php?";
+          var PageToSendTo = "php/saveEventToDB.php?";
           var UrlToSend = PageToSendTo + "name=" + name + "&event_name=" + ev_name + "&date=" + date + "&s_time=" + s_time + "&e_time=" + e_time;
 
           xmlhttp.open("GET", UrlToSend, false);
