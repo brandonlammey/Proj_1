@@ -56,13 +56,19 @@ mysql_select_db("$db_name")or die("cannot select DB");
           var s_time = form.start_time.value;
           var e_time = form.end_time.value;
 
-          form.reset();
-
-          $("#Events").append("Admin Name: "+name+"<br>");
-          $("#Events").append("Event Name: "+ev_name+"<br>");
-          $("#Events").append("Event Date: "+date+"<br>");
-          $("#Events").append("Event Time: "+s_time+" to "+e_time+"<br>");
-          $("#Events").append("<br><br><br>");
+          if(name=="" || ev_name=="" || date=="" || s_time=="" || e_time=="")
+          {
+            alert("All fields are mandatory!");
+          }
+          else
+          {
+            form.reset();
+            $("#Events").append("Admin Name: "+name+"<br>");
+            $("#Events").append("Event Name: "+ev_name+"<br>");
+            $("#Events").append("Event Date: "+date+"<br>");
+            $("#Events").append("Event Time: "+s_time+" to "+e_time+"<br>");
+            $("#Events").append("<br><br><br>");
+          }
         }
       </script>
       <br><br>
@@ -78,8 +84,8 @@ mysql_select_db("$db_name")or die("cannot select DB");
         </p>
         <p id="event_time">
           Event Time:
-          <input type="text" class="time start" name="start_time" /> to
-          <input type="text" class="time end" name="end_time" />
+          <input type="text" class="time start" name="start_time"/> to
+          <input type="text" class="time end" name="end_time"/>
         </p>
 
         <!-- include input widgets; this is independent of Datepair.js -->
