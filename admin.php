@@ -31,17 +31,17 @@ include 'php/DB.php'; //Methods to interact with the db
   <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-  
+
 </head>
 <body>
-  
+
   <div class="mainwrap">
     <div class="mainone">
       <center>
         <br><br><br>
         <h1> Admin Event Planner </h1>
         <h6> by Purple C#bras </h6>
-        
+
       </center>
     </div>
 
@@ -61,6 +61,36 @@ include 'php/DB.php'; //Methods to interact with the db
           var date = form.event_date.value;
           var s_time = form.start_time.value;
           var e_time = form.end_time.value;
+          /////////////////////////////////////////////////////////////////////
+          //Adapted from code found at https://www.w3schools.com/php/php_ajax_database.asp
+          // 9/10/2017 15:25
+
+          if (window.XMLHttpRequest)
+          {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+          }
+          else
+          { // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          xmlhttp.onreadystatechange=function()
+          {
+
+            if (this.readyState==4 && this.status==200)
+            {
+              document.getElementById("txtHint").innerHTML=this.responseText;
+            }
+          }
+
+          var PageToSendTo = "saveEventToDB.php?";
+          var UrlToSend = PageToSendTo + "name=" + name + "&event_name=" + ev_name + "&date=" + date + "&s_time=" + s_time + "&e_time=" + e_time;
+
+          xmlhttp.open("GET", UrlToSend, false);
+
+          xmlhttp.send();
+
+          //////////////////////////////////////////////////////////////////////
 
           if(name=="" || ev_name=="" || date=="" || s_time=="" || e_time=="")
           {
@@ -115,10 +145,10 @@ include 'php/DB.php'; //Methods to interact with the db
         <br>
         <input type="button" name = "submit" value = "Submit" onClick = "formData(this.form)">
         </form>
-            
+
       </center>
 
-      
+
     </div>
 
   </div>
