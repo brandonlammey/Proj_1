@@ -1,23 +1,8 @@
 <?php
 session_start();
 ob_start();
-
-$host="sql9.freemysqlhosting.net"; // Host name
-$username="sql9193383"; // Mysql username
-$password="5Die3BXFPm"; // Mysql password
-$db_name="sql9193383"; // Database name
-$tbl_name="Project_1_Table_1"; // Table name
-
-// Connect to server and select databse.
-mysql_connect("$host", "$username", "$password")or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB");
-
-
-include 'php/DB.php'; //Methods to interact with the db
-
-//getFromDB(NULL,NULL,NULL);    //Will test the case in which no good information was given. Echos error message
+include 'php/header.php';
 ?>
-
 
 
 <html>
@@ -61,36 +46,6 @@ include 'php/DB.php'; //Methods to interact with the db
           var date = form.event_date.value;
           var s_time = form.start_time.value;
           var e_time = form.end_time.value;
-          /////////////////////////////////////////////////////////////////////
-          //Adapted from code found at https://www.w3schools.com/php/php_ajax_database.asp
-          // 9/10/2017 15:25
-
-          if (window.XMLHttpRequest)
-          {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-          }
-          else
-          { // code for IE6, IE5
-            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-          }
-          xmlhttp.onreadystatechange=function()
-          {
-
-            if (this.readyState==4 && this.status==200)
-            {
-              document.getElementById("txtHint").innerHTML=this.responseText;
-            }
-          }
-
-          var PageToSendTo = "php/saveEventToDB.php?";
-          var UrlToSend = PageToSendTo + "name=" + name + "&event_name=" + ev_name + "&date=" + date + "&s_time=" + s_time + "&e_time=" + e_time;
-
-          xmlhttp.open("GET", UrlToSend, false);
-
-          xmlhttp.send();
-
-          //////////////////////////////////////////////////////////////////////
 
           if(name=="" || ev_name=="" || date=="" || s_time=="" || e_time=="")
           {
@@ -98,6 +53,32 @@ include 'php/DB.php'; //Methods to interact with the db
           }
           else
           {
+            /////////////////////////////////////////////////////////////////////
+            //Adapted from code found at https://www.w3schools.com/php/php_ajax_database.asp
+            // 9/10/2017 15:25
+
+            if (window.XMLHttpRequest)
+            {
+              // code for IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp=new XMLHttpRequest();
+            }
+            else
+            { // code for IE6, IE5
+              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function()
+            {
+              if (this.readyState==4 && this.status==200)
+              {
+                document.getElementById("txtHint").innerHTML=this.responseText;
+              }
+            }
+            var PageToSendTo = "php/saveEventToDB.php?";
+            var UrlToSend = PageToSendTo + "name=" + name + "&event_name=" + ev_name + "&date=" + date + "&s_time=" + s_time + "&e_time=" + e_time;
+            xmlhttp.open("GET", UrlToSend, false);
+            xmlhttp.send();
+            //END ADAPTATION
+            //////////////////////////////////////////////////////////////////////
             form.reset();
             $("#Events").append("Admin Name: "+name+"<br>");
             $("#Events").append("Event Name: "+ev_name+"<br>");
