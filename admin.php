@@ -10,6 +10,7 @@ include 'php/header.php';
   <link rel = "stylesheet" href="css/useradmin.css">
   <link rel = "stylesheet" href = "css/jquery.timepicker.css">
   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src = "js/admin.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="styleshee" type="text/css" href="css/jquery.timepicker.css" />
   <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
@@ -32,22 +33,20 @@ include 'php/header.php';
 
     <div class="maintwo">
       <br><br>
-      <center>Main Two</center>
-      <p id = "Events"> </p>
+      <button type="button" id="create_event" class="side_menu">Create New Event</button>
+      <button type="button" id="review_event" class="side_menu">Review Event</button>
       <br>
     </div>
 
     <div class="mainthree">
-      <script>
+      <!--<script>
         function formData(form)
         {
           var name = form.admin_name.value;
           var ev_name = form.event_name.value;
           var date = form.event_date.value;
-          var s_time = form.start_time.value;
-          var e_time = form.end_time.value;
 
-          if(name=="" || ev_name=="" || date=="" || s_time=="" || e_time=="")
+          if(name=="" || ev_name=="" || date=="")
           {
             alert("All fields are mandatory!");
           }
@@ -87,7 +86,7 @@ include 'php/header.php';
             $("#Events").append("<br><br><br>");
           }
         }
-      </script>
+      </script>-->
       <br><br>
       <center>
         <p>
@@ -98,14 +97,15 @@ include 'php/header.php';
           <br><br>
           Date: <input type = "date" id = "datepicker" name = "event_date">
           <br>
+          
         </p>
-        <p id="event_time">
-          Event Time:
-          <input type="text" class="time start" name="start_time"/> to
+        Event Time:
+          
+          <!--<input type="text" class="time start" name="start_time"/> to
           <input type="text" class="time end" name="end_time"/>
         </p>
 
-        <!-- include input widgets; this is independent of Datepair.js -->
+        include input widgets; this is independent of Datepair.js 
         <link rel="styleshee" type="text/css" href="css/jquery.timepicker.css" />
         <script type="text/javascript" src="js/jquery.timepicker.js"></script>
         <script type="text/javascript" src="js/datepair.js"></script>
@@ -125,7 +125,13 @@ include 'php/header.php';
 
         <br>
         <input type="button" name = "submit" value = "Submit" onClick = "formData(this.form)">
-        </form>
+        </form>-->
+        <input type = "button" name = "12_time_select" id = "12_time_select" value = "12 Hour Format">
+        <input type = "button" name = "24_time_select" id = "24_time_select" value = "24 Hour Format">
+        <br><br>
+        
+        <p id = "event_time"></p>
+        <input type = "button" name = "submit" value = "Submit" onClick = "formData(this.form)"></form>
 
       </center>
 
