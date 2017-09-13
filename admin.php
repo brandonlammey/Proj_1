@@ -59,6 +59,15 @@ include "php/header.php";
         <p id = "event_time"></p>
         <input type = "button" name = "submit" id="submit_button" value = "Submit" onClick = "formData(this.form)"></form>
 
+        <p>
+          <form name = "review" id = "review">
+          User Name: <input type = "text" id = "review_admin_name" name = "review_admin_name">
+          <br><br>
+          Event Name: <input type = "text" id = "review_event_name" name = "review_event_name">
+          <br><br>
+          <input type = "button" id = "review_submit" name = "review_submit" value = "Submit"></form> 
+        </p>
+        <p id = "event_review"></p>
       </center>
 
 
