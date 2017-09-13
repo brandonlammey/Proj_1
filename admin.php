@@ -56,7 +56,8 @@ include "php/header.php";
         <input type = "button" name = "24_time_select" id = "time_select_24" value = "24 Hour Format">
         <br><br>
 
-        <p id = "event_time"></p>
+        <p id = "event_time_12"></p>
+        <p id = "event_time_24"></p>
         <input type = "button" name = "submit" id="submit_button" value = "Submit" onClick = "formData(this.form)"></form>
 
         <p>

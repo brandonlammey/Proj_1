@@ -90,13 +90,15 @@ $(document).ready(function()
         });
 
 
-    $("#event_time").hide();
+    $("#event_time_12").hide();
+    $("#event_time_24").hide();
     $("#time_select_12").click(
         function()
         {
             timeReset();
-            $("#event_time").empty();
-            $("#event_time").html
+            $("#event_time_12").empty();
+            $("#event_time_24").empty();
+            $("#event_time_12").html
             (
                 "<button class='time_button' type='button' id='12:00am' onclick = 'clickfunc(0)'>12:00am</button>"+
                 "<button class='time_button' type='button' id='12:30am' onclick = 'clickfunc(1)'>12:30am</button>"+
@@ -148,7 +150,7 @@ $(document).ready(function()
                 "<button class='time_button' type='button' id='11:30pm' onclick = 'clickfunc(47)'>11:30pm</button>"
 
             );
-            $('#event_time').toggle();
+            $('#event_time_12').toggle();
         });
 
 
@@ -156,8 +158,9 @@ $(document).ready(function()
         function()
         {
             timeReset();
-            $("#event_time").empty();
-            $("#event_time").html
+            $("#event_time_12").empty();
+            $("#event_time_24").empty();
+            $("#event_time_24").html
             (
                 "<button class='time_button' type='button' id='00:00' onclick = 'clickfunc(0)'>00:00</button>"+
                 "<button class='time_button' type='button' id='00:30' onclick = 'clickfunc(1)'>00:30</button>"+
@@ -208,7 +211,7 @@ $(document).ready(function()
                 "<button class='time_button' type='button' id='23:00' onclick = 'clickfunc(46)'>23:00</button>"+
                 "<button class='time_button' type='button' id='23:30' onclick = 'clickfunc(47)'>23:30</button>"
             );
-            $("#event_time").toggle();
+            $("#event_time_24").toggle();
 
         });
 
