@@ -8,6 +8,9 @@
   height: 100%;
 }
 
+.groupname{
+  color: #9D63AD;
+}
 .mainone{
   background-color: #303030;
   color: white;
@@ -16,6 +19,10 @@
   grid-row: 1;
   grid-column: 1/3;
   vertical-align: middle;
+}
+
+input[type=text]{
+  width: 15em;
 }
 
 .maintwo{
@@ -97,4 +104,60 @@
 .side_menu:hover{
   color:black;
   background-color: white;
+}
+
+.time_button{
+  background-color: inherit;
+  color:white;
+  border: 1px solid;
+  border-radius: 5px;
+  line-height: 1;
+  margin: 0.2em;
+  padding: 5px;
+}
+.time_button:focus{
+  color:black;
+  background-color: #80C468;
+}
+#time_select_12{
+  color: #B65252;
+  background-color: inherit;
+  border: 1px solid #B65252;
+  border-radius: 5px;
+  margin: 0.2em;
+  padding: 0.5em;
+
+}
+#time_select_12:hover{
+  background-color: #B65252;
+  color: #303030;
+}
+#time_select_24:hover{
+  background-color: #80C468;
+  color: #303030;
+}
+
+#time_select_24{
+  color: #80C468;
+  background-color: inherit;
+  border: 1px solid #80C468;
+  border-radius: 5px;
+  margin: 0.2em;
+  padding: 0.5em;
+
+}
+#submit_button{
+  background-color: #303030;
+  border: 2px solid white;
+  border-radius: 7px;
+  width: 10%;
+  padding: 0.5em;
+  color: white;
+}
+
+.time_button:hover{
+  background-color: white;
+  color: #303030;
+  box-shadow: inset 0 0 0 2em var(--hover);
+
 }

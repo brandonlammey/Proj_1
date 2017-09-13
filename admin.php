@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-include 'php/header.php';
+include "php/header.php";
 ?>
 
 
@@ -26,7 +26,7 @@ include 'php/header.php';
       <center>
         <br><br><br>
         <h1> Admin Event Planner </h1>
-        <h6> by Purple C#bras </h6>
+        <h6> by <span class="groupname">Purple C#bras</span></h6>
 
       </center>
     </div>
@@ -97,15 +97,15 @@ include 'php/header.php';
           <br><br>
           Date: <input type = "date" id = "datepicker" name = "event_date">
           <br>
-          
+
         </p>
         Event Time:
-          
+
           <!--<input type="text" class="time start" name="start_time"/> to
           <input type="text" class="time end" name="end_time"/>
         </p>
 
-        include input widgets; this is independent of Datepair.js 
+        include input widgets; this is independent of Datepair.js
         <link rel="styleshee" type="text/css" href="css/jquery.timepicker.css" />
         <script type="text/javascript" src="js/jquery.timepicker.js"></script>
         <script type="text/javascript" src="js/datepair.js"></script>
@@ -126,12 +126,12 @@ include 'php/header.php';
         <br>
         <input type="button" name = "submit" value = "Submit" onClick = "formData(this.form)">
         </form>-->
-        <input type = "button" name = "12_time_select" id = "12_time_select" value = "12 Hour Format">
-        <input type = "button" name = "24_time_select" id = "24_time_select" value = "24 Hour Format">
+        <input type = "button" name = "12_time_select" id = "time_select_12" value = "12 Hour Format">
+        <input type = "button" name = "24_time_select" id = "time_select_24" value = "24 Hour Format">
         <br><br>
-        
+
         <p id = "event_time"></p>
-        <input type = "button" name = "submit" value = "Submit" onClick = "formData(this.form)"></form>
+        <input type = "button" name = "submit" id="submit_button" value = "Submit" onClick = "formData(this.form)"></form>
 
       </center>
 

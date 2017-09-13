@@ -7,7 +7,9 @@
   width: 100%;
   height: 100%;
 }
-
+.groupname{
+  color: #9D63AD;
+}
 .mainone{
   background-color: #303030;
   color: white;
