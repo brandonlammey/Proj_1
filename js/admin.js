@@ -177,7 +177,177 @@ function formData(form)
         }
     }
     var PageToSendTo = "php/saveEventToDB.php?";
-    var UrlToSend = PageToSendTo + "name=" + name + "&event_name=" + ev_name + "&date=" + date;
+
+    var addOns = "";
+    for(var i = 0; i < 48; i++)
+    {
+        let attendees;
+        if(time_arr[i].active)
+        {
+          attendees = "" + time_arr[i].attendees;
+        }
+        else
+        {
+            attendees = "0";
+        }
+
+        let time = " ";
+        switch(i)
+        {
+          case 0:
+            time = "0000";
+            break;
+          case 1:
+            time = "0030";
+            break;
+          case 2:
+            time = "0100";
+            break;
+          case 3:
+            time = "0130";
+            break;
+          case 4:
+            time = "0200";
+            break;
+          case 5:
+            time = "0230";
+            break;
+          case 6:
+            time = "0300";
+            break;
+          case 7:
+            time = "0330";
+            break;
+          case 8:
+            time = "0400";
+            break;
+          case 9:
+            time = "0430";
+            break;
+          case 10:
+            time = "0500";
+            break;
+          case 11:
+            time = "0530";
+            break;
+          case 12:
+            time = "0600";
+            break;
+          case 13:
+            time = "0630";
+            break;
+          case 14:
+            time = "0700";
+            break;
+          case 15:
+            time = "0730";
+            break;
+          case 16:
+            time = "0800";
+            break;
+          case 17:
+            time = "0830";
+            break;
+          case 18:
+            time = "0900";
+            break;
+          case 19:
+            time = "0930";
+            break;
+          case 20:
+            time = "1000";
+            break;
+          case 21:
+            time = "1030";
+            break;
+          case 22:
+            time = "1100";
+            break;
+          case 23:
+            time = "1130";
+            break;
+          case 24:
+            time = "1200";
+            break;
+          case 25:
+            time = "1230";
+            break;
+          case 26:
+            time = "1300";
+            break;
+          case 27:
+            time = "1330";
+            break;
+          case 28:
+            time = "1400";
+            break;
+          case 29:
+            time = "1430";
+            break;
+          case 30:
+            time = "1500";
+            break;
+          case 31:
+            time = "1530";
+            break;
+          case 32:
+            time = "1600";
+            break;
+          case 33:
+            time = "1630";
+            break;
+          case 34:
+            time = "1700";
+            break;
+          case 35:
+            time = "1730";
+            break;
+          case 36:
+            time = "1800";
+            break;
+          case 37:
+            time = "1830";
+            break;
+          case 38:
+            time = "1900";
+            break;
+          case 39:
+            time = "1930";
+            break;
+          case 40:
+            time = "2000";
+            break;
+          case 41:
+            time = "2030";
+            break;
+          case 42:
+            time = "2100";
+            break;
+          case 43:
+            time = "2130";
+            break;
+          case 44:
+            time = "2200";
+            break;
+          case 45:
+            time = "2230";
+            break;
+          case 46:
+            time = "2300";
+            break;
+          case 47:
+            time = "2330";
+            break;
+          default:
+            time = "0";
+            break;
+        }
+        addOns += time + "=" + attendees + "&";
+
+    }
+    //alert(addOns); //debugging
+
+    var UrlToSend = PageToSendTo + "name=" + name + "&event_name=" + ev_name + "&date=" + date + "&" + addOns;
     xmlhttp.open("GET", UrlToSend, false);
     xmlhttp.send();
     //END ADAPTATION
@@ -344,6 +514,7 @@ $(document).ready(function()
     $("#review_submit").click(
         function()
         {
+            $("#event_review").empty();
             $("#event_review").append("Work in Progress");
         }
     )
