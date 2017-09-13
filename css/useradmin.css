@@ -23,6 +23,12 @@
 
 input[type=text]{
   width: 15em;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  padding-left: 0.3em;
+
 }
 
 .maintwo{
