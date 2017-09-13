@@ -400,6 +400,7 @@ $(document).ready(function()
     $("#review_submit").click(
         function()
         {
+            $("#event_review").empty();
             $("#event_review").append("Work in Progress");
         }
     )
