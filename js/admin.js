@@ -16,15 +16,15 @@ function colorReset(col_num){
   }else if(col_num==6){$("#am300").css("background-color","#303030");
   }else if(col_num==7){$("#am330").css("background-color","#303030");
   }else if(col_num==8){$("#am400").css("background-color","#303030");
-  }else if(col_num==9){$("am430").css("background-color","#303030");
+  }else if(col_num==9){$("#am430").css("background-color","#303030");
   }else if(col_num==10){$("#am500").css("background-color","#303030");
-  }else if(col_num==11){$("am530").css("background-color","#303030");
+  }else if(col_num==11){$("#am530").css("background-color","#303030");
   }else if(col_num==12){$("#am600").css("background-color","#303030");
-  }else if(col_num==13){$("am630").css("background-color","#303030");
+  }else if(col_num==13){$("#am630").css("background-color","#303030");
   }else if(col_num==14){$("#am700").css("background-color","#303030");
-  }else if(col_num==15){$("am730").css("background-color","#303030");
+  }else if(col_num==15){$("#am730").css("background-color","#303030");
   }else if(col_num==16){$("#am800").css("background-color","#303030");
-  }else if(col_num==17){$("am830").css("background-color","#303030");
+  }else if(col_num==17){$("#am830").css("background-color","#303030");
   }else if(col_num==18){$("#am900").css("background-color","#303030");
   }else if(col_num==19){$("#am930").css("background-color","#303030");
   }else if(col_num==20){$("#am1000").css("background-color","#303030");
@@ -63,20 +63,18 @@ function colorChange(col_num){
   }else if(col_num==1){$("#am1230").css("background-color","green");
   }else if(col_num==2){$("#am100").css("background-color","green");
   }else if(col_num==3){$("#am130").css("background-color","green");
-  }else if(col_num==4){$("#am200").css("background-color","green");
-}else if(col_num==5){$("#am230").css("background-color","green");
   }else if(col_num==6){$("#am300").css("background-color","green");
   }else if(col_num==7){$("#am330").css("background-color","green");
   }else if(col_num==8){$("#am400").css("background-color","green");
-  }else if(col_num==9){$("am430").css("background-color","green");
+}else if(col_num==9){$("#am430").css("background-color","green");
   }else if(col_num==10){$("#am500").css("background-color","green");
-  }else if(col_num==11){$("am530").css("background-color","green");
+}else if(col_num==11){$("#am530").css("background-color","green");
   }else if(col_num==12){$("#am600").css("background-color","green");
-  }else if(col_num==13){$("am630").css("background-color","green");
+}else if(col_num==13){$("#am630").css("background-color","green");
   }else if(col_num==14){$("#am700").css("background-color","green");
-  }else if(col_num==15){$("am730").css("background-color","green");
+}else if(col_num==15){$("#am730").css("background-color","green");
   }else if(col_num==16){$("#am800").css("background-color","green");
-  }else if(col_num==17){$("am830").css("background-color","green");
+}else if(col_num==17){$("#am830").css("background-color","green");
   }else if(col_num==18){$("#am900").css("background-color","green");
   }else if(col_num==19){$("#am930").css("background-color","green");
   }else if(col_num==20){$("#am1000").css("background-color","green");
@@ -354,6 +352,11 @@ function formData(form)
     //////////////////////////////////////////////////////////////////////
     form.reset();
     timeReset();
+
+    //Reset all time colors
+    for(var i=0;i<48;i++){
+      colorReset(i);
+    }
     }
 }
 
@@ -516,6 +519,7 @@ $(document).ready(function()
         {
             $("#event_review").empty();
             $("#event_review").append("Work in Progress");
+
         }
     )
 
