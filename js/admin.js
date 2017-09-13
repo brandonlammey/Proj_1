@@ -374,7 +374,8 @@ $(document).ready(function()
             timeReset();
             $("#review").hide();
             $("#event_review").empty();
-            $("#event_time").hide();
+            $("#event_time_12").hide();
+            $("#event_time_24").hide();
             $("#event_form").toggle();
         });
 
@@ -387,6 +388,7 @@ $(document).ready(function()
             timeReset();
             $("#event_time_12").empty();
             $("#event_time_24").empty();
+            $("#event_time_24").hide();
             $("#event_time_12").html
             (
                 "<button class='time_button' type='button' id='am1200' onclick = 'clickfunc(0)'>12:00am</button>"+
@@ -448,6 +450,7 @@ $(document).ready(function()
         {
             timeReset();
             $("#event_time_12").empty();
+            $("#event_time_12").hide();
             $("#event_time_24").empty();
             $("#event_time_24").html
             (
