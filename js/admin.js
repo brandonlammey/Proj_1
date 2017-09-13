@@ -6,10 +6,124 @@ for(let i=0; i<48; i++)
     time_arr.push(obj);
 }
 
+function colorReset(col_num){
+  if(col_num==0){$("#am1200").css("background-color","#303030");
+  }else if(col_num==1){$("#am1230").css("background-color","#303030");
+  }else if(col_num==2){$("#am100").css("background-color","#303030");
+  }else if(col_num==3){$("#am130").css("background-color","#303030");
+  }else if(col_num==4){$("#am200").css("background-color","#303030");
+  }else if(col_num==5){$("#am230").css("background-color","#303030");
+  }else if(col_num==6){$("#am300").css("background-color","#303030");
+  }else if(col_num==7){$("#am330").css("background-color","#303030");
+  }else if(col_num==8){$("#am400").css("background-color","#303030");
+  }else if(col_num==9){$("#am430").css("background-color","#303030");
+  }else if(col_num==10){$("#am500").css("background-color","#303030");
+  }else if(col_num==11){$("#am530").css("background-color","#303030");
+  }else if(col_num==12){$("#am600").css("background-color","#303030");
+  }else if(col_num==13){$("#am630").css("background-color","#303030");
+  }else if(col_num==14){$("#am700").css("background-color","#303030");
+  }else if(col_num==15){$("#am730").css("background-color","#303030");
+  }else if(col_num==16){$("#am800").css("background-color","#303030");
+  }else if(col_num==17){$("#am830").css("background-color","#303030");
+  }else if(col_num==18){$("#am900").css("background-color","#303030");
+  }else if(col_num==19){$("#am930").css("background-color","#303030");
+  }else if(col_num==20){$("#am1000").css("background-color","#303030");
+  }else if(col_num==21){$("#am1030").css("background-color","#303030");
+  }else if(col_num==22){$("#am1100").css("background-color","#303030");
+  }else if(col_num==23){$("#am1130").css("background-color","#303030");
+  }else if(col_num==24){$("#pm1200").css("background-color","#303030");
+  }else if(col_num==25){$("#pm1230").css("background-color","#303030");
+  }else if(col_num==26){$("#pm100").css("background-color","#303030");
+  }else if(col_num==27){$("#pm130").css("background-color","#303030");
+  }else if(col_num==28){$("#pm200").css("background-color","#303030");
+  }else if(col_num==29){$("#pm230").css("background-color","#303030");
+  }else if(col_num==30){$("#pm300").css("background-color","#303030");
+  }else if(col_num==31){$("#pm330").css("background-color","#303030");
+  }else if(col_num==32){$("#pm400").css("background-color","#303030");
+  }else if(col_num==33){$("#pm430").css("background-color","#303030");
+  }else if(col_num==34){$("#pm500").css("background-color","#303030");
+  }else if(col_num==35){$("#pm530").css("background-color","#303030");
+  }else if(col_num==36){$("#pm600").css("background-color","#303030");
+  }else if(col_num==37){$("#pm630").css("background-color","#303030");
+  }else if(col_num==38){$("#pm700").css("background-color","#303030");
+  }else if(col_num==39){$("#pm730").css("background-color","#303030");
+  }else if(col_num==40){$("#pm800").css("background-color","#303030");
+  }else if(col_num==41){$("#pm830").css("background-color","#303030");
+  }else if(col_num==42){$("#pm900").css("background-color","#303030");
+  }else if(col_num==43){$("#pm930").css("background-color","#303030");
+  }else if(col_num==44){$("#pm1000").css("background-color","#303030");
+  }else if(col_num==45){$("#pm1030").css("background-color","#303030");
+  }else if(col_num==46){$("#pm1100").css("background-color","#303030");
+  }else if(col_num==47){$("#pm1130").css("background-color","#303030");
+  }
+}
+
+function colorChange(col_num){
+  if(col_num==0){$("#am1200").css("background-color","green");
+  }else if(col_num==1){$("#am1230").css("background-color","green");
+  }else if(col_num==2){$("#am100").css("background-color","green");
+  }else if(col_num==3){$("#am130").css("background-color","green");
+  }else if(col_num==4){$("#am200").css("background-color","green");
+  }else if(col_num==5){$("#am230").css("background-color","green");
+  }else if(col_num==6){$("#am300").css("background-color","green");
+  }else if(col_num==7){$("#am330").css("background-color","green");
+  }else if(col_num==8){$("#am400").css("background-color","green");
+  }else if(col_num==9){$("#am430").css("background-color","green");
+  }else if(col_num==10){$("#am500").css("background-color","green");
+  }else if(col_num==11){$("#am530").css("background-color","green");
+  }else if(col_num==12){$("#am600").css("background-color","green");
+  }else if(col_num==13){$("#am630").css("background-color","green");
+  }else if(col_num==14){$("#am700").css("background-color","green");
+  }else if(col_num==15){$("#am730").css("background-color","green");
+  }else if(col_num==16){$("#am800").css("background-color","green");
+  }else if(col_num==17){$("#am830").css("background-color","green");
+  }else if(col_num==18){$("#am900").css("background-color","green");
+  }else if(col_num==19){$("#am930").css("background-color","green");
+  }else if(col_num==20){$("#am1000").css("background-color","green");
+  }else if(col_num==21){$("#am1030").css("background-color","green");
+  }else if(col_num==22){$("#am1100").css("background-color","green");
+  }else if(col_num==23){$("#am1130").css("background-color","green");
+  }else if(col_num==24){$("#pm1200").css("background-color","green");
+  }else if(col_num==25){$("#pm1230").css("background-color","green");
+  }else if(col_num==26){$("#pm100").css("background-color","green");
+  }else if(col_num==27){$("#pm130").css("background-color","green");
+  }else if(col_num==28){$("#pm200").css("background-color","green");
+  }else if(col_num==29){$("#pm230").css("background-color","green");
+  }else if(col_num==30){$("#pm300").css("background-color","green");
+  }else if(col_num==31){$("#pm330").css("background-color","green");
+  }else if(col_num==32){$("#pm400").css("background-color","green");
+  }else if(col_num==33){$("#pm430").css("background-color","green");
+  }else if(col_num==34){$("#pm500").css("background-color","green");
+  }else if(col_num==35){$("#pm530").css("background-color","green");
+  }else if(col_num==36){$("#pm600").css("background-color","green");
+  }else if(col_num==37){$("#pm630").css("background-color","green");
+  }else if(col_num==38){$("#pm700").css("background-color","green");
+  }else if(col_num==39){$("#pm730").css("background-color","green");
+  }else if(col_num==40){$("#pm800").css("background-color","green");
+  }else if(col_num==41){$("#pm830").css("background-color","green");
+  }else if(col_num==42){$("#pm900").css("background-color","green");
+  }else if(col_num==43){$("#pm930").css("background-color","green");
+  }else if(col_num==44){$("#pm1000").css("background-color","green");
+  }else if(col_num==45){$("#pm1030").css("background-color","green");
+  }else if(col_num==46){$("#pm1100").css("background-color","green");
+  }else if(col_num==47){$("#pm1130").css("background-color","green");
+  }
+}
+
+
+
 
 function clickfunc(num)
 {
     time_arr[num].active = !time_arr[num].active;
+
+    for(var i=0; i<48;i++){
+      if(time_arr[i].active){
+        colorChange(i);
+      }else{
+        colorReset(i);
+      }
+    }
 }
 
 function timeReset()
@@ -63,13 +177,188 @@ function formData(form)
         }
     }
     var PageToSendTo = "php/saveEventToDB.php?";
-    var UrlToSend = PageToSendTo + "name=" + name + "&event_name=" + ev_name + "&date=" + date;
+
+    var addOns = "";
+    for(var i = 0; i < 48; i++)
+    {
+        let attendees;
+        if(time_arr[i].active)
+        {
+          attendees = "" + time_arr[i].attendees;
+        }
+        else
+        {
+            attendees = "0";
+        }
+
+        let time = " ";
+        switch(i)
+        {
+          case 0:
+            time = "0000";
+            break;
+          case 1:
+            time = "0030";
+            break;
+          case 2:
+            time = "0100";
+            break;
+          case 3:
+            time = "0130";
+            break;
+          case 4:
+            time = "0200";
+            break;
+          case 5:
+            time = "0230";
+            break;
+          case 6:
+            time = "0300";
+            break;
+          case 7:
+            time = "0330";
+            break;
+          case 8:
+            time = "0400";
+            break;
+          case 9:
+            time = "0430";
+            break;
+          case 10:
+            time = "0500";
+            break;
+          case 11:
+            time = "0530";
+            break;
+          case 12:
+            time = "0600";
+            break;
+          case 13:
+            time = "0630";
+            break;
+          case 14:
+            time = "0700";
+            break;
+          case 15:
+            time = "0730";
+            break;
+          case 16:
+            time = "0800";
+            break;
+          case 17:
+            time = "0830";
+            break;
+          case 18:
+            time = "0900";
+            break;
+          case 19:
+            time = "0930";
+            break;
+          case 20:
+            time = "1000";
+            break;
+          case 21:
+            time = "1030";
+            break;
+          case 22:
+            time = "1100";
+            break;
+          case 23:
+            time = "1130";
+            break;
+          case 24:
+            time = "1200";
+            break;
+          case 25:
+            time = "1230";
+            break;
+          case 26:
+            time = "1300";
+            break;
+          case 27:
+            time = "1330";
+            break;
+          case 28:
+            time = "1400";
+            break;
+          case 29:
+            time = "1430";
+            break;
+          case 30:
+            time = "1500";
+            break;
+          case 31:
+            time = "1530";
+            break;
+          case 32:
+            time = "1600";
+            break;
+          case 33:
+            time = "1630";
+            break;
+          case 34:
+            time = "1700";
+            break;
+          case 35:
+            time = "1730";
+            break;
+          case 36:
+            time = "1800";
+            break;
+          case 37:
+            time = "1830";
+            break;
+          case 38:
+            time = "1900";
+            break;
+          case 39:
+            time = "1930";
+            break;
+          case 40:
+            time = "2000";
+            break;
+          case 41:
+            time = "2030";
+            break;
+          case 42:
+            time = "2100";
+            break;
+          case 43:
+            time = "2130";
+            break;
+          case 44:
+            time = "2200";
+            break;
+          case 45:
+            time = "2230";
+            break;
+          case 46:
+            time = "2300";
+            break;
+          case 47:
+            time = "2330";
+            break;
+          default:
+            time = "0";
+            break;
+        }
+        addOns += time + "=" + attendees + "&";
+
+    }
+    //alert(addOns); //debugging
+
+    var UrlToSend = PageToSendTo + "name=" + name + "&event_name=" + ev_name + "&date=" + date + "&" + addOns;
     xmlhttp.open("GET", UrlToSend, false);
     xmlhttp.send();
     //END ADAPTATION
     //////////////////////////////////////////////////////////////////////
     form.reset();
     timeReset();
+
+    //Reset all time colors
+    for(var i=0;i<48;i++){
+      colorReset(i);
+    }
     }
 }
 
@@ -100,54 +389,54 @@ $(document).ready(function()
             $("#event_time_24").empty();
             $("#event_time_12").html
             (
-                "<button class='time_button' type='button' id='12:00am' onclick = 'clickfunc(0)'>12:00am</button>"+
-                "<button class='time_button' type='button' id='12:30am' onclick = 'clickfunc(1)'>12:30am</button>"+
-                "<button class='time_button' type='button' id='1:00am' onclick = 'clickfunc(2)'>1:00am</button>"+
-                "<button class='time_button' type='button' id='1:30am' onclick = 'clickfunc(3)'>1:30am</button>"+
-                "<button class='time_button' type='button' id='2:00am' onclick = 'clickfunc(4)'>2:00am</button>"+
-                "<button class='time_button' type='button' id='2:30am' onclick = 'clickfunc(5)'>2:30am</button>"+
-                "<button class='time_button' type='button' id='3:00am' onclick = 'clickfunc(6)'>3:00am</button>"+
-                "<button class='time_button' type='button' id='3:30am' onclick = 'clickfunc(7)'>3:30am</button>"+
-                "<button class='time_button' type='button' id='4:00am' onclick = 'clickfunc(8)'>4:00am</button>"+
-                "<button class='time_button' type='button' id='4:30am' onclick = 'clickfunc(9)'>4:30am</button>"+
-                "<button class='time_button' type='button' id='5:00am' onclick = 'clickfunc(10)'>5:00am</button>"+
-                "<button class='time_button' type='button' id='5:30am' onclick = 'clickfunc(11)'>5:30am</button>"+
-                "<button class='time_button' type='button' id='6:00am' onclick = 'clickfunc(12)'>6:00am</button>"+
-                "<button class='time_button' type='button' id='6:30am' onclick = 'clickfunc(13)'>6:30am</button>"+
-                "<button class='time_button' type='button' id='7:00am' onclick = 'clickfunc(14)'>7:00am</button>"+
-                "<button class='time_button' type='button' id='7:30am' onclick = 'clickfunc(15)'>7:30am</button>"+
-                "<button class='time_button' type='button' id='8:00am' onclick = 'clickfunc(16)'>8:00am</button>"+
-                "<button class='time_button' type='button' id='8:30am' onclick = 'clickfunc(17)'>8:30am</button>"+
-                "<button class='time_button' type='button' id='9:00am' onclick = 'clickfunc(18)'>9:00am</button>"+
-                "<button class='time_button' type='button' id='9:30am' onclick = 'clickfunc(19)'>9:30am</button>"+
-                "<button class='time_button' type='button' id='10:00am' onclick = 'clickfunc(20)'>10:00am</button>"+
-                "<button class='time_button' type='button' id='10:30am' onclick = 'clickfunc(21)'>10:30am</button>"+
-                "<button class='time_button' type='button' id='11:00am' onclick = 'clickfunc(22)'>11:00am</button>"+
-                "<button class='time_button' type='button' id='11:30am' onclick = 'clickfunc(23)'>11:30am</button>"+
-                "<button class='time_button' type='button' id='12:00pm' onclick = 'clickfunc(24)'>12:00pm</button>"+
-                "<button class='time_button' type='button' id='12:30pm' onclick = 'clickfunc(25)'>12:30pm</button>"+
-                "<button class='time_button' type='button' id='1:00pm' onclick = 'clickfunc(26)'>1:00pm</button>"+
-                "<button class='time_button' type='button' id='1:30pm' onclick = 'clickfunc(27)'>1:30pm</button>"+
-                "<button class='time_button' type='button' id='2:00pm' onclick = 'clickfunc(28)'>2:00pm</button>"+
-                "<button class='time_button' type='button' id='2:30pm' onclick = 'clickfunc(29)'>2:30pm</button>"+
-                "<button class='time_button' type='button' id='3:00pm' onclick = 'clickfunc(30)'>3:00pm</button>"+
-                "<button class='time_button' type='button' id='3:30pm' onclick = 'clickfunc(31)'>3:30pm</button>"+
-                "<button class='time_button' type='button' id='4:00pm' onclick = 'clickfunc(32)'>4:00pm</button>"+
-                "<button class='time_button' type='button' id='4:30pm' onclick = 'clickfunc(33)'>4:30pm</button>"+
-                "<button class='time_button' type='button' id='5:00pm' onclick = 'clickfunc(34)'>5:00pm</button>"+
-                "<button class='time_button' type='button' id='5:30pm' onclick = 'clickfunc(35)'>5:30pm</button>"+
-                "<button class='time_button' type='button' id='6:00pm' onclick = 'clickfunc(36)'>6:00pm</button>"+
-                "<button class='time_button' type='button' id='6:30pm' onclick = 'clickfunc(37)'>6:30pm</button>"+
-                "<button class='time_button' type='button' id='7:00pm' onclick = 'clickfunc(38)'>7:00pm</button>"+
-                "<button class='time_button' type='button' id='7:30pm' onclick = 'clickfunc(39)'>7:30pm</button>"+
-                "<button class='time_button' type='button' id='8:00pm' onclick = 'clickfunc(40)'>8:00pm</button>"+
-                "<button class='time_button' type='button' id='8:30pm' onclick = 'clickfunc(41)'>8:30pm</button>"+
-                "<button class='time_button' type='button' id='9:00pm' onclick = 'clickfunc(42)'>9:00pm</button>"+
-                "<button class='time_button' type='button' id='9:30pm' onclick = 'clickfunc(43)'>9:30pm</button>"+
-                "<button class='time_button' type='button' id='10:00pm' onclick = 'clickfunc(44)'>10:00pm</button>"+
-                "<button class='time_button' type='button' id='10:30pm' onclick = 'clickfunc(45)'>10:30pm</button>"+
-                "<button class='time_button' type='button' id='11:00pm' onclick = 'clickfunc(46)'>11:00pm</button>"+
-                "<button class='time_button' type='button' id='11:30pm' onclick = 'clickfunc(47)'>11:30pm</button>"
+                "<button class='time_button' type='button' id='am1200' onclick = 'clickfunc(0)'>12:00am</button>"+
+                "<button class='time_button' type='button' id='am1230' onclick = 'clickfunc(1)'>12:30am</button>"+
+                "<button class='time_button' type='button' id='am100' onclick = 'clickfunc(2)'>1:00am</button>"+
+                "<button class='time_button' type='button' id='am130' onclick = 'clickfunc(3)'>1:30am</button>"+
+                "<button class='time_button' type='button' id='am200' onclick = 'clickfunc(4)'>2:00am</button>"+
+                "<button class='time_button' type='button' id='am230' onclick = 'clickfunc(5)'>2:30am</button>"+
+                "<button class='time_button' type='button' id='am300' onclick = 'clickfunc(6)'>3:00am</button>"+
+                "<button class='time_button' type='button' id='am330' onclick = 'clickfunc(7)'>3:30am</button>"+
+                "<button class='time_button' type='button' id='am400' onclick = 'clickfunc(8)'>4:00am</button>"+
+                "<button class='time_button' type='button' id='am430' onclick = 'clickfunc(9)'>4:30am</button>"+
+                "<button class='time_button' type='button' id='am500' onclick = 'clickfunc(10)'>5:00am</button>"+
+                "<button class='time_button' type='button' id='am530' onclick = 'clickfunc(11)'>5:30am</button>"+
+                "<button class='time_button' type='button' id='am600' onclick = 'clickfunc(12)'>6:00am</button>"+
+                "<button class='time_button' type='button' id='am630' onclick = 'clickfunc(13)'>6:30am</button>"+
+                "<button class='time_button' type='button' id='am700' onclick = 'clickfunc(14)'>7:00am</button>"+
+                "<button class='time_button' type='button' id='am730' onclick = 'clickfunc(15)'>7:30am</button>"+
+                "<button class='time_button' type='button' id='am800' onclick = 'clickfunc(16)'>8:00am</button>"+
+                "<button class='time_button' type='button' id='am830' onclick = 'clickfunc(17)'>8:30am</button>"+
+                "<button class='time_button' type='button' id='am900' onclick = 'clickfunc(18)'>9:00am</button>"+
+                "<button class='time_button' type='button' id='am930' onclick = 'clickfunc(19)'>9:30am</button>"+
+                "<button class='time_button' type='button' id='am1000' onclick = 'clickfunc(20)'>10:00am</button>"+
+                "<button class='time_button' type='button' id='am1030' onclick = 'clickfunc(21)'>10:30am</button>"+
+                "<button class='time_button' type='button' id='am1100' onclick = 'clickfunc(22)'>11:00am</button>"+
+                "<button class='time_button' type='button' id='am1130' onclick = 'clickfunc(23)'>11:30am</button>"+
+                "<button class='time_button' type='button' id='pm1200' onclick = 'clickfunc(24)'>12:00pm</button>"+
+                "<button class='time_button' type='button' id='pm1230' onclick = 'clickfunc(25)'>12:30pm</button>"+
+                "<button class='time_button' type='button' id='pm100' onclick = 'clickfunc(26)'>1:00pm</button>"+
+                "<button class='time_button' type='button' id='pm130' onclick = 'clickfunc(27)'>1:30pm</button>"+
+                "<button class='time_button' type='button' id='pm200' onclick = 'clickfunc(28)'>2:00pm</button>"+
+                "<button class='time_button' type='button' id='pm230' onclick = 'clickfunc(29)'>2:30pm</button>"+
+                "<button class='time_button' type='button' id='pm300' onclick = 'clickfunc(30)'>3:00pm</button>"+
+                "<button class='time_button' type='button' id='pm330' onclick = 'clickfunc(31)'>3:30pm</button>"+
+                "<button class='time_button' type='button' id='pm400' onclick = 'clickfunc(32)'>4:00pm</button>"+
+                "<button class='time_button' type='button' id='pm430' onclick = 'clickfunc(33)'>4:30pm</button>"+
+                "<button class='time_button' type='button' id='pm500' onclick = 'clickfunc(34)'>5:00pm</button>"+
+                "<button class='time_button' type='button' id='pm530' onclick = 'clickfunc(35)'>5:30pm</button>"+
+                "<button class='time_button' type='button' id='pm600' onclick = 'clickfunc(36)'>6:00pm</button>"+
+                "<button class='time_button' type='button' id='pm630' onclick = 'clickfunc(37)'>6:30pm</button>"+
+                "<button class='time_button' type='button' id='pm700' onclick = 'clickfunc(38)'>7:00pm</button>"+
+                "<button class='time_button' type='button' id='pm730' onclick = 'clickfunc(39)'>7:30pm</button>"+
+                "<button class='time_button' type='button' id='pm800' onclick = 'clickfunc(40)'>8:00pm</button>"+
+                "<button class='time_button' type='button' id='pm830' onclick = 'clickfunc(41)'>8:30pm</button>"+
+                "<button class='time_button' type='button' id='pm900' onclick = 'clickfunc(42)'>9:00pm</button>"+
+                "<button class='time_button' type='button' id='pm930' onclick = 'clickfunc(43)'>9:30pm</button>"+
+                "<button class='time_button' type='button' id='pm1000' onclick = 'clickfunc(44)'>10:00pm</button>"+
+                "<button class='time_button' type='button' id='pm1030' onclick = 'clickfunc(45)'>10:30pm</button>"+
+                "<button class='time_button' type='button' id='pm1100' onclick = 'clickfunc(46)'>11:00pm</button>"+
+                "<button class='time_button' type='button' id='pm1130' onclick = 'clickfunc(47)'>11:30pm</button>"
 
             );
             $('#event_time_12').toggle();
@@ -235,6 +524,7 @@ $(document).ready(function()
         {
             $("#event_review").empty();
             $("#event_review").append("Work in Progress");
+
         }
     )
 

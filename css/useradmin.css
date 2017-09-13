@@ -23,6 +23,12 @@
 
 input[type=text]{
   width: 15em;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  padding-left: 0.3em;
+
 }
 
 .maintwo{
@@ -115,10 +121,7 @@ input[type=text]{
   margin: 0.2em;
   padding: 5px;
 }
-.time_button:focus{
-  color:black;
-  background-color: #80C468;
-}
+
 #time_select_12{
   color: #B65252;
   background-color: inherit;
@@ -160,6 +163,7 @@ input[type=text]{
   color: white;
 }
 
+/*
 .time_button:hover{
   background-color: white;
   color: #303030;

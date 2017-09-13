@@ -42,9 +42,9 @@ include "php/header.php";
       <center>
         <p>
           <form name = "event_details" id="event_form" action = "" method = "GET">
-          User Name: <input type = "text" id = "admin_name" name = "admin_name">
+          User Name: <input type = "text" id = "admin_name" name = "admin_name" placeholder="(required)">
           <br><br>
-          Event Name: <input type = "text" id = "event_name" name = "event_name">
+          Event Name: <input type = "text" id = "event_name" name = "event_name" placeholder="(required)">
           <br><br>
           Date: <input type = "date" id = "datepicker" name = "event_date">
           <br>
@@ -66,7 +66,7 @@ include "php/header.php";
           <br><br>
           Event Name: <input type = "text" id = "review_event_name" name = "review_event_name">
           <br><br>
-          <input type = "button" id = "review_submit" name = "review_submit" value = "Submit"></form> 
+          <input type = "button" id = "review_submit" name = "review_submit" value = "Submit"></form>
         </p>
         <p id = "event_review"></p>
       </center>
