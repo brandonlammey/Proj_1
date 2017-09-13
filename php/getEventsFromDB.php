@@ -12,6 +12,7 @@ while ($row = mysql_fetch_assoc($result))
 echo $arr[0][2];
 
  ?>
-
-var jArray= <?php echo json_encode($phpArray ); ?>;
-javascript code to get php array
+<script>
+//var jArray= <?php echo json_encode($phpArray ); ?>;
+//javascript code to get php array
+</script

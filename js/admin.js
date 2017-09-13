@@ -231,7 +231,7 @@ function formData(form)
         addOns += time + "=" + attendees + "&";
 
     }
-    alert(addOns); //debugging
+    //alert(addOns); //debugging
 
     var UrlToSend = PageToSendTo + "name=" + name + "&event_name=" + ev_name + "&date=" + date + "&" + addOns;
     xmlhttp.open("GET", UrlToSend, false);
