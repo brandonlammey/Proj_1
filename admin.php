@@ -72,9 +72,9 @@ include "php/header.php";
         <br><br>
         <p id = "review_details">
         <p id = "event_review"></p>
-        <button type = "button" id = "12_review">12 Hour Format</button>
-        <button type = "button" id = "24_review">24 Hour Format</button>
-        
+        <button type = "button" class="rev_button_format" id = "12_review">12 Hour Format</button>
+        <button type = "button" class="rev_button_format" id = "24_review">24 Hour Format</button>
+
         <p id = "review_table_12"></p>
         <p id = "review_table_24"></p>
         </p>

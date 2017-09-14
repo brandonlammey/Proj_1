@@ -172,3 +172,27 @@ input[type=text]{
   background-color: #303030;
   color: white;
 }
+.rev_button_format{
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 7px;
+  font-size: 1em;
+  width: 10em;
+  margin: 3em;
+  margin-bottom: 0em;
+  padding: 0.5em;
+  color: #303030;
+}
+
+#rev_table{
+  background-color: white;
+  color: black;
+  font-family: Helvetica;
+  border: 1px solid black;
+}
+#rev_table td{
+  width: 16.6%;
+  padding: 0px;
+  border: transparent;
+  margin: 0px;
+}

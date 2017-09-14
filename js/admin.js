@@ -381,7 +381,7 @@ function formData(form)
 function makeTable12(n)
 {
   $("#review_table_12").html(
-    "<table>"+
+    "<table id='rev_table'>"+
     "<tr>"+
     "<td><p id = '1200am'>12:00am</p></td>"+"<td><p id = '1230am'>12:30am</p></td>"+"<td><p id = '100am'>1:00am</p></td>"+"<td><p id = '130am'>1:30am</p></td>"+"<td><p id = '200am'>2:00am</p></td>"+"<td><p id = '230am'>2:30am</p></td>"+
     "</tr>"+
@@ -408,7 +408,7 @@ function makeTable12(n)
     "</tr>"+
     "</table>"
   );
-  
+
   for(let i=3; i<51; i++)
   {
     let att = test_arr[n][i];
@@ -557,7 +557,7 @@ function makeTable12(n)
         if(att != "0"){att=att.substring(0, att.length-1); $("#1100pm").append("<br>Attendees: "+att); $("#1100pm").css("background-color","green");}
         break;
       case 50:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1130pm").append("<br>Attendees: "+att); $("#1130pm").css("background-color","green");}      
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1130pm").append("<br>Attendees: "+att); $("#1130pm").css("background-color","green");}
         break;
       default:
         break;
@@ -568,7 +568,7 @@ function makeTable12(n)
 function makeTable24(n)
 {
   $("#review_table_24").html(
-    "<table>"+
+    "<table id='rev_table'>"+
     "<tr>"+
     "<td><p id = '0000'>00:00</p></td>"+"<td><p id = '0030'>00:30</p></td>"+"<td><p id = '100'>1:00</p></td>"+"<td><p id = '130'>1:30</p></td>"+"<td><p id = '200'>2:00</p></td>"+"<td><p id = '230'>2:30</p></td>"+
     "</tr>"+
@@ -595,7 +595,7 @@ function makeTable24(n)
     "</tr>"+
     "</table>"
   );
-  
+
   for(let i=3; i<51; i++)
   {
     let att = test_arr[n][i];
@@ -744,7 +744,7 @@ function makeTable24(n)
         if(att != "0"){att=att.substring(0, att.length-1); $("#2300").append("<br>Attendees: "+att); $("#2300").css("background-color","green");}
         break;
       case 50:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#2330").append("<br>Attendees: "+att); $("#2330").css("background-color","green");}      
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2330").append("<br>Attendees: "+att); $("#2330").css("background-color","green");}
         break;
       default:
         break;
@@ -996,7 +996,7 @@ $(document).ready(function()
           $("#24_review").hide();
           $("#review_table_12").empty();
           $("#review_table_24").empty();
-          getData(document.getElementById("review"));    
+          getData(document.getElementById("review"));
         }
     );
 
