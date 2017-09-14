@@ -565,6 +565,193 @@ function makeTable12(n)
   }
 }
 
+function makeTable24(n)
+{
+  $("#review_table_24").html(
+    "<table>"+
+    "<tr>"+
+    "<td><p id = '0000'>00:00</p></td>"+"<td><p id = '0030'>00:30</p></td>"+"<td><p id = '100'>1:00</p></td>"+"<td><p id = '130'>1:30</p></td>"+"<td><p id = '200'>2:00</p></td>"+"<td><p id = '230'>2:30</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '300'>3:00</p></td>"+"<td><p id = '330'>3:30</p></td>"+"<td><p id = '400'>4:00</p></td>"+"<td><p id = '430'>4:30</p></td>"+"<td><p id = '500'>5:00</p></td>"+"<td><p id = '530'>5:30</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '600'>6:00</p></td>"+"<td><p id = '630'>6:30</p></td>"+"<td><p id = '700'>7:00</p></td>"+"<td><p id = '730'>7:30</p></td>"+"<td><p id = '800'>8:00</p></td>"+"<td><p id = '830'>8:30</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '900'>9:00</p></td>"+"<td><p id = '930'>9:30</p></td>"+"<td><p id = '1000'>10:00</p></td>"+"<td><p id = '1030'>10:30</p></td>"+"<td><p id = '1100'>11:00</p></td>"+"<td><p id = '1130'>11:30</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '1200'>12:00</p></td>"+"<td><p id = '1230'>12:30</p></td>"+"<td><p id = '1300'>13:00</p></td>"+"<td><p id = '1330'>13:30</p></td>"+"<td><p id = '1400'>14:00</p></td>"+"<td><p id = '1430'>14:30</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '1500'>15:00</p></td>"+"<td><p id = '1530'>15:30</p></td>"+"<td><p id = '1600'>16:00</p></td>"+"<td><p id = '1630'>16:30</p></td>"+"<td><p id = '1700'>17:00</p></td>"+"<td><p id = '1730'>17:30</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '1800'>18:00</p></td>"+"<td><p id = '1830'>18:30</p></td>"+"<td><p id = '1900'>19:00</p></td>"+"<td><p id = '1930'>19:30</p></td>"+"<td><p id = '2000'>20:00</p></td>"+"<td><p id = '2030'>20:30</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '2100'>21:00</p></td>"+"<td><p id = '2130'>21:30</p></td>"+"<td><p id = '2200'>22:00</p></td>"+"<td><p id = '2230'>22:30</p></td>"+"<td><p id = '2300'>23:00</p></td>"+"<td><p id = '2330'>23:30</p></td>"+
+    "</tr>"+
+    "</table>"
+  );
+  
+  for(let i=3; i<51; i++)
+  {
+    let att = test_arr[n][i];
+    console.log(att);
+    switch(i)
+    {
+      case 3:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#0000").append("<br>Attendees: "+att); $("#0000").css("background-color","green");}
+        break;
+      case 4:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#0030").append("<br>Attendees: "+att); $("#0030").css("background-color","green");}
+        break;
+      case 5:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#100").append("<br>Attendees: "+att); $("#100").css("background-color","green");}
+        break;
+      case 6:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#130").append("<br>Attendees: "+att); $("#130").css("background-color","green");}
+        break;
+      case 7:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#200").append("<br>Attendees: "+att); $("#200").css("background-color","green");}
+        break;
+      case 8:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#230").append("<br>Attendees: "+att); $("#230").css("background-color","green");}
+        break;
+      case 9:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#300").append("<br>Attendees: "+att); $("#300").css("background-color","green");}
+        break;
+      case 10:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#330").append("<br>Attendees: "+att); $("#330").css("background-color","green");}
+        break;
+      case 11:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#400").append("<br>Attendees: "+att); $("#400").css("background-color","green");}
+        break;
+      case 12:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#430").append("<br>Attendees: "+att); $("#430").css("background-color","green");}
+        break;
+      case 13:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#500").append("<br>Attendees: "+att); $("#500").css("background-color","green");}
+        break;
+      case 14:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#530").append("<br>Attendees: "+att); $("#530").css("background-color","green");}
+        break;
+      case 15:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#600").append("<br>Attendees: "+att); $("#600").css("background-color","green");}
+        break;
+      case 16:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#630").append("<br>Attendees: "+att); $("#630").css("background-color","green");}
+        break;
+      case 17:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#700").append("<br>Attendees: "+att); $("#700").css("background-color","green");}
+        break;
+      case 18:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#730").append("<br>Attendees: "+att); $("#730").css("background-color","green");}
+        break;
+      case 19:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#800").append("<br>Attendees: "+att); $("#800").css("background-color","green");}
+        break;
+      case 20:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#830").append("<br>Attendees: "+att); $("#830").css("background-color","green");}
+        break;
+      case 21:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#900").append("<br>Attendees: "+att); $("#900").css("background-color","green");}
+        break;
+      case 22:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#930").append("<br>Attendees: "+att); $("#930").css("background-color","green");}
+        break;
+      case 23:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1000").append("<br>Attendees: "+att); $("#1000").css("background-color","green");}
+        break;
+      case 24:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1030").append("<br>Attendees: "+att); $("#1030").css("background-color","green");}
+        break;
+      case 25:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1100").append("<br>Attendees: "+att); $("#1100").css("background-color","green");}
+        break;
+      case 26:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1130").append("<br>Attendees: "+att); $("#1130").css("background-color","green");}
+        break;
+      case 27:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1200").append("<br>Attendees: "+att); $("#1200").css("background-color","green");}
+        break;
+      case 28:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1230").append("<br>Attendees: "+att); $("#1230").css("background-color","green");}
+        break;
+      case 29:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1300").append("<br>Attendees: "+att); $("#1300").css("background-color","green");}
+        break;
+      case 30:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1330").append("<br>Attendees: "+att); $("#1330").css("background-color","green");}
+        break;
+      case 31:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1400").append("<br>Attendees: "+att); $("#1400").css("background-color","green");}
+        break;
+      case 32:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1430").append("<br>Attendees: "+att); $("#1430").css("background-color","green");}
+        break;
+      case 33:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1500").append("<br>Attendees: "+att); $("#1500").css("background-color","green");}
+        break;
+      case 34:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1530").append("<br>Attendees: "+att); $("#1530").css("background-color","green");}
+        break;
+      case 35:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1600").append("<br>Attendees: "+att); $("#1600").css("background-color","green");}
+        break;
+      case 36:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1630").append("<br>Attendees: "+att); $("#1630").css("background-color","green");}
+        break;
+      case 37:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1700").append("<br>Attendees: "+att); $("#1700").css("background-color","green");}
+        break;
+      case 38:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1730").append("<br>Attendees: "+att); $("#1730").css("background-color","green");}
+        break;
+      case 39:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1800").append("<br>Attendees: "+att); $("#1800").css("background-color","green");}
+        break;
+      case 40:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1830").append("<br>Attendees: "+att); $("#1830").css("background-color","green");}
+        break;
+      case 41:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1900").append("<br>Attendees: "+att); $("#1900").css("background-color","green");}
+        break;
+      case 42:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1930").append("<br>Attendees: "+att); $("#1930").css("background-color","green");}
+        break;
+      case 43:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2000").append("<br>Attendees: "+att); $("#2000").css("background-color","green");}
+        break;
+      case 44:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2030").append("<br>Attendees: "+att); $("#2030").css("background-color","green");}
+        break;
+      case 45:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2100").append("<br>Attendees: "+att); $("#2100").css("background-color","green");}
+        break;
+      case 46:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2130").append("<br>Attendees: "+att); $("#2130").css("background-color","green");}
+        break;
+      case 47:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2200").append("<br>Attendees: "+att); $("#2200").css("background-color","green");}
+        break;
+      case 48:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2230").append("<br>Attendees: "+att); $("#2230").css("background-color","green");}
+        break;
+      case 49:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2300").append("<br>Attendees: "+att); $("#2300").css("background-color","green");}
+        break;
+      case 50:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2330").append("<br>Attendees: "+att); $("#2330").css("background-color","green");}      
+        break;
+      default:
+        break;
+    }
+  }
+}
+
 function getData(form)
 {
   let name = form.review_admin_name.value;
@@ -572,30 +759,42 @@ function getData(form)
   let ev_date = "";
   let check = false;
   let row_num = 0;
-  for(let i=0; i<test_arr.length; i++)
-  {
-    if(name == test_arr[i][0] && ev_name == test_arr[i][1])
-    {
-      row_num = i;
-      check = true;
-    }
-  }
-  if(!check)
+  if(name=="" || ev_name=="")
   {
     form.reset();
-    $("#event_review").empty();
-    $("#review_table_12").empty();
-    $("#review_table_24").empty();
-    alert("Could not find event and/or name. Please verify input is valid");
+    alert("All fields are mandatory!");
   }
   else
   {
-    form.reset();
-    ev_date = test_arr[row_num][2];
-    $("#event_review").append("Event: "+ev_name+"<br><br>");
-    $("#event_review").append("Organizer: "+name+"<br><br>");
-    $("#event_review").append("Date: "+ev_date+"<br><br>");
-    makeTable12(row_num);
+    for(let i=0; i<test_arr.length; i++)
+    {
+      if(name == test_arr[i][0] && ev_name == test_arr[i][1])
+      {
+        row_num = i;
+        check = true;
+      }
+    }
+    if(!check)
+    {
+      form.reset();
+      $("#event_review").empty();
+      $("#review_table_12").empty();
+      $("#review_table_24").empty();
+      alert("Could not find event and/or name. Please verify input is valid");
+    }
+    else
+    {
+      form.reset();
+      ev_date = test_arr[row_num][2];
+      $("#event_review").append("Event: "+ev_name+"<br><br>");
+      $("#event_review").append("Organizer: "+name+"<br><br>");
+      $("#event_review").append("Date: "+ev_date+"<br><br>");
+      $("#12_review").show();
+      $("#24_review").show();
+      makeTable12(row_num);
+      makeTable24(row_num);
+      $("#review_table_24").hide();
+    }
   }
 }
 
@@ -604,6 +803,8 @@ $(document).ready(function()
 {
     $("#event_form").hide();
     $("#review").hide();
+    $("#12_review").hide();
+    $("#24_review").hide();
     $("#create_event").click(
         function()
         {
@@ -611,6 +812,8 @@ $(document).ready(function()
             timeReset();
             $("#review").hide();
             $("#event_review").empty();
+            $("#12_review").hide();
+            $("#24_review").hide();
             $("#review_table_12").empty();
             $("#review_table_24").empty();
             $("#event_time_12").hide();
@@ -778,6 +981,8 @@ $(document).ready(function()
             $("#event_review").empty();
             $("#review_table_12").empty();
             $("#review_table_24").empty();
+            $("#12_review").hide();
+            $("#24_review").hide();
             $("#event_form").hide();
             $("#review").toggle();
         }
@@ -787,9 +992,28 @@ $(document).ready(function()
         function()
         {
           $("#event_review").empty();
+          $("#12_review").hide();
+          $("#24_review").hide();
+          $("#review_table_12").empty();
+          $("#review_table_24").empty();
           getData(document.getElementById("review"));    
         }
-    )
+    );
 
+    $("#12_review").click(
+      function()
+      {
+        $("#review_table_24").hide();
+        $("#review_table_12").toggle();
+      }
+    );
+
+    $("#24_review").click(
+      function()
+      {
+        $("#review_table_12").hide();
+        $("#review_table_24").toggle();
+      }
+    )
 
 });
