@@ -63,18 +63,21 @@ include "php/header.php";
 
         <p>
           <form name = "review" id = "review">
-          User Name: <input type = "text" id = "review_admin_name" name = "review_admin_name">
+          User Name: <input type = "text" id = "review_admin_name" name = "review_admin_name" placeholder="(required)">
           <br><br>
-          Event Name: <input type = "text" id = "review_event_name" name = "review_event_name">
+          Event Name: <input type = "text" id = "review_event_name" name = "review_event_name" placeholder="(required)">
           <br><br>
           <input type = "button" id = "review_submit" name = "review_submit" value = "Submit"></form>
         </p>
         <br><br>
-        <p id = "event_review"></p><br><br>
-        <!--<button type = "button" id = "12_review">12 Hour Format</button>
-        <button type = "button" id = "24_review">24 Hour Format</button>-->
+        <p id = "review_details">
+        <p id = "event_review"></p>
+        <button type = "button" id = "12_review">12 Hour Format</button>
+        <button type = "button" id = "24_review">24 Hour Format</button>
+        
         <p id = "review_table_12"></p>
         <p id = "review_table_24"></p>
+        </p>
       </center>
 
 
