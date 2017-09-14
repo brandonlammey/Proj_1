@@ -17,11 +17,13 @@ body {
 
 .groupname{
   color: #9D63AD;
+  letter-spacing: 0.1em;
 }
 .mainone{
   background-color: #303030;
   color: white;
   font-family: 'Comfortaa';
+  letter-spacing: 0.2em;
   padding-left: 10px;
   grid-row: 1;
   grid-column: 1/3;

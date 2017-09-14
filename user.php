@@ -29,7 +29,7 @@ include 'php/header.php'
         <center>
           <br><br><br>
           <h1> User Event Planner </h1>
-          <h6> by Purple C#bras </h6>
+          <h6> by <span class="groupname">Purple C#bras</span> </h6>
         </center>
       </div>
 
