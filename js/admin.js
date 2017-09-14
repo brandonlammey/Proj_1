@@ -1,3 +1,19 @@
+var test_arr = [];
+{
+  let arr = []
+  arr.push("Juzer");
+  arr.push("Event1");
+  arr.push("2017/09/01");
+  for(let i=0; i<4; i++)
+  {
+    arr.push("Juzer, Kaiser, Growney, Kari,");
+  }
+  for(let i=0; i<44; i++)
+  {
+    arr.push("0");
+  }
+  test_arr.push(arr);
+}
 
 var time_arr = [];
 for(let i=0; i<48; i++)
@@ -362,6 +378,224 @@ function formData(form)
     }
 }
 
+function makeTable12(n)
+{
+  $("#review_table_12").html(
+    "<table>"+
+    "<tr>"+
+    "<td><p id = '1200am'>12:00am</p></td>"+"<td><p id = '1230am'>12:30am</p></td>"+"<td><p id = '100am'>1:00am</p></td>"+"<td><p id = '130am'>1:30am</p></td>"+"<td><p id = '200am'>2:00am</p></td>"+"<td><p id = '230am'>2:30am</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '300am'>3:00am</p></td>"+"<td><p id = '330am'>3:30am</p></td>"+"<td><p id = '400am'>4:00am</p></td>"+"<td><p id = '430am'>4:30am</p></td>"+"<td><p id = '500am'>5:00am</p></td>"+"<td><p id = '530am'>5:30am</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '600am'>6:00am</p></td>"+"<td><p id = '630am'>6:30am</p></td>"+"<td><p id = '700am'>7:00am</p></td>"+"<td><p id = '730am'>7:30am</p></td>"+"<td><p id = '800am'>8:00am</p></td>"+"<td><p id = '830am'>8:30am</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '900am'>9:00am</p></td>"+"<td><p id = '930am'>9:30am</p></td>"+"<td><p id = '1000am'>10:00am</p></td>"+"<td><p id = '1030am'>10:30am</p></td>"+"<td><p id = '1100am'>11:00am</p></td>"+"<td><p id = '1130am'>11:30am</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '1200pm'>12:00pm</p></td>"+"<td><p id = '1230pm'>12:30pm</p></td>"+"<td><p id = '100pm'>1:00pm</p></td>"+"<td><p id = '130pm'>1:30pm</p></td>"+"<td><p id = '200pm'>2:00pm</p></td>"+"<td><p id = '230pm'>2:30pm</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '300pm'>3:00pm</p></td>"+"<td><p id = '330pm'>3:30pm</p></td>"+"<td><p id = '400pm'>4:00pm</p></td>"+"<td><p id = '430pm'>4:30pm</p></td>"+"<td><p id = '500pm'>5:00pm</p></td>"+"<td><p id = '530pm'>5:30pm</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '600pm'>6:00pm</p></td>"+"<td><p id = '630pm'>6:30pm</p></td>"+"<td><p id = '700pm'>7:00pm</p></td>"+"<td><p id = '730pm'>7:30pm</p></td>"+"<td><p id = '800pm'>8:00pm</p></td>"+"<td><p id = '830pm'>8:30pm</p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '900pm'>9:00pm</p></td>"+"<td><p id = '930pm'>9:30pm</p></td>"+"<td><p id = '1000pm'>10:00pm</p></td>"+"<td><p id = '1030pm'>10:30pm</p></td>"+"<td><p id = '1100pm'>11:00pm</p></td>"+"<td><p id = '1130pm'>11:30pm</p></td>"+
+    "</tr>"+
+    "</table>"
+  );
+  
+  for(let i=3; i<51; i++)
+  {
+    let att = test_arr[n][i];
+    console.log(att);
+    switch(i)
+    {
+      case 3:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1200am").append("<br>Attendees: "+att); $("#1200am").css("background-color","green");}
+        break;
+      case 4:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1230am").append("<br>Attendees: "+att); $("#1230am").css("background-color","green");}
+        break;
+      case 5:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#100am").append("<br>Attendees: "+att); $("#100am").css("background-color","green");}
+        break;
+      case 6:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#130am").append("<br>Attendees: "+att); $("#130am").css("background-color","green");}
+        break;
+      case 7:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#200am").append("<br>Attendees: "+att); $("#200am").css("background-color","green");}
+        break;
+      case 8:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#230am").append("<br>Attendees: "+att); $("#230am").css("background-color","green");}
+        break;
+      case 9:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#300am").append("<br>Attendees: "+att); $("#300am").css("background-color","green");}
+        break;
+      case 10:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#330am").append("<br>Attendees: "+att); $("#330am").css("background-color","green");}
+        break;
+      case 11:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#400am").append("<br>Attendees: "+att); $("#400am").css("background-color","green");}
+        break;
+      case 12:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#430am").append("<br>Attendees: "+att); $("#430am").css("background-color","green");}
+        break;
+      case 13:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#500am").append("<br>Attendees: "+att); $("#500am").css("background-color","green");}
+        break;
+      case 14:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#530am").append("<br>Attendees: "+att); $("#530am").css("background-color","green");}
+        break;
+      case 15:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#600am").append("<br>Attendees: "+att); $("#600am").css("background-color","green");}
+        break;
+      case 16:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#630am").append("<br>Attendees: "+att); $("#630am").css("background-color","green");}
+        break;
+      case 17:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#700am").append("<br>Attendees: "+att); $("#700am").css("background-color","green");}
+        break;
+      case 18:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#730am").append("<br>Attendees: "+att); $("#730am").css("background-color","green");}
+        break;
+      case 19:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#800am").append("<br>Attendees: "+att); $("#800am").css("background-color","green");}
+        break;
+      case 20:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#830am").append("<br>Attendees: "+att); $("#830am").css("background-color","green");}
+        break;
+      case 21:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#900am").append("<br>Attendees: "+att); $("#900am").css("background-color","green");}
+        break;
+      case 22:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#930am").append("<br>Attendees: "+att); $("#930am").css("background-color","green");}
+        break;
+      case 23:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1000am").append("<br>Attendees: "+att); $("#1000am").css("background-color","green");}
+        break;
+      case 24:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1030am").append("<br>Attendees: "+att); $("#1030am").css("background-color","green");}
+        break;
+      case 25:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1100am").append("<br>Attendees: "+att); $("#1100am").css("background-color","green");}
+        break;
+      case 26:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1130am").append("<br>Attendees: "+att); $("#1130am").css("background-color","green");}
+        break;
+      case 27:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1200pm").append("<br>Attendees: "+att); $("#1200pm").css("background-color","green");}
+        break;
+      case 28:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1230pm").append("<br>Attendees: "+att); $("#1230pm").css("background-color","green");}
+        break;
+      case 29:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#100pm").append("<br>Attendees: "+att); $("#100pm").css("background-color","green");}
+        break;
+      case 30:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#130pm").append("<br>Attendees: "+att); $("#130pm").css("background-color","green");}
+        break;
+      case 31:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#200pm").append("<br>Attendees: "+att); $("#200pm").css("background-color","green");}
+        break;
+      case 32:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#230pm").append("<br>Attendees: "+att); $("#230pm").css("background-color","green");}
+        break;
+      case 33:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#300pm").append("<br>Attendees: "+att); $("#300pm").css("background-color","green");}
+        break;
+      case 34:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#330pm").append("<br>Attendees: "+att); $("#330pm").css("background-color","green");}
+        break;
+      case 35:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#400pm").append("<br>Attendees: "+att); $("#400pm").css("background-color","green");}
+        break;
+      case 36:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#430pm").append("<br>Attendees: "+att); $("#430pm").css("background-color","green");}
+        break;
+      case 37:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#500pm").append("<br>Attendees: "+att); $("#500pm").css("background-color","green");}
+        break;
+      case 38:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#530pm").append("<br>Attendees: "+att); $("#530pm").css("background-color","green");}
+        break;
+      case 39:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#600pm").append("<br>Attendees: "+att); $("#600pm").css("background-color","green");}
+        break;
+      case 40:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#630pm").append("<br>Attendees: "+att); $("#630pm").css("background-color","green");}
+        break;
+      case 41:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#700pm").append("<br>Attendees: "+att); $("#700pm").css("background-color","green");}
+        break;
+      case 42:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#730pm").append("<br>Attendees: "+att); $("#730pm").css("background-color","green");}
+        break;
+      case 43:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#800pm").append("<br>Attendees: "+att); $("#800pm").css("background-color","green");}
+        break;
+      case 44:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#830pm").append("<br>Attendees: "+att); $("#830pm").css("background-color","green");}
+        break;
+      case 45:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#900pm").append("<br>Attendees: "+att); $("#900pm").css("background-color","green");}
+        break;
+      case 46:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#930pm").append("<br>Attendees: "+att); $("#930pm").css("background-color","green");}
+        break;
+      case 47:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1000pm").append("<br>Attendees: "+att); $("#1000pm").css("background-color","green");}
+        break;
+      case 48:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1030pm").append("<br>Attendees: "+att); $("#1030pm").css("background-color","green");}
+        break;
+      case 49:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1100pm").append("<br>Attendees: "+att); $("#1100pm").css("background-color","green");}
+        break;
+      case 50:
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1130pm").append("<br>Attendees: "+att); $("#1130pm").css("background-color","green");}      
+        break;
+      default:
+        break;
+    }
+  }
+}
+
+function getData(form)
+{
+  let name = form.review_admin_name.value;
+  let ev_name = form.review_event_name.value;
+  let ev_date = "";
+  let check = false;
+  let row_num = 0;
+  for(let i=0; i<test_arr.length; i++)
+  {
+    if(name == test_arr[i][0] && ev_name == test_arr[i][1])
+    {
+      row_num = i;
+      check = true;
+    }
+  }
+  if(!check)
+  {
+    alert("Could not find event and/or name. Please verify input is valid");
+    form.reset();
+  }
+  else
+  {
+    form.reset();
+    ev_date = test_arr[row_num][2];
+    $("#event_review").append("Event: "+ev_name+"<br><br>");
+    $("#event_review").append("Organizer: "+name+"<br><br>");
+    $("#event_review").append("Date: "+ev_date+"<br><br>");
+    makeTable12(row_num);
+  }
+}
+
 
 $(document).ready(function()
 {
@@ -545,9 +779,8 @@ $(document).ready(function()
     $("#review_submit").click(
         function()
         {
-            $("#event_review").empty();
-            $("#event_review").append("Work in Progress");
-
+          $("#event_review").empty();
+          getData(document.getElementById("review"));    
         }
     )
 
