@@ -57,56 +57,6 @@ input[type=text]{
   grid-column: 2;
 }
 
-.eventcreation{
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 75px 75px;
-  width: 100%;
-  height: 150px;
-  color: red;
-  align-content: center;
-}
-
-/*Event Month Styling*/
-.event_month{
-  grid-row: 1;
-  grid-column: 1;
-}
-.event_month button{
-  display: inline-block;
-  background-color: black;
-  border: none;
-  color: white;
-  width: 8.33%;
-  height: 50%;
-}
-.event_month button:hover{
-  background-color: white;
-  color: black;
-}
-.event_month button:active{
-  background-color: red;
-}
-
-/*Event Date Styling*/
-.event_date{
-  grid-row: 2;
-  grid-column: 1;
-}
-.event_date button{
-  display: inline-block;
-  background-color: black;
-  border: none;
-  color: white;
-  width: 3.2258%;
-  height: 50%;
-}
-.event_date button:hover{
-  background-color: white;
-  color: black;
-}
-
-
 .side_menu{
   display: block;
   color:white;

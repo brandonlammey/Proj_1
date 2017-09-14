@@ -53,11 +53,6 @@ include 'php/header.php'
         <center><h1 id="Info_Title"></h1></center>
         <br>
 
-        <div id="eventcreation" class="eventcreation">
-          <div id="event_month" class="event_month"></div>
-          <div id="event_date" class="event_date"></div>
-        </div>
-
         <p id="Events_List"></p>
 
       </div>
