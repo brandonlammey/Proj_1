@@ -582,8 +582,11 @@ function getData(form)
   }
   if(!check)
   {
-    alert("Could not find event and/or name. Please verify input is valid");
     form.reset();
+    $("#event_review").empty();
+    $("#review_table_12").empty();
+    $("#review_table_24").empty();
+    alert("Could not find event and/or name. Please verify input is valid");
   }
   else
   {
@@ -608,6 +611,8 @@ $(document).ready(function()
             timeReset();
             $("#review").hide();
             $("#event_review").empty();
+            $("#review_table_12").empty();
+            $("#review_table_24").empty();
             $("#event_time_12").hide();
             $("#event_time_24").hide();
             $("#event_form").toggle();
@@ -771,6 +776,8 @@ $(document).ready(function()
         function()
         {
             $("#event_review").empty();
+            $("#review_table_12").empty();
+            $("#review_table_24").empty();
             $("#event_form").hide();
             $("#review").toggle();
         }
