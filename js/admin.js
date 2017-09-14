@@ -788,7 +788,7 @@ function getData(form)
       ev_date = test_arr[row_num][2];
       $("#event_review").append("Event: "+ev_name+"<br><br>");
       $("#event_review").append("Organizer: "+name+"<br><br>");
-      $("#event_review").append("Date: "+ev_date+"<br><br>");
+      $("#event_review").append("Date: "+ev_date);
       $("#12_review").show();
       $("#24_review").show();
       makeTable12(row_num);
