@@ -29,7 +29,7 @@ include 'php/header.php'
         <center>
           <br><br><br>
           <h1> User Event Planner </h1>
-          <h6> by Purple C#bras </h6>
+          <h6> by <span class="groupname">Purple C#bras</span> </h6>
         </center>
       </div>
 
@@ -52,11 +52,6 @@ include 'php/header.php'
 
         <center><h1 id="Info_Title"></h1></center>
         <br>
-
-        <div id="eventcreation" class="eventcreation">
-          <div id="event_month" class="event_month"></div>
-          <div id="event_date" class="event_date"></div>
-        </div>
 
         <p id="Events_List"></p>
 
