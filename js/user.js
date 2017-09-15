@@ -14,10 +14,7 @@ $(document).ready(function(){
   $("#view_all").click(
     function(){
       $("#Events_List").html("View all is clicked");
-      //$("#eventcreation").height(0);
-      //$("#eventcreation").hide();
 
-      //$("#Events_List").empty(); //Empty's the info to write out all the events
     }
   );
 

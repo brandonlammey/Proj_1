@@ -49,7 +49,6 @@ include 'php/header.php'
       <div class="mainthree">
 
         <br>
-
         <center><h1 id="Info_Title"></h1></center>
         <br>
 
