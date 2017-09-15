@@ -2,17 +2,13 @@
 include 'header.php';
 
 $result = mysql_query( "SELECT * FROM $tbl_name");
-$arr = [];
+$events_arr = [];
 while ($row = mysql_fetch_assoc($result))
 {
    $arr2 = array();
    foreach ($row as $val) $arr2[] = $val;
-   $arr[] = $arr2;
+   $events_arr[] = $arr2;
 };
-echo $arr[0][2];
 
+echo json_encode($events_arr);
  ?>
-<script>
-//var jArray= <?php echo json_encode($phpArray ); ?>;
-//javascript code to get php array
-</script
