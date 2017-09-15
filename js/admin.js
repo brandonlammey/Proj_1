@@ -409,6 +409,7 @@ function formData(form)
       colorReset(i);
     }
     }
+    location.reload(true);
 }
 
 function makeTable12(n)
