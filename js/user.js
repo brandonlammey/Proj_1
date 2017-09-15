@@ -38,8 +38,12 @@
 function showAllEvents(){
   for(var i=0;i<48;i++){
     //var ev_name = events_arr[i][1];
-    $("#All_Events_Show").append("<button class='allevent_butt'>"+"Insert Event "+i+" Name"+"</button>");
+    $("#All_Events_Show").append("<button id='allevent"+i+"_' class='allevent_butt' onclick='ev_table_create("+i+")'>"+"Insert Event "+i+" Name"+"</button>");
   }
+}
+
+function ev_table_create(num){
+  $("#Event_Info").html("It works for "+num+".");
 }
 
 
@@ -101,7 +105,6 @@ $(document).ready(function(){
   showAllEvents();
 
   $("#Events_List").hide();
-
 
   $("#view_all").click(
     function(){

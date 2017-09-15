@@ -62,6 +62,8 @@ include 'php/header.php'
         </p>
         </center>
 
+        <p id="Event_Info"></p>
+
 
         <center>
         <p id = "review_table_12"></p>
