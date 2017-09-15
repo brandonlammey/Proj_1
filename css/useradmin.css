@@ -1,7 +1,7 @@
 .mainwrap{
   background-color: #BFBFBF;
   display: grid;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 10% 90%;
   grid-template-rows: 10em auto;
   align-content: stretch;
   width: 100%;
@@ -130,19 +130,24 @@ input[type=text]{
   width: 10em;
   margin: 3em;
   margin-bottom: 0em;
+  margin-top: 0em;
   padding: 0.5em;
   color: #303030;
 }
 
 #rev_table{
-  background-color: white;
+  background-color: #B65252;
   color: black;
   font-family: Helvetica;
   border: 1px solid black;
+  width: 70em;
+  height: 20em;
+  border-radius: 5px;
+  text-align: center;
 }
 #rev_table td{
   width: 16.6%;
   padding: 0px;
-  border: transparent;
+  border: 1 px solid black;
   margin: 0px;
 }

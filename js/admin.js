@@ -423,6 +423,7 @@ function formData(form)
 function makeTable12(n)
 {
   $("#review_table_12").html(
+    "<center>Event Schedule</center><br>"+
     "<table id='rev_table'>"+
     "<tr>"+
     "<td><p id = '1200am'>12:00am</p></td>"+"<td><p id = '1230am'>12:30am</p></td>"+"<td><p id = '100am'>1:00am</p></td>"+"<td><p id = '130am'>1:30am</p></td>"+"<td><p id = '200am'>2:00am</p></td>"+"<td><p id = '230am'>2:30am</p></td>"+
@@ -458,148 +459,148 @@ function makeTable12(n)
     switch(i)
     {
       case 4:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1200am").append("<br>Attendees: "+att); $("#1200am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1200am").append("<br>Attendees: "+att); $("#1200am").css("background-color","#80C468");}
         break;
       case 5:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1230am").append("<br>Attendees: "+att); $("#1230am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1230am").append("<br>Attendees: "+att); $("#1230am").css("background-color","#80C468");}
         break;
       case 6:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#100am").append("<br>Attendees: "+att); $("#100am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#100am").append("<br>Attendees: "+att); $("#100am").css("background-color","#80C468");}
         break;
       case 7:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#130am").append("<br>Attendees: "+att); $("#130am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#130am").append("<br>Attendees: "+att); $("#130am").css("background-color","#80C468");}
         break;
       case 8:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#200am").append("<br>Attendees: "+att); $("#200am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#200am").append("<br>Attendees: "+att); $("#200am").css("background-color","#80C468");}
         break;
       case 9:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#230am").append("<br>Attendees: "+att); $("#230am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#230am").append("<br>Attendees: "+att); $("#230am").css("background-color","#80C468");}
         break;
       case 10:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#300am").append("<br>Attendees: "+att); $("#300am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#300am").append("<br>Attendees: "+att); $("#300am").css("background-color","#80C468");}
         break;
       case 11:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#330am").append("<br>Attendees: "+att); $("#330am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#330am").append("<br>Attendees: "+att); $("#330am").css("background-color","#80C468");}
         break;
       case 12:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#400am").append("<br>Attendees: "+att); $("#400am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#400am").append("<br>Attendees: "+att); $("#400am").css("background-color","#80C468");}
         break;
       case 13:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#430am").append("<br>Attendees: "+att); $("#430am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#430am").append("<br>Attendees: "+att); $("#430am").css("background-color","#80C468");}
         break;
       case 14:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#500am").append("<br>Attendees: "+att); $("#500am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#500am").append("<br>Attendees: "+att); $("#500am").css("background-color","#80C468");}
         break;
       case 15:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#530am").append("<br>Attendees: "+att); $("#530am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#530am").append("<br>Attendees: "+att); $("#530am").css("background-color","#80C468");}
         break;
       case 16:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#600am").append("<br>Attendees: "+att); $("#600am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#600am").append("<br>Attendees: "+att); $("#600am").css("background-color","#80C468");}
         break;
       case 17:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#630am").append("<br>Attendees: "+att); $("#630am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#630am").append("<br>Attendees: "+att); $("#630am").css("background-color","#80C468");}
         break;
       case 18:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#700am").append("<br>Attendees: "+att); $("#700am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#700am").append("<br>Attendees: "+att); $("#700am").css("background-color","#80C468");}
         break;
       case 19:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#730am").append("<br>Attendees: "+att); $("#730am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#730am").append("<br>Attendees: "+att); $("#730am").css("background-color","#80C468");}
         break;
       case 20:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#800am").append("<br>Attendees: "+att); $("#800am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#800am").append("<br>Attendees: "+att); $("#800am").css("background-color","#80C468");}
         break;
       case 21:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#830am").append("<br>Attendees: "+att); $("#830am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#830am").append("<br>Attendees: "+att); $("#830am").css("background-color","#80C468");}
         break;
       case 22:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#900am").append("<br>Attendees: "+att); $("#900am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#900am").append("<br>Attendees: "+att); $("#900am").css("background-color","#80C468");}
         break;
       case 23:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#930am").append("<br>Attendees: "+att); $("#930am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#930am").append("<br>Attendees: "+att); $("#930am").css("background-color","#80C468");}
         break;
       case 24:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1000am").append("<br>Attendees: "+att); $("#1000am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1000am").append("<br>Attendees: "+att); $("#1000am").css("background-color","#80C468");}
         break;
       case 25:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1030am").append("<br>Attendees: "+att); $("#1030am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1030am").append("<br>Attendees: "+att); $("#1030am").css("background-color","#80C468");}
         break;
       case 26:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1100am").append("<br>Attendees: "+att); $("#1100am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1100am").append("<br>Attendees: "+att); $("#1100am").css("background-color","#80C468");}
         break;
       case 27:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1130am").append("<br>Attendees: "+att); $("#1130am").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1130am").append("<br>Attendees: "+att); $("#1130am").css("background-color","#80C468");}
         break;
       case 28:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1200pm").append("<br>Attendees: "+att); $("#1200pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1200pm").append("<br>Attendees: "+att); $("#1200pm").css("background-color","#80C468");}
         break;
       case 29:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1230pm").append("<br>Attendees: "+att); $("#1230pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1230pm").append("<br>Attendees: "+att); $("#1230pm").css("background-color","#80C468");}
         break;
       case 30:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#100pm").append("<br>Attendees: "+att); $("#100pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#100pm").append("<br>Attendees: "+att); $("#100pm").css("background-color","#80C468");}
         break;
       case 31:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#130pm").append("<br>Attendees: "+att); $("#130pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#130pm").append("<br>Attendees: "+att); $("#130pm").css("background-color","#80C468");}
         break;
       case 32:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#200pm").append("<br>Attendees: "+att); $("#200pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#200pm").append("<br>Attendees: "+att); $("#200pm").css("background-color","#80C468");}
         break;
       case 33:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#230pm").append("<br>Attendees: "+att); $("#230pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#230pm").append("<br>Attendees: "+att); $("#230pm").css("background-color","#80C468");}
         break;
       case 34:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#300pm").append("<br>Attendees: "+att); $("#300pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#300pm").append("<br>Attendees: "+att); $("#300pm").css("background-color","#80C468");}
         break;
       case 35:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#330pm").append("<br>Attendees: "+att); $("#330pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#330pm").append("<br>Attendees: "+att); $("#330pm").css("background-color","#80C468");}
         break;
       case 36:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#400pm").append("<br>Attendees: "+att); $("#400pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#400pm").append("<br>Attendees: "+att); $("#400pm").css("background-color","#80C468");}
         break;
       case 37:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#430pm").append("<br>Attendees: "+att); $("#430pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#430pm").append("<br>Attendees: "+att); $("#430pm").css("background-color","#80C468");}
         break;
       case 38:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#500pm").append("<br>Attendees: "+att); $("#500pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#500pm").append("<br>Attendees: "+att); $("#500pm").css("background-color","#80C468");}
         break;
       case 39:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#530pm").append("<br>Attendees: "+att); $("#530pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#530pm").append("<br>Attendees: "+att); $("#530pm").css("background-color","#80C468");}
         break;
       case 40:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#600pm").append("<br>Attendees: "+att); $("#600pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#600pm").append("<br>Attendees: "+att); $("#600pm").css("background-color","#80C468");}
         break;
       case 41:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#630pm").append("<br>Attendees: "+att); $("#630pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#630pm").append("<br>Attendees: "+att); $("#630pm").css("background-color","#80C468");}
         break;
       case 42:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#700pm").append("<br>Attendees: "+att); $("#700pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#700pm").append("<br>Attendees: "+att); $("#700pm").css("background-color","#80C468");}
         break;
       case 43:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#730pm").append("<br>Attendees: "+att); $("#730pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#730pm").append("<br>Attendees: "+att); $("#730pm").css("background-color","#80C468");}
         break;
       case 44:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#800pm").append("<br>Attendees: "+att); $("#800pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#800pm").append("<br>Attendees: "+att); $("#800pm").css("background-color","#80C468");}
         break;
       case 45:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#830pm").append("<br>Attendees: "+att); $("#830pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#830pm").append("<br>Attendees: "+att); $("#830pm").css("background-color","#80C468");}
         break;
       case 46:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#900pm").append("<br>Attendees: "+att); $("#900pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#900pm").append("<br>Attendees: "+att); $("#900pm").css("background-color","#80C468");}
         break;
       case 47:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#930pm").append("<br>Attendees: "+att); $("#930pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#930pm").append("<br>Attendees: "+att); $("#930pm").css("background-color","#80C468");}
         break;
       case 48:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1000pm").append("<br>Attendees: "+att); $("#1000pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1000pm").append("<br>Attendees: "+att); $("#1000pm").css("background-color","#80C468");}
         break;
       case 49:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1030pm").append("<br>Attendees: "+att); $("#1030pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1030pm").append("<br>Attendees: "+att); $("#1030pm").css("background-color","#80C468");}
         break;
       case 50:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1100pm").append("<br>Attendees: "+att); $("#1100pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1100pm").append("<br>Attendees: "+att); $("#1100pm").css("background-color","#80C468");}
         break;
       case 51:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1130pm").append("<br>Attendees: "+att); $("#1130pm").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1130pm").append("<br>Attendees: "+att); $("#1130pm").css("background-color","#80C468");}
         break;
       default:
         break;
@@ -610,6 +611,7 @@ function makeTable12(n)
 function makeTable24(n)
 {
   $("#review_table_24").html(
+    "<center>Event Schedule</center><br>"+
     "<table id='rev_table'>"+
     "<tr>"+
     "<td><p id = '0000'>00:00</p></td>"+"<td><p id = '0030'>00:30</p></td>"+"<td><p id = '100'>1:00</p></td>"+"<td><p id = '130'>1:30</p></td>"+"<td><p id = '200'>2:00</p></td>"+"<td><p id = '230'>2:30</p></td>"+
@@ -645,148 +647,148 @@ function makeTable24(n)
     switch(i)
     {
       case 4:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#0000").append("<br>Attendees: "+att); $("#0000").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#0000").append("<br>Attendees: "+att); $("#0000").css("background-color","#80C468");}
         break;
       case 5:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#0030").append("<br>Attendees: "+att); $("#0030").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#0030").append("<br>Attendees: "+att); $("#0030").css("background-color","#80C468");}
         break;
       case 6:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#100").append("<br>Attendees: "+att); $("#100").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#100").append("<br>Attendees: "+att); $("#100").css("background-color","#80C468");}
         break;
       case 7:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#130").append("<br>Attendees: "+att); $("#130").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#130").append("<br>Attendees: "+att); $("#130").css("background-color","#80C468");}
         break;
       case 8:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#200").append("<br>Attendees: "+att); $("#200").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#200").append("<br>Attendees: "+att); $("#200").css("background-color","#80C468");}
         break;
       case 9:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#230").append("<br>Attendees: "+att); $("#230").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#230").append("<br>Attendees: "+att); $("#230").css("background-color","#80C468");}
         break;
       case 10:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#300").append("<br>Attendees: "+att); $("#300").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#300").append("<br>Attendees: "+att); $("#300").css("background-color","#80C468");}
         break;
       case 11:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#330").append("<br>Attendees: "+att); $("#330").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#330").append("<br>Attendees: "+att); $("#330").css("background-color","#80C468");}
         break;
       case 12:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#400").append("<br>Attendees: "+att); $("#400").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#400").append("<br>Attendees: "+att); $("#400").css("background-color","#80C468");}
         break;
       case 13:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#430").append("<br>Attendees: "+att); $("#430").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#430").append("<br>Attendees: "+att); $("#430").css("background-color","#80C468");}
         break;
       case 14:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#500").append("<br>Attendees: "+att); $("#500").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#500").append("<br>Attendees: "+att); $("#500").css("background-color","#80C468");}
         break;
       case 15:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#530").append("<br>Attendees: "+att); $("#530").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#530").append("<br>Attendees: "+att); $("#530").css("background-color","#80C468");}
         break;
       case 16:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#600").append("<br>Attendees: "+att); $("#600").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#600").append("<br>Attendees: "+att); $("#600").css("background-color","#80C468");}
         break;
       case 17:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#630").append("<br>Attendees: "+att); $("#630").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#630").append("<br>Attendees: "+att); $("#630").css("background-color","#80C468");}
         break;
       case 18:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#700").append("<br>Attendees: "+att); $("#700").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#700").append("<br>Attendees: "+att); $("#700").css("background-color","#80C468");}
         break;
       case 19:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#730").append("<br>Attendees: "+att); $("#730").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#730").append("<br>Attendees: "+att); $("#730").css("background-color","#80C468");}
         break;
       case 20:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#800").append("<br>Attendees: "+att); $("#800").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#800").append("<br>Attendees: "+att); $("#800").css("background-color","#80C468");}
         break;
       case 21:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#830").append("<br>Attendees: "+att); $("#830").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#830").append("<br>Attendees: "+att); $("#830").css("background-color","#80C468");}
         break;
       case 22:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#900").append("<br>Attendees: "+att); $("#900").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#900").append("<br>Attendees: "+att); $("#900").css("background-color","#80C468");}
         break;
       case 23:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#930").append("<br>Attendees: "+att); $("#930").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#930").append("<br>Attendees: "+att); $("#930").css("background-color","#80C468");}
         break;
       case 24:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1000").append("<br>Attendees: "+att); $("#1000").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1000").append("<br>Attendees: "+att); $("#1000").css("background-color","#80C468");}
         break;
       case 25:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1030").append("<br>Attendees: "+att); $("#1030").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1030").append("<br>Attendees: "+att); $("#1030").css("background-color","#80C468");}
         break;
       case 26:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1100").append("<br>Attendees: "+att); $("#1100").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1100").append("<br>Attendees: "+att); $("#1100").css("background-color","#80C468");}
         break;
       case 27:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1130").append("<br>Attendees: "+att); $("#1130").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1130").append("<br>Attendees: "+att); $("#1130").css("background-color","#80C468");}
         break;
       case 28:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1200").append("<br>Attendees: "+att); $("#1200").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1200").append("<br>Attendees: "+att); $("#1200").css("background-color","#80C468");}
         break;
       case 29:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1230").append("<br>Attendees: "+att); $("#1230").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1230").append("<br>Attendees: "+att); $("#1230").css("background-color","#80C468");}
         break;
       case 30:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1300").append("<br>Attendees: "+att); $("#1300").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1300").append("<br>Attendees: "+att); $("#1300").css("background-color","#80C468");}
         break;
       case 31:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1330").append("<br>Attendees: "+att); $("#1330").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1330").append("<br>Attendees: "+att); $("#1330").css("background-color","#80C468");}
         break;
       case 32:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1400").append("<br>Attendees: "+att); $("#1400").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1400").append("<br>Attendees: "+att); $("#1400").css("background-color","#80C468");}
         break;
       case 33:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1430").append("<br>Attendees: "+att); $("#1430").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1430").append("<br>Attendees: "+att); $("#1430").css("background-color","#80C468");}
         break;
       case 34:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1500").append("<br>Attendees: "+att); $("#1500").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1500").append("<br>Attendees: "+att); $("#1500").css("background-color","#80C468");}
         break;
       case 35:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1530").append("<br>Attendees: "+att); $("#1530").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1530").append("<br>Attendees: "+att); $("#1530").css("background-color","#80C468");}
         break;
       case 36:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1600").append("<br>Attendees: "+att); $("#1600").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1600").append("<br>Attendees: "+att); $("#1600").css("background-color","#80C468");}
         break;
       case 37:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1630").append("<br>Attendees: "+att); $("#1630").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1630").append("<br>Attendees: "+att); $("#1630").css("background-color","#80C468");}
         break;
       case 38:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1700").append("<br>Attendees: "+att); $("#1700").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1700").append("<br>Attendees: "+att); $("#1700").css("background-color","#80C468");}
         break;
       case 39:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1730").append("<br>Attendees: "+att); $("#1730").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1730").append("<br>Attendees: "+att); $("#1730").css("background-color","#80C468");}
         break;
       case 40:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1800").append("<br>Attendees: "+att); $("#1800").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1800").append("<br>Attendees: "+att); $("#1800").css("background-color","#80C468");}
         break;
       case 41:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1830").append("<br>Attendees: "+att); $("#1830").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1830").append("<br>Attendees: "+att); $("#1830").css("background-color","#80C468");}
         break;
       case 42:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1900").append("<br>Attendees: "+att); $("#1900").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1900").append("<br>Attendees: "+att); $("#1900").css("background-color","#80C468");}
         break;
       case 43:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#1930").append("<br>Attendees: "+att); $("#1930").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#1930").append("<br>Attendees: "+att); $("#1930").css("background-color","#80C468");}
         break;
       case 44:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#2000").append("<br>Attendees: "+att); $("#2000").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2000").append("<br>Attendees: "+att); $("#2000").css("background-color","#80C468");}
         break;
       case 45:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#2030").append("<br>Attendees: "+att); $("#2030").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2030").append("<br>Attendees: "+att); $("#2030").css("background-color","#80C468");}
         break;
       case 46:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#2100").append("<br>Attendees: "+att); $("#2100").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2100").append("<br>Attendees: "+att); $("#2100").css("background-color","#80C468");}
         break;
       case 47:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#2130").append("<br>Attendees: "+att); $("#2130").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2130").append("<br>Attendees: "+att); $("#2130").css("background-color","#80C468");}
         break;
       case 48:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#2200").append("<br>Attendees: "+att); $("#2200").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2200").append("<br>Attendees: "+att); $("#2200").css("background-color","#80C468");}
         break;
       case 49:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#2230").append("<br>Attendees: "+att); $("#2230").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2230").append("<br>Attendees: "+att); $("#2230").css("background-color","#80C468");}
         break;
       case 50:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#2300").append("<br>Attendees: "+att); $("#2300").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2300").append("<br>Attendees: "+att); $("#2300").css("background-color","#80C468");}
         break;
       case 51:
-        if(att != "0"){att=att.substring(0, att.length-1); $("#2330").append("<br>Attendees: "+att); $("#2330").css("background-color","green");}
+        if(att != "0"){att=att.substring(0, att.length-1); $("#2330").append("<br>Attendees: "+att); $("#2330").css("background-color","#80C468");}
         break;
       default:
         break;
