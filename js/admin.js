@@ -1,5 +1,37 @@
+
 var test_arr = [];
 {
+  var events_arr;
+
+  function loadJSON(path, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+              if (xhr.status === 200) {
+                  // Here the callback gets implemented
+                  console.log(xhr.responseText);
+                  alert(xhr.responseText);
+                  events_arr = JSON.parse(xhr.responseText);
+                  callback();
+              } else {
+
+              }
+          }
+      };
+
+      xhr.open("GET", path, true);
+      xhr.send();
+      return xhr.onreadystatechange();
+  }
+
+  loadJSON('php/getEventsFromDB.php', function printJSONObject(){
+            console.log(events_arr);
+      });
+
+
+
+
+
   let arr = []
   arr.push("Juzer");
   arr.push("Event1");
@@ -409,9 +441,9 @@ function makeTable12(n)
     "</table>"
   );
 
-  for(let i=3; i<51; i++)
+  for(let i=4; i<52; i++)
   {
-    let att = test_arr[n][i];
+    let att = events_arr[n][i];
     console.log(att);
     switch(i)
     {
@@ -598,7 +630,7 @@ function makeTable24(n)
 
   for(let i=3; i<51; i++)
   {
-    let att = test_arr[n][i];
+    let att = events_arr[n][i];
     console.log(att);
     switch(i)
     {
@@ -766,9 +798,9 @@ function getData(form)
   }
   else
   {
-    for(let i=0; i<test_arr.length; i++)
+    for(let i=0; i<events_arr.length; i++)
     {
-      if(name == test_arr[i][0] && ev_name == test_arr[i][1])
+      if(name == events_arr[i][1] && ev_name == events_arr[i][2])
       {
         row_num = i;
         check = true;
@@ -785,7 +817,7 @@ function getData(form)
     else
     {
       form.reset();
-      ev_date = test_arr[row_num][2];
+      ev_date = events_arr[row_num][2];
       $("#event_review").append("Event: "+ev_name+"<br><br>");
       $("#event_review").append("Organizer: "+name+"<br><br>");
       $("#event_review").append("Date: "+ev_date+"<br><br>");
