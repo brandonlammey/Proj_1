@@ -140,7 +140,7 @@ input[type=text]{
   color: black;
   font-family: Helvetica;
   border: 1px solid black;
-  width: 70em;
+  width: 100%;;
   height: 20em;
   border-radius: 5px;
   text-align: center;
@@ -160,4 +160,7 @@ input[type=text]{
   width: 8em;
   padding: 0.2em;
   color: #303030;
+}
+#Event_Info{
+  line-height: 1.2;
 }
