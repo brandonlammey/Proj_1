@@ -38,8 +38,7 @@ include 'php/header.php'
       view events, and expand events-->
       <div class="maintwo">
         <br><br>
-        <button id="create" class="side_menu">Create New Event</button>
-        <button id="view_all" class="side_menu">View All Events</button>
+        <button id="view_all" class="side_menu">Search All Events</button>
         <button id="expand_all" class="side_menu">Expand All Events</button>
 
         <br>
@@ -52,7 +51,24 @@ include 'php/header.php'
         <center><h1 id="Info_Title"></h1></center>
         <br>
 
-        <p id="Events_List"></p>
+        <center>
+        <p id="All_Events_Show"></p>
+
+
+        <p id="Events_List">
+          Select Time Display<br><br>
+          <input type = 'button' name = '12_time_select' id = 'time_select_12' value = '12 Hour Format'>
+          <input type = 'button' name = '24_time_select' id = 'time_select_24' value = '24 Hour Format'>
+        </p>
+        </center>
+
+        <p id="Event_Info"></p>
+
+
+        <center>
+        <p id = "review_table_12"></p>
+        <p id = "review_table_24"></p>
+        </center>
 
       </div>
 

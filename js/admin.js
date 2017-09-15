@@ -839,7 +839,7 @@ function getData(form)
       makeTable24(row_num);
       $("#review_table_24").hide();
     }
-  }
+  }m
 }
 
 

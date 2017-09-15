@@ -151,3 +151,13 @@ input[type=text]{
   border: 1 px solid black;
   margin: 0px;
 }
+
+.allevent_butt{
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 7px;
+  font-size: 0.6em;
+  width: 8em;
+  padding: 0.2em;
+  color: #303030;
+}
