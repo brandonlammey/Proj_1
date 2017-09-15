@@ -1,16 +1,19 @@
 
-var test_arr = [];
 {
   var events_arr;
 
-  function loadJSON(path, callback) {
-      var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function () {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-              if (xhr.status === 200) {
-                  //console.log(xhr.responseText); //DEBUGGING
-                  //alert(xhr.responseText); //DEBUGGING
-                  events_arr = JSON.parse(xhr.responseText);
+  function getEventsFromDB(path, callback)
+  {
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function ()
+      {
+          if (request.readyState === XMLHttpRequest.DONE)
+          {
+              if (request.status === 200)
+              {
+                  //console.log(request.responseText); //DEBUGGING
+                  //alert(request.responseText); //DEBUGGING
+                  events_arr = JSON.parse(request.responseText);
                   callback();
               } else {
 
@@ -18,35 +21,39 @@ var test_arr = [];
           }
       };
 
-      xhr.open("GET", path, true);
-      xhr.send();
-      return xhr.onreadystatechange();
+      request.open("GET", path, true);
+      request.send();
+      return request.onreadystatechange();
   }
-
-  loadJSON('php/getEventsFromDB.php', function printJSONObject(){
-            console.log(events_arr);
-            console.log(events_arr[0]);
-            console.log(events_arr[1]);
+  //Call script
+  getEventsFromDB('php/getEventsFromDB.php', function printResults()
+      {
+            console.log(events_arr); //DEBUGGING
+            console.log(events_arr[0]); //DEBUGGING
+            console.log(events_arr[1]); //DEBUGGING
       });
-
-
-
-
-
-  let arr = []
-  arr.push("Juzer");
-  arr.push("Event1");
-  arr.push("2017/09/01");
-  for(let i=0; i<4; i++)
-  {
-    arr.push("Juzer, Kaiser, Growney, Kari,");
-  }
-  for(let i=0; i<44; i++)
-  {
-    arr.push("0");
-  }
-  test_arr.push(arr);
 }
+
+
+////////////////////////////////////////////////////////////////////////////////
+//Test Code
+{
+  //var test_arr = [];
+  //let arr = []
+  //arr.push("Juzer");
+  //arr.push("Event1");
+  //arr.push("2017/09/01");
+  //for(let i=0; i<4; i++)
+  //{
+  //  arr.push("Juzer, Kaiser, Growney, Kari,");
+  //}
+  //for(let i=0; i<44; i++)
+  //{
+  //  arr.push("0");
+  //}
+  //test_arr.push(arr);
+}
+////////////////////////////////////////////////////////////////////////////////
 
 var time_arr = [];
 for(let i=0; i<48; i++)
@@ -409,6 +416,7 @@ function formData(form)
       colorReset(i);
     }
     }
+    //Reload page. FORCE RELOAD (do not reload from cache) is true,
     location.reload(true);
 }
 
