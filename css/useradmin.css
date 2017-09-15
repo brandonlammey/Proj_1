@@ -155,10 +155,11 @@ input[type=text]{
 .allevent_butt{
   background-color: white;
   border: 2px solid white;
-  border-radius: 7px;
+  border-radius: 5px;
   font-size: 0.6em;
-  width: 8em;
-  padding: 0.2em;
+  width: 11em;
+  height: 7em;
+  margin: 0.1em;
   color: #303030;
 }
 #Event_Info{
