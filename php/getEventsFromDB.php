@@ -9,7 +9,9 @@ while ($row = mysql_fetch_assoc($result))
    foreach ($row as $val) $arr2[] = $val;
    $arr[] = $arr2;
 };
-echo $arr[0][2];
+//echo $arr[17][1]; echo "\n";
+//echo $arr[17][2]; echo "\n";
+//echo $arr[17][3]; echo "\n";
 
  ?>
 <script>
