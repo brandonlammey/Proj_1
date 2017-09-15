@@ -1,5 +1,5 @@
 
-{
+
   var events_arr;
 
   function getEventsFromDB(path, callback)
@@ -31,7 +31,15 @@
             console.log(events_arr); //DEBUGGING
             console.log(events_arr[0]); //DEBUGGING
             console.log(events_arr[1]); //DEBUGGING
+            console.log(events_arr[1][1]);
       });
+
+
+function showAllEvents(){
+  for(var i=0;i<48;i++){
+    //var ev_name = events_arr[i][1];
+    $("#All_Events_Show").append("<button class='allevent_butt'>"+"Insert Event "+i+" Name"+"</button>");
+  }
 }
 
 
@@ -82,25 +90,28 @@ function getData(form)
   }
 }
 
+
+
+//
+// DOCUMENT READY FUNCTION IS ALL jquery REFERENCING THE JAVASCRIIPT FUNCTIONS ABOVE
+//
 $(document).ready(function(){
   $("#Info_Title").html("Events");
 
-  //Action: When clicking the create event button, creates dummy event baseball
-  //Post: Event added to ev_list array and is displayed on page
+  showAllEvents();
 
-  $("#create").click(
-    function(){
-      $("#Events_List").html("Created is clicked");
+  $("#Events_List").hide();
 
-    }
-  );
 
   $("#view_all").click(
     function(){
+      $("#All_Events_Show").hide();
+      $("#Events_List").show();
       $("#review_table_12").empty();
       $("#review_table_24").empty();
       makeTable12(48);
       makeTable24(48);
+      $("#review_table_12").hide();
       $("#review_table_24").hide();
 
     }
@@ -110,7 +121,6 @@ $(document).ready(function(){
     function(){
       $("#review_table_12").show();
       $("#review_table_24").hide();
-
     }
   );
   $("#time_select_24").click(
