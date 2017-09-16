@@ -1,543 +1,680 @@
-  var events_arr;
-  function getEventsFromDB(path, callback)
+var events_arr;
+function getEventsFromDB(path, callback)
+{
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function ()
   {
-      var request = new XMLHttpRequest();
-      request.onreadystatechange = function ()
+    if (request.readyState === XMLHttpRequest.DONE)
+    {
+      if (request.status === 200)
       {
-          if (request.readyState === XMLHttpRequest.DONE)
-          {
-              if (request.status === 200)
-              {
-                  //console.log(request.responseText); //DEBUGGING
-                  //alert(request.responseText); //DEBUGGING
-                  events_arr = JSON.parse(request.responseText);
-                  callback();
-              } else {
+        //console.log(request.responseText); //DEBUGGING
+        //alert(request.responseText); //DEBUGGING
+        events_arr = JSON.parse(request.responseText);
+        callback();
+      } else {
 
-              }
-          }
-      };
+      }
+    }
+  };
 
-      request.open("GET", path, true);
-      request.send();
-      return request.onreadystatechange();
-  }
-  //Call script
+    request.open("GET", path, true);
+    request.send();
+    return request.onreadystatechange();
+}
+  
+function pushToDB()
+{
   /*
-  getEventsFromDB('php/getEventsFromDB.php', function printResults()
-      {
-            console.log(events_arr.length); //DEBUGGING
-            console.log(events_arr[0]); //DEBUGGING
-            console.log(events_arr[1]); //DEBUGGING
-            console.log(events_arr[1][1]);
-            console.log(events_arr_length);
-      });
-*/
-
-function makeTable12(n)
+  This function is called after the user is done fucking with events_arr, and it has been updated accrodingly.
+  Do whatever you want in here.
+  */
+}
+function makeTable12(n, name)
 {
-          $("#review_table_12").html(
-            "<center>Event Schedule</center><br>"+
-            "<table id='rev_table'>"+
-            "<tr>"+
-            "<td><p id = '1200am'>12:00am</p></td>"+"<td><p id = '1230am'>12:30am</p></td>"+"<td><p id = '100am'>1:00am</p></td>"+"<td><p id = '130am'>1:30am</p></td>"+"<td><p id = '200am'>2:00am</p></td>"+"<td><p id = '230am'>2:30am</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '300am'>3:00am</p></td>"+"<td><p id = '330am'>3:30am</p></td>"+"<td><p id = '400am'>4:00am</p></td>"+"<td><p id = '430am'>4:30am</p></td>"+"<td><p id = '500am'>5:00am</p></td>"+"<td><p id = '530am'>5:30am</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '600am'>6:00am</p></td>"+"<td><p id = '630am'>6:30am</p></td>"+"<td><p id = '700am'>7:00am</p></td>"+"<td><p id = '730am'>7:30am</p></td>"+"<td><p id = '800am'>8:00am</p></td>"+"<td><p id = '830am'>8:30am</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '900am'>9:00am</p></td>"+"<td><p id = '930am'>9:30am</p></td>"+"<td><p id = '1000am'>10:00am</p></td>"+"<td><p id = '1030am'>10:30am</p></td>"+"<td><p id = '1100am'>11:00am</p></td>"+"<td><p id = '1130am'>11:30am</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '1200pm'>12:00pm</p></td>"+"<td><p id = '1230pm'>12:30pm</p></td>"+"<td><p id = '100pm'>1:00pm</p></td>"+"<td><p id = '130pm'>1:30pm</p></td>"+"<td><p id = '200pm'>2:00pm</p></td>"+"<td><p id = '230pm'>2:30pm</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '300pm'>3:00pm</p></td>"+"<td><p id = '330pm'>3:30pm</p></td>"+"<td><p id = '400pm'>4:00pm</p></td>"+"<td><p id = '430pm'>4:30pm</p></td>"+"<td><p id = '500pm'>5:00pm</p></td>"+"<td><p id = '530pm'>5:30pm</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '600pm'>6:00pm</p></td>"+"<td><p id = '630pm'>6:30pm</p></td>"+"<td><p id = '700pm'>7:00pm</p></td>"+"<td><p id = '730pm'>7:30pm</p></td>"+"<td><p id = '800pm'>8:00pm</p></td>"+"<td><p id = '830pm'>8:30pm</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '900pm'>9:00pm</p></td>"+"<td><p id = '930pm'>9:30pm</p></td>"+"<td><p id = '1000pm'>10:00pm</p></td>"+"<td><p id = '1030pm'>10:30pm</p></td>"+"<td><p id = '1100pm'>11:00pm</p></td>"+"<td><p id = '1130pm'>11:30pm</p></td>"+
-            "</tr>"+
-            "</table>"
-          );
+  $("#user_table_12").html(
+    "<center>Event Schedule</center><br>"+
+    "<table id='rev_table'>"+
+    "<tr>"+
+    "<td><p id = '1200am'><button type = 'button' disabled>12:00am</button></p></td>"+
+    "<td><p id = '1230am'><button type = 'button' disabled>12:30am</button></p></td>"+
+    "<td><p id = '100am'><button type = 'button' disabled>1:00am</button></p></td>"+
+    "<td><p id = '130am'><button type = 'button' disabled>1:30am</button></p></td>"+
+    "<td><p id = '200am'><button type = 'button' disabled>2:00am</button></p></td>"+
+    "<td><p id = '230am'><button type = 'button' disabled>2:30am</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '300am'><button type = 'button' disabled>3:00am</button></p></td>"+
+    "<td><p id = '330am'><button type = 'button' disabled>3:30am</button></p></td>"+
+    "<td><p id = '400am'><button type = 'button' disabled>4:00am</button></p></td>"+
+    "<td><p id = '430am'><button type = 'button' disabled>4:30am</button></p></td>"+
+    "<td><p id = '500am'><button type = 'button' disabled>5:00am</button></p></td>"+
+    "<td><p id = '530am'><button type = 'button' disabled>5:30am</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '600am'><button type = 'button' disabled>6:00am</button></p></td>"+
+    "<td><p id = '630am'><button type = 'button' disabled>6:30am</button></p></td>"+
+    "<td><p id = '700am'><button type = 'button' disabled>7:00am</button></p></td>"+
+    "<td><p id = '730am'><button type = 'button' disabled>7:30am</button></p></td>"+
+    "<td><p id = '800am'><button type = 'button' disabled>8:00am</button></p></td>"+
+    "<td><p id = '830am'><button type = 'button' disabled>8:30am</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '900am'><button type = 'button' disabled>9:00am</button></p></td>"+
+    "<td><p id = '930am'><button type = 'button' disabled>9:30am</button></p></td>"+
+    "<td><p id = '1000am'><button type = 'button' disabled>10:00am</button></p></td>"+
+    "<td><p id = '1030am'><button type = 'button' disabled>10:30am</button></p></td>"+
+    "<td><p id = '1100am'><button type = 'button' disabled>11:00am</button></p></td>"+
+    "<td><p id = '1130am'><button type = 'button' disabled>11:30am</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '1200'><button type = 'button' disabled>12:00pm</button></p></td>"+
+    "<td><p id = '1230pm'><button type = 'button' disabled>12:30pm</button></p></td>"+
+    "<td><p id = '100pm'><button type = 'button' disabled>1:00pm</button></p></td>"+
+    "<td><p id = '130pm'><button type = 'button' disabled>1:30pm</button></p></td>"+
+    "<td><p id = '200pm'><button type = 'button' disabled>2:00pm</button></p></td>"+
+    "<td><p id = '230pm'><button type = 'button' disabled>2:30pm</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '300pm'><button type = 'button' disabled>3:00pm</button></p></td>"+
+    "<td><p id = '330pm'><button type = 'button' disabled>3:30pm</button></p></td>"+
+    "<td><p id = '400pm'><button type = 'button' disabled>4:00pm</button></p></td>"+
+    "<td><p id = '430pm'><button type = 'button' disabled>4:30pm</button></p></td>"+
+    "<td><p id = '500pm'><button type = 'button' disabled>5:00pm</button></p></td>"+
+    "<td><p id = '530pm'><button type = 'button' disabled>5:30pm</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '600pm'><button type = 'button' disabled>6:00pm</button></p></td>"+
+    "<td><p id = '630pm'><button type = 'button' disabled>6:30pm</button></p></td>"+
+    "<td><p id = '700pm'><button type = 'button' disabled>7:00pm</button></p></td>"+
+    "<td><p id = '730pm'><button type = 'button' disabled>7:30pm</button></p></td>"+
+    "<td><p id = '800pm'><button type = 'button' disabled>8:00pm</button></p></td>"+
+    "<td><p id = '830pm'><button type = 'button' disabled>8:30pm</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '900pm'><button type = 'button' disabled>9:00pm</button></p></td>"+
+    "<td><p id = '930pm'><button type = 'button' disabled>9:30pm</button></p></td>"+
+    "<td><p id = '1000pm'><button type = 'button' disabled>10:00pm</button></p></td>"+
+    "<td><p id = '1030pm'><button type = 'button' disabled>10:30pm</button></p></td>"+
+    "<td><p id = '1100pm'><button type = 'button' disabled>11:00pm</button></p></td>"+
+    "<td><p id = '1130pm'><button type = 'button' disabled>11:30pm</button></p></td>"+
+    "</tr>"+
+    "</table>"
+  );
 
-          for(let i=4; i<52; i++)
-          {
-            let att = events_arr[n][i];
-            console.log(att);
-            switch(i)
-            {
-              case 4:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1200am").append("<br>Attendees: "+att); $("#1200am").css("background-color","#80C468");}
-                break;
-              case 5:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1230am").append("<br>Attendees: "+att); $("#1230am").css("background-color","#80C468");}
-                break;
-              case 6:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#100am").append("<br>Attendees: "+att); $("#100am").css("background-color","#80C468");}
-                break;
-              case 7:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#130am").append("<br>Attendees: "+att); $("#130am").css("background-color","#80C468");}
-                break;
-              case 8:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#200am").append("<br>Attendees: "+att); $("#200am").css("background-color","#80C468");}
-                break;
-              case 9:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#230am").append("<br>Attendees: "+att); $("#230am").css("background-color","#80C468");}
-                break;
-              case 10:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#300am").append("<br>Attendees: "+att); $("#300am").css("background-color","#80C468");}
-                break;
-              case 11:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#330am").append("<br>Attendees: "+att); $("#330am").css("background-color","#80C468");}
-                break;
-              case 12:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#400am").append("<br>Attendees: "+att); $("#400am").css("background-color","#80C468");}
-                break;
-              case 13:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#430am").append("<br>Attendees: "+att); $("#430am").css("background-color","#80C468");}
-                break;
-              case 14:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#500am").append("<br>Attendees: "+att); $("#500am").css("background-color","#80C468");}
-                break;
-              case 15:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#530am").append("<br>Attendees: "+att); $("#530am").css("background-color","#80C468");}
-                break;
-              case 16:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#600am").append("<br>Attendees: "+att); $("#600am").css("background-color","#80C468");}
-                break;
-              case 17:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#630am").append("<br>Attendees: "+att); $("#630am").css("background-color","#80C468");}
-                break;
-              case 18:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#700am").append("<br>Attendees: "+att); $("#700am").css("background-color","#80C468");}
-                break;
-              case 19:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#730am").append("<br>Attendees: "+att); $("#730am").css("background-color","#80C468");}
-                break;
-              case 20:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#800am").append("<br>Attendees: "+att); $("#800am").css("background-color","#80C468");}
-                break;
-              case 21:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#830am").append("<br>Attendees: "+att); $("#830am").css("background-color","#80C468");}
-                break;
-              case 22:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#900am").append("<br>Attendees: "+att); $("#900am").css("background-color","#80C468");}
-                break;
-              case 23:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#930am").append("<br>Attendees: "+att); $("#930am").css("background-color","#80C468");}
-                break;
-              case 24:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1000am").append("<br>Attendees: "+att); $("#1000am").css("background-color","#80C468");}
-                break;
-              case 25:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1030am").append("<br>Attendees: "+att); $("#1030am").css("background-color","#80C468");}
-                break;
-              case 26:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1100am").append("<br>Attendees: "+att); $("#1100am").css("background-color","#80C468");}
-                break;
-              case 27:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1130am").append("<br>Attendees: "+att); $("#1130am").css("background-color","#80C468");}
-                break;
-              case 28:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1200pm").append("<br>Attendees: "+att); $("#1200pm").css("background-color","#80C468");}
-                break;
-              case 29:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1230pm").append("<br>Attendees: "+att); $("#1230pm").css("background-color","#80C468");}
-                break;
-              case 30:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#100pm").append("<br>Attendees: "+att); $("#100pm").css("background-color","#80C468");}
-                break;
-              case 31:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#130pm").append("<br>Attendees: "+att); $("#130pm").css("background-color","#80C468");}
-                break;
-              case 32:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#200pm").append("<br>Attendees: "+att); $("#200pm").css("background-color","#80C468");}
-                break;
-              case 33:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#230pm").append("<br>Attendees: "+att); $("#230pm").css("background-color","#80C468");}
-                break;
-              case 34:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#300pm").append("<br>Attendees: "+att); $("#300pm").css("background-color","#80C468");}
-                break;
-              case 35:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#330pm").append("<br>Attendees: "+att); $("#330pm").css("background-color","#80C468");}
-                break;
-              case 36:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#400pm").append("<br>Attendees: "+att); $("#400pm").css("background-color","#80C468");}
-                break;
-              case 37:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#430pm").append("<br>Attendees: "+att); $("#430pm").css("background-color","#80C468");}
-                break;
-              case 38:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#500pm").append("<br>Attendees: "+att); $("#500pm").css("background-color","#80C468");}
-                break;
-              case 39:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#530pm").append("<br>Attendees: "+att); $("#530pm").css("background-color","#80C468");}
-                break;
-              case 40:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#600pm").append("<br>Attendees: "+att); $("#600pm").css("background-color","#80C468");}
-                break;
-              case 41:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#630pm").append("<br>Attendees: "+att); $("#630pm").css("background-color","#80C468");}
-                break;
-              case 42:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#700pm").append("<br>Attendees: "+att); $("#700pm").css("background-color","#80C468");}
-                break;
-              case 43:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#730pm").append("<br>Attendees: "+att); $("#730pm").css("background-color","#80C468");}
-                break;
-              case 44:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#800pm").append("<br>Attendees: "+att); $("#800pm").css("background-color","#80C468");}
-                break;
-              case 45:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#830pm").append("<br>Attendees: "+att); $("#830pm").css("background-color","#80C468");}
-                break;
-              case 46:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#900pm").append("<br>Attendees: "+att); $("#900pm").css("background-color","#80C468");}
-                break;
-              case 47:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#930pm").append("<br>Attendees: "+att); $("#930pm").css("background-color","#80C468");}
-                break;
-              case 48:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1000pm").append("<br>Attendees: "+att); $("#1000pm").css("background-color","#80C468");}
-                break;
-              case 49:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1030pm").append("<br>Attendees: "+att); $("#1030pm").css("background-color","#80C468");}
-                break;
-              case 50:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1100pm").append("<br>Attendees: "+att); $("#1100pm").css("background-color","#80C468");}
-                break;
-              case 51:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1130pm").append("<br>Attendees: "+att); $("#1130pm").css("background-color","#80C468");}
-                break;
-              default:
-                break;
-            }
-          }
-        }
-
-function makeTable24(n)
-{
-
-          $("#review_table_24").html(
-            "<center>Event Schedule</center><br>"+
-            "<table id='rev_table'>"+
-            "<tr>"+
-            "<td><p id = '0000'>00:00</p></td>"+"<td><p id = '0030'>00:30</p></td>"+"<td><p id = '100'>1:00</p></td>"+"<td><p id = '130'>1:30</p></td>"+"<td><p id = '200'>2:00</p></td>"+"<td><p id = '230'>2:30</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '300'>3:00</p></td>"+"<td><p id = '330'>3:30</p></td>"+"<td><p id = '400'>4:00</p></td>"+"<td><p id = '430'>4:30</p></td>"+"<td><p id = '500'>5:00</p></td>"+"<td><p id = '530'>5:30</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '600'>6:00</p></td>"+"<td><p id = '630'>6:30</p></td>"+"<td><p id = '700'>7:00</p></td>"+"<td><p id = '730'>7:30</p></td>"+"<td><p id = '800'>8:00</p></td>"+"<td><p id = '830'>8:30</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '900'>9:00</p></td>"+"<td><p id = '930'>9:30</p></td>"+"<td><p id = '1000'>10:00</p></td>"+"<td><p id = '1030'>10:30</p></td>"+"<td><p id = '1100'>11:00</p></td>"+"<td><p id = '1130'>11:30</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '1200'>12:00</p></td>"+"<td><p id = '1230'>12:30</p></td>"+"<td><p id = '1300'>13:00</p></td>"+"<td><p id = '1330'>13:30</p></td>"+"<td><p id = '1400'>14:00</p></td>"+"<td><p id = '1430'>14:30</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '1500'>15:00</p></td>"+"<td><p id = '1530'>15:30</p></td>"+"<td><p id = '1600'>16:00</p></td>"+"<td><p id = '1630'>16:30</p></td>"+"<td><p id = '1700'>17:00</p></td>"+"<td><p id = '1730'>17:30</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '1800'>18:00</p></td>"+"<td><p id = '1830'>18:30</p></td>"+"<td><p id = '1900'>19:00</p></td>"+"<td><p id = '1930'>19:30</p></td>"+"<td><p id = '2000'>20:00</p></td>"+"<td><p id = '2030'>20:30</p></td>"+
-            "</tr>"+
-            "<tr>"+
-            "<td><p id = '2100'>21:00</p></td>"+"<td><p id = '2130'>21:30</p></td>"+"<td><p id = '2200'>22:00</p></td>"+"<td><p id = '2230'>22:30</p></td>"+"<td><p id = '2300'>23:00</p></td>"+"<td><p id = '2330'>23:30</p></td>"+
-            "</tr>"+
-            "</table>"
-          );
-
-          for(let i=4; i<52; i++)
-          {
-            let att = events_arr[n][i];
-            console.log(att);
-            switch(i)
-            {
-              case 4:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#0000").append("<br>Attendees: "+att); $("#0000").css("background-color","#80C468");}
-                break;
-              case 5:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#0030").append("<br>Attendees: "+att); $("#0030").css("background-color","#80C468");}
-                break;
-              case 6:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#100").append("<br>Attendees: "+att); $("#100").css("background-color","#80C468");}
-                break;
-              case 7:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#130").append("<br>Attendees: "+att); $("#130").css("background-color","#80C468");}
-                break;
-              case 8:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#200").append("<br>Attendees: "+att); $("#200").css("background-color","#80C468");}
-                break;
-              case 9:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#230").append("<br>Attendees: "+att); $("#230").css("background-color","#80C468");}
-                break;
-              case 10:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#300").append("<br>Attendees: "+att); $("#300").css("background-color","#80C468");}
-                break;
-              case 11:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#330").append("<br>Attendees: "+att); $("#330").css("background-color","#80C468");}
-                break;
-              case 12:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#400").append("<br>Attendees: "+att); $("#400").css("background-color","#80C468");}
-                break;
-              case 13:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#430").append("<br>Attendees: "+att); $("#430").css("background-color","#80C468");}
-                break;
-              case 14:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#500").append("<br>Attendees: "+att); $("#500").css("background-color","#80C468");}
-                break;
-              case 15:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#530").append("<br>Attendees: "+att); $("#530").css("background-color","#80C468");}
-                break;
-              case 16:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#600").append("<br>Attendees: "+att); $("#600").css("background-color","#80C468");}
-                break;
-              case 17:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#630").append("<br>Attendees: "+att); $("#630").css("background-color","#80C468");}
-                break;
-              case 18:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#700").append("<br>Attendees: "+att); $("#700").css("background-color","#80C468");}
-                break;
-              case 19:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#730").append("<br>Attendees: "+att); $("#730").css("background-color","#80C468");}
-                break;
-              case 20:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#800").append("<br>Attendees: "+att); $("#800").css("background-color","#80C468");}
-                break;
-              case 21:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#830").append("<br>Attendees: "+att); $("#830").css("background-color","#80C468");}
-                break;
-              case 22:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#900").append("<br>Attendees: "+att); $("#900").css("background-color","#80C468");}
-                break;
-              case 23:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#930").append("<br>Attendees: "+att); $("#930").css("background-color","#80C468");}
-                break;
-              case 24:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1000").append("<br>Attendees: "+att); $("#1000").css("background-color","#80C468");}
-                break;
-              case 25:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1030").append("<br>Attendees: "+att); $("#1030").css("background-color","#80C468");}
-                break;
-              case 26:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1100").append("<br>Attendees: "+att); $("#1100").css("background-color","#80C468");}
-                break;
-              case 27:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1130").append("<br>Attendees: "+att); $("#1130").css("background-color","#80C468");}
-                break;
-              case 28:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1200").append("<br>Attendees: "+att); $("#1200").css("background-color","#80C468");}
-                break;
-              case 29:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1230").append("<br>Attendees: "+att); $("#1230").css("background-color","#80C468");}
-                break;
-              case 30:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1300").append("<br>Attendees: "+att); $("#1300").css("background-color","#80C468");}
-                break;
-              case 31:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1330").append("<br>Attendees: "+att); $("#1330").css("background-color","#80C468");}
-                break;
-              case 32:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1400").append("<br>Attendees: "+att); $("#1400").css("background-color","#80C468");}
-                break;
-              case 33:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1430").append("<br>Attendees: "+att); $("#1430").css("background-color","#80C468");}
-                break;
-              case 34:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1500").append("<br>Attendees: "+att); $("#1500").css("background-color","#80C468");}
-                break;
-              case 35:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1530").append("<br>Attendees: "+att); $("#1530").css("background-color","#80C468");}
-                break;
-              case 36:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1600").append("<br>Attendees: "+att); $("#1600").css("background-color","#80C468");}
-                break;
-              case 37:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1630").append("<br>Attendees: "+att); $("#1630").css("background-color","#80C468");}
-                break;
-              case 38:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1700").append("<br>Attendees: "+att); $("#1700").css("background-color","#80C468");}
-                break;
-              case 39:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1730").append("<br>Attendees: "+att); $("#1730").css("background-color","#80C468");}
-                break;
-              case 40:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1800").append("<br>Attendees: "+att); $("#1800").css("background-color","#80C468");}
-                break;
-              case 41:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1830").append("<br>Attendees: "+att); $("#1830").css("background-color","#80C468");}
-                break;
-              case 42:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1900").append("<br>Attendees: "+att); $("#1900").css("background-color","#80C468");}
-                break;
-              case 43:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#1930").append("<br>Attendees: "+att); $("#1930").css("background-color","#80C468");}
-                break;
-              case 44:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#2000").append("<br>Attendees: "+att); $("#2000").css("background-color","#80C468");}
-                break;
-              case 45:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#2030").append("<br>Attendees: "+att); $("#2030").css("background-color","#80C468");}
-                break;
-              case 46:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#2100").append("<br>Attendees: "+att); $("#2100").css("background-color","#80C468");}
-                break;
-              case 47:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#2130").append("<br>Attendees: "+att); $("#2130").css("background-color","#80C468");}
-                break;
-              case 48:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#2200").append("<br>Attendees: "+att); $("#2200").css("background-color","#80C468");}
-                break;
-              case 49:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#2230").append("<br>Attendees: "+att); $("#2230").css("background-color","#80C468");}
-                break;
-              case 50:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#2300").append("<br>Attendees: "+att); $("#2300").css("background-color","#80C468");}
-                break;
-              case 51:
-                if(att != "0"){att=att.substring(0, att.length-1); $("#2330").append("<br>Attendees: "+att); $("#2330").css("background-color","#80C468");}
-                break;
-              default:
-                break;
-            }
-          }
-        }
-
-
-
-function showAllEvents(array){
-  for(var i=1;i<array.length;i++){
-    $("#All_Events_Show").append(
-      "<button id='allevent"+i+"_' class='allevent_butt' onclick='ev_table_create("+i+")'>"+
-      "Event Name: <br>"+array[i][2]+"<br>"+
-      "Event Organizer: <br>"+array[i][1]+
-      "</button>");
+  for(let i=4; i<52; i++)
+  {
+    let att = events_arr[n][i];
+    console.log(att);
+    switch(i)
+    {
+      case 4:
+        if(att != "0"){$("#1200am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:00am</button>");}
+        break;
+      case 5:
+        if(att != "0"){$("#1230am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:30am</button>");}
+        break;
+      case 6:
+        if(att != "0"){$("#100am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:00am</button>");}
+        break;
+      case 7:
+        if(att != "0"){$("#130am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:30am</button>");}
+        break;
+      case 8:
+        if(att != "0"){$("#200am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:00am</button>");}
+        break;
+      case 9:
+        if(att != "0"){$("#230am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:30am</button>");}
+        break;
+      case 10:
+        if(att != "0"){$("#300am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:00am</button>");}
+        break;
+      case 11:
+        if(att != "0"){$("#330am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:30am</button>");}
+        break;
+      case 12:
+        if(att != "0"){$("#400am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:00am</button>");}
+        break;
+      case 13:
+        if(att != "0"){$("#430am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:30am</button>");}
+        break;
+      case 14:
+        if(att != "0"){$("#500am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:00am</button>");}
+        break;
+      case 15:
+        if(att != "0"){$("#530am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:30am</button>");}
+        break;
+      case 16:
+        if(att != "0"){$("#600am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:00am</button>");}
+        break;
+      case 17:
+        if(att != "0"){$("#630am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:30am</button>");}
+        break;
+      case 18:
+        if(att != "0"){$("#700am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:00am</button>");}
+        break;
+      case 19:
+        if(att != "0"){$("#730am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:30am</button>");}
+        break;
+      case 20:
+        if(att != "0"){$("#800am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:00am</button>");}
+        break;
+      case 21:
+        if(att != "0"){$("#830am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:30am</button>");}
+        break;
+      case 22:
+        if(att != "0"){$("#900am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:00am</button>");}
+        break;
+      case 23:
+        if(att != "0"){$("#930am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:30am</button>");}
+        break;
+      case 24:
+        if(att != "0"){$("#1000am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:00am</button>");}
+        break;
+      case 25:
+        if(att != "0"){$("#1030am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:30am</button>");}
+        break;
+      case 26:
+        if(att != "0"){$("#1100am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:00am</button>");}
+        break;
+      case 27:
+        if(att != "0"){$("#1130am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:30am</button>");}
+        break;
+      case 28:
+        if(att != "0"){$("#1200pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:00pm</button>");}
+        break;
+      case 29:
+        if(att != "0"){$("#1230pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:30pm</button>");}
+        break;
+      case 30:
+        if(att != "0"){$("#100pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:00pm</button>");}
+        break;
+      case 31:
+        if(att != "0"){$("#130pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:30pm</button>");}
+        break;
+      case 32:
+        if(att != "0"){$("#200pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:00pm</button>");}
+        break;
+      case 33:
+        if(att != "0"){$("#230pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:30pm</button>");}
+        break;
+      case 34:
+        if(att != "0"){$("#300pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:00pm</button>");}
+        break;
+      case 35:
+        if(att != "0"){$("#330pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:30pm</button>");}
+        break;
+      case 36:
+        if(att != "0"){$("#400pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:00pm</button>");}
+        break;
+      case 37:
+        if(att != "0"){$("#430pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:30pm</button>");}
+        break;
+      case 38:
+        if(att != "0"){$("#500pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:00pm</button>");}
+        break;
+      case 39:
+        if(att != "0"){$("#530pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:30pm</button>");}
+        break;
+      case 40:
+        if(att != "0"){$("#600pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:00pm</button>");}
+        break;
+      case 41:
+        if(att != "0"){$("#630pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:30pm</button>");}
+        break;
+      case 42:
+        if(att != "0"){$("#700pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:00pm</button>");}
+        break;
+      case 43:
+        if(att != "0"){$("#730pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:30pm</button>");}
+        break;
+      case 44:
+        if(att != "0"){$("#800pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:00pm</button>");}
+        break;
+      case 45:
+        if(att != "0"){$("#830pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:30pm</button>");}
+        break;
+      case 46:
+        if(att != "0"){$("#900pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:00pm</button>");}
+        break;
+      case 47:
+        if(att != "0"){$("#930pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:30pm</button>");}
+        break;
+      case 48:
+        if(att != "0"){$("#1000pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:00pm</button>");}
+        break;
+      case 49:
+        if(att != "0"){$("#1030pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:30pm</button>");}
+        break;
+      case 50:
+        if(att != "0"){$("#1100pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:00pm</button>");}
+        break;
+      case 51:
+        if(att != "0"){$("#1130pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:30pm</button>");}
+        break;
+      default:
+        break;
+    }
   }
 }
 
-function ev_table_create(num){
-  var ev_creator=events_arr[num][1];
-  var ev_name=events_arr[num][2];
-  var ev_date=events_arr[num][3];
-  $("#Event_Info").html("<br>Event Information<br>Event Creator: "+ev_creator+"<br>");
-  $("#Event_Info").append("Event Name: "+ev_name+"<br>");
-  $("#Event_Info").append("Event Date: "+ev_date+"<br>");
-  $("#Event_Info").append(makeTable12(num));
+function makeTable24(n, name)
+{
+
+  $("#user_table_24").html(
+    "<center>Event Schedule</center><br>"+
+    "<table id='rev_table'>"+
+    "<tr>"+
+    "<td><p id = '0000'><button type = 'button' disabled>00:00</button></p></td>"+
+    "<td><p id = '0030'><button type = 'button' disabled>00:30</button></p></td>"+
+    "<td><p id = '100'><button type = 'button' disabled>1:00</button></p></td>"+
+    "<td><p id = '130'><button type = 'button' disabled>1:30</button></p></td>"+
+    "<td><p id = '200'><button type = 'button' disabled>2:00</button></p></td>"+
+    "<td><p id = '230'><button type = 'button' disabled>2:30</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '300'><button type = 'button' disabled>3:00</button></p></td>"+
+    "<td><p id = '330'><button type = 'button' disabled>3:30</button></p></td>"+
+    "<td><p id = '400'><button type = 'button' disabled>4:00</button></p></td>"+
+    "<td><p id = '430'><button type = 'button' disabled>4:30</button></p></td>"+
+    "<td><p id = '500'><button type = 'button' disabled>5:00</button></p></td>"+
+    "<td><p id = '530'><button type = 'button' disabled>5:30</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '600'><button type = 'button' disabled>6:00</button></p></td>"+
+    "<td><p id = '630'><button type = 'button' disabled>6:30</button></p></td>"+
+    "<td><p id = '700'><button type = 'button' disabled>7:00</button></p></td>"+
+    "<td><p id = '730'><button type = 'button' disabled>7:30</button></p></td>"+
+    "<td><p id = '800'><button type = 'button' disabled>8:00</button></p></td>"+
+    "<td><p id = '830'><button type = 'button' disabled>8:30</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '900'><button type = 'button' disabled>9:00</button></p></td>"+
+    "<td><p id = '930'><button type = 'button' disabled>9:30</button></p></td>"+
+    "<td><p id = '1000'><button type = 'button' disabled>10:00</button></p></td>"+
+    "<td><p id = '1030'><button type = 'button' disabled>10:30</button></p></td>"+
+    "<td><p id = '1100'><button type = 'button' disabled>11:00</button></p></td>"+
+    "<td><p id = '1130'><button type = 'button' disabled>11:30</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '1200'><button type = 'button' disabled>12:00</button></p></td>"+
+    "<td><p id = '1230'><button type = 'button' disabled>12:30</button></p></td>"+
+    "<td><p id = '1300'><button type = 'button' disabled>13:00</button></p></td>"+
+    "<td><p id = '1330'><button type = 'button' disabled>13:30</button></p></td>"+
+    "<td><p id = '1400'><button type = 'button' disabled>14:00</button></p></td>"+
+    "<td><p id = '1430'><button type = 'button' disabled>14:30</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '1500'><button type = 'button' disabled>15:00</button></p></td>"+
+    "<td><p id = '1530'><button type = 'button' disabled>15:30</button></p></td>"+
+    "<td><p id = '1600'><button type = 'button' disabled>16:00</button></p></td>"+
+    "<td><p id = '1630'><button type = 'button' disabled>16:30</button></p></td>"+
+    "<td><p id = '1700'><button type = 'button' disabled>17:00</button></p></td>"+
+    "<td><p id = '1730'><button type = 'button' disabled>17:30</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '1800'><button type = 'button' disabled>18:00</button></p></td>"+
+    "<td><p id = '1830'><button type = 'button' disabled>18:30</button></p></td>"+
+    "<td><p id = '1900'><button type = 'button' disabled>19:00</button></p></td>"+
+    "<td><p id = '1930'><button type = 'button' disabled>19:30</button></p></td>"+
+    "<td><p id = '2000'><button type = 'button' disabled>20:00</button></p></td>"+
+    "<td><p id = '2030'><button type = 'button' disabled>20:30</button></p></td>"+
+    "</tr>"+
+    "<tr>"+
+    "<td><p id = '2100'><button type = 'button' disabled>21:00</button></p></td>"+
+    "<td><p id = '2130'><button type = 'button' disabled>21:30</button></p></td>"+
+    "<td><p id = '2200'><button type = 'button' disabled>22:00</button></p></td>"+
+    "<td><p id = '2230'><button type = 'button' disabled>22:30</button></p></td>"+
+    "<td><p id = '2300'><button type = 'button' disabled>23:00</button></p></td>"+
+    "<td><p id = '2330'><button type = 'button' disabled>23:30</button></p></td>"+
+    "</tr>"+
+    "</table>"
+  );
+
+  for(let i=4; i<52; i++)
+  {
+    let att = events_arr[n][i];
+    console.log(att);
+    switch(i)
+    {
+      case 4:
+        if(att != "0"){$("#0000").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>00:00</button>");}
+        break;
+      case 5:
+        if(att != "0"){$("#0030").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>00:30</button>");}
+      case 6:
+        if(att != "0"){$("#100").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:00</button>");}
+        break;
+      case 7:
+        if(att != "0"){$("#130").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:30</button>");}
+        break;
+      case 8:
+        if(att != "0"){$("#200").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:00</button>");}
+        break;
+      case 9:
+        if(att != "0"){$("#230").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:30</button>");}
+        break;
+      case 10:
+        if(att != "0"){$("#300").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:00</button>");}
+        break;
+      case 11:
+        if(att != "0"){$("#330").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:30</button>");}
+        break;
+      case 12:
+        if(att != "0"){$("#400").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:00</button>");}
+        break;
+      case 13:
+        if(att != "0"){$("#430").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:30</button>");}
+        break;
+      case 14:
+        if(att != "0"){$("#500").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:00</button>");}
+        break;
+      case 15:
+        if(att != "0"){$("#530").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:30</button>");}
+        break;
+      case 16:
+        if(att != "0"){$("#600").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:00</button>");}
+        break;
+      case 17:
+        if(att != "0"){$("#630").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:30</button>");}
+        break;
+      case 18:
+        if(att != "0"){$("#700").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:00</button>");}
+        break;
+      case 19:
+        if(att != "0"){$("#730").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:30</button>");}
+        break;
+      case 20:
+        if(att != "0"){$("#800").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:00</button>");}
+        break;
+      case 21:
+        if(att != "0"){$("#830").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:30</button>");}
+        break;
+      case 22:
+        if(att != "0"){$("#900").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:00</button>");}
+        break;
+      case 23:
+        if(att != "0"){$("#930").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:30</button>");}
+        break;
+      case 24:
+        if(att != "0"){$("#1000").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:00</button>");}
+        break;
+      case 25:
+        if(att != "0"){$("#1030").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:30</button>");}
+        break;
+      case 26:
+        if(att != "0"){$("#1100").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:00</button>");}
+        break;
+      case 27:
+        if(att != "0"){$("#1130").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:30</button>");}
+        break;
+      case 28:
+        if(att != "0"){$("#1200").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:00</button>");}
+        break;
+      case 29:
+        if(att != "0"){$("#1230").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:30</button>");}
+        break;
+      case 30:
+        if(att != "0"){$("#1300").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>13:00</button>");}
+        break;
+      case 31:
+        if(att != "0"){$("#1330").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>13:30</button>");}
+        break;
+      case 32:
+        if(att != "0"){$("#1400").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>14:00</button>");}
+        break;
+      case 33:
+        if(att != "0"){$("#1430").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>14:30</button>");}
+        break;
+      case 34:
+        if(att != "0"){$("#1500").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>15:00</button>");}
+        break;
+      case 35:
+        if(att != "0"){$("#1530").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>15:30</button>");}
+        break;
+      case 36:
+        if(att != "0"){$("#1600").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>16:00</button>");}
+        break;
+      case 37:
+        if(att != "0"){$("#1630").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>16:30</button>");}
+        break;
+      case 38:
+        if(att != "0"){$("#1700").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>17:00</button>");}
+        break;
+      case 39:
+        if(att != "0"){$("#1730").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>17:30</button>");}
+        break;
+      case 40:
+        if(att != "0"){$("#1800").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>18:00</button>");}
+        break;
+      case 41:
+        if(att != "0"){$("#1830").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>18:30</button>");}
+        break;
+      case 42:
+        if(att != "0"){$("#1900").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>19:00</button>");}
+        break;
+      case 43:
+        if(att != "0"){$("#1930").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>19:30</button>");}
+        break;
+      case 44:
+        if(att != "0"){$("#2000").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>20:00</button>");}
+        break;
+      case 45:
+        if(att != "0"){$("#2030").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>20:30</button>");}
+        break;
+      case 46:
+        if(att != "0"){$("#2100").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>21:00</button>");}
+        break;
+      case 47:
+        if(att != "0"){$("#2130").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>21:30</button>");}
+        break;
+      case 48:
+        if(att != "0"){$("#2200").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>22:00</button>");}
+        break;
+      case 49:
+        if(att != "0"){$("#2230").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>22:30</button>");}
+        break;
+      case 50:
+        if(att != "0"){$("#2300").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>23:00</button>");}
+        break;
+      case 51:
+        if(att != "0"){$("#2330").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>23:30</button>");}
+        break;
+      default:
+        break;
+    }
+  }
 }
 
 
+
+function showAllEvents(form)
+{
+  let name = form.name.value;
+  if(name=="")
+  {
+    alert("All fields are mandatory");
+  }
+  else
+  {
+    form.reset();
+    for(let i=0; i<events_arr.length; i++)
+    {
+      
+      $("<button type='button'> Event:<br>"+events_arr[i][2]+"<br> Organizer:<br>"+events_arr[i][1]+"</button>")
+        .click(function(){ showInfo(i,name);})
+        .appendTo(document.getElementById("event_list"));
+        $("#event_list").show();
+    }
+  }
+}
+
+
+function showInfo(i, name)
+{
+  $("#event_info").html(
+    "Event Name: &nbsp"+events_arr[i][2]+"<br>"+
+    "Organizer Name: &nbsp"+events_arr[i][1]+"<br>"+
+    "Date: &nbsp"+events_arr[i][3]+"<br>"
+  );
+  makeTable12(i, name);
+  makeTable24(i, name);
+  $("#time_select_24").show();
+  $("#time_select_24").show();
+  $("#event_time").show();
+  $("#user_table_12").show();
+  $("#user_table_24").hide();
+
+  $("<button type = 'button'>Submit</button>").click(function()
+    {
+      pushToDB(); 
+      $("#user_table_12").hide();
+      $("#user_Table_24").hide();
+      $("#event_time").hide();
+      $("#event_info").hide();
+      $("#time_submit").empty();
+    }).appendTo(document.getElementById("time_submit"));
+}
 
 function getData(form)
 {
-  let name = form.review_admin_name.value;
-  let ev_name = form.review_event_name.value;
-  let ev_date = "";
-  let check = false;
-  let row_num = 0;
-  if(name=="" || ev_name=="")
+  let name = form.event_name.value;
+  let date = form.event_date.value;
+  if(date == "" || name == "")
   {
-    form.reset();
     alert("All fields are mandatory!");
   }
   else
   {
+    form.reset();
     for(let i=0; i<events_arr.length; i++)
     {
-      if(name == events_arr[i][1] && ev_name == events_arr[i][2])
+      if(events_arr[i][3] == date)
       {
-        row_num = i;
-        check = true;
+        $("<button type='button'> Event:<br>"+events_arr[i][2]+"<br> Organizer:<br>"+events_arr[i][1]+"</button>")
+          .click(function(){ showInfo(i,name);})
+          .appendTo(document.getElementById("event_list"));
+        $("#event_list").show();
       }
-    }
-    if(!check)
-    {
-      form.reset();
-      $("#event_review").empty();
-      $("#review_table_12").empty();
-      $("#review_table_24").empty();
-      alert("Could not find event and/or name. Please verify input is valid");
-    }
-    else
-    {
-      form.reset();
-      ev_date = events_arr[row_num][3];
-      $("#event_review").append("Event: "+ev_name+"<br><br>");
-      $("#event_review").append("Organizer: "+name+"<br><br>");
-      $("#event_review").append("Date: "+ev_date+"<br><br>");
-      $("#12_review").show();
-      $("#24_review").show();
-      makeTable12(row_num);
-      makeTable24(row_num);
-      $("#review_table_24").hide();
     }
   }
 }
 
+function updateArr(i, j, name)
+{
+  let check = false;
+  let index = 0;
+  let str = events_arr[i][j].substring(0, events_arr[i][j].length-1);
+  let att = str.split(",");
+  for(let m=0; m<att.length; m++)
+  {
+    att[m] = att[m].trim();
+  }
+  
+  for(let k=0; k<att.length; k++)
+  {
+    if(name == att[0])
+    {
+      alert("The organizer has to attend their own event!");
+      break;
+    }
+    if(name == att[k])
+    {
+      check = true;
+      index = k;
+      break;
+    }
+  }
 
+  if(check)
+  {
+    att[index] = "";
+    let newStr = att[0]+",";
+    for(let l=1; l<att.length; l++)
+    {
+      if(att[l] != "")
+      {  
+        newStr += " "+att[l]+",";
+      }
+    }
+    events_arr[i][j] = newStr;
+  }
+  else
+  {
+    events_arr[i][j] += " "+name+",";
+  }
 
-
-
-//
-// DOCUMENT READY FUNCTION IS ALL jquery REFERENCING THE JAVASCRIIPT FUNCTIONS ABOVE
-//
+  console.log(events_arr[i][j]);
+}
 
 $(document).ready(function(){
+  
   getEventsFromDB('php/getEventsFromDB.php', function printResults()
-      {
-            console.log(events_arr.length); //DEBUGGING
-            console.log(events_arr[0]); //DEBUGGING
-            console.log(events_arr[1]); //DEBUGGING
-            console.log(events_arr[1][1]);
-            console.log(events_arr.length);
-            showAllEvents(events_arr);
-
-      });
-
-
-
-  $("#Info_Title").html("Events");
-
-
-
-  $("#Events_List").hide();
-
-  $("#view_all").click(
-    function(){
-      $("#Event_Info").empty();
-      $("#All_Events_Show").hide();
-      $("#Events_List").show();
-      $("#review_table_12").empty();
-      $("#review_table_24").empty();
-      makeTable12(48);
-      makeTable24(48);
-      $("#review_table_12").hide();
-      $("#review_table_24").hide();
-
-    }
-  );
-
-  $("#time_select_12").click(
-    function(){
-      $("#review_table_12").show();
-      $("#review_table_24").hide();
-    }
-  );
-  $("#time_select_24").click(
-    function(){
-      $("#review_table_12").hide();
-      $("#review_table_24").show();
-    }
-  );
-  $("#expand_all").click(function(){
-    //showAllEvents(66);
+  {
+    console.log(events_arr.length); //DEBUGGING
+    console.log(events_arr[0]); //DEBUGGING
+    console.log(events_arr[1]); //DEBUGGING
+    console.log(events_arr[1][1]);
+    console.log(events_arr.length);
+    //showAllEvents(events_arr);
   });
+
+  $("#date_select").hide();
+  $("#date_form").hide();
+  $("#name_form").hide();
+  $("#event_list").empty();
+  $("#event_info").empty();
+  $("#event_time").hide();
+
+  $("#date_event").click(function()
+  {
+    $("#name_form").hide();
+    $("#event_list").empty();
+    $("#event_list").hide();
+    $("#date_form").toggle();
+    $("#event_info").empty();
+    $("#user_table_12").empty();
+    $("#user_table_24").empty();
+    $("#time_submit").empty();
+    $("#event_time").hide();
+  });
+
+  $("#all_event").click(function()
+  {
+    $("#date_form").hide();
+    $("#event_list").empty();
+    $("#event_list").hide();
+    $("#name_form").toggle();  
+    $("#event_list").empty();
+    $("#event_info").empty();
+    $("#user_table_12").empty();
+    $("#user_table_24").empty();
+    $("#time_submit").empty();
+    $("#event_time").hide();
+  });
+
+  $("#name_submit").click(function(){showAllEvents(document.getElementById("name_form"));});
+
+  $("#date_submit").click(
+    function()
+    {
+      getData(document.getElementById("date_form"));
+    }
+  ); 
+  
+  $("#time_select_12").click(
+    function()
+    {
+      $("#user_table_24").hide();
+      $("#user_table_12").toggle();
+    });
+
+  $("#time_select_24").click(
+    function()
+    {
+      $("#user_table_12").hide();
+      $("#user_table_24").toggle();
+    });
+
 
 });
