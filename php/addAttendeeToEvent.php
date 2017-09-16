@@ -4,7 +4,7 @@ include 'getEventsFromDB.php';
 //if(isset($_POST)){
   //  if(isset($_POST['data'])){
     //$array = $_POST['data'];
-
+$user_name = "$_GET[user_name]";
 $name = "$_GET[name]";
 $event_name = "$_GET[event_name]";
 $date = "$_GET[date]";
@@ -56,18 +56,20 @@ $_2200 = "$_GET[2200]";
 $_2230 = "$_GET[2230]";
 $_2300 = "$_GET[2300]";
 $_2330 = "$_GET[2330]";
-echo count($arr);
-$arrr = ["0000", "0100"];
+//echo count($arr); //DEBUGGING
+
+$test_arr = ["0000", "0100"];
+//$arr is obtained from the include of getEventsFromDB.php
 for($i = 0; $i < count($arr); $i++)
 {
   if($name == $arr[$i][1] && $event_name == $arr[$i][2])
   {
-    echo "got here \n";
+    //echo "got here \n"; //DEBUGGING
     for($j = 0; $j < count($arrr); $j++)
     {
 
       echo $arrr[$j];
-      $sql30 = "UPDATE $tbl_name SET `$arrr[$j]` = if(`$arrr[$j]` = '0', 'Jane Doe,' , concat(`$arrr[$j]`, 'Jane Doe,')) WHERE `name` = 'Kaiser' AND `event_name` = 'blah' ";
+      $sql30 = "UPDATE $tbl_name SET `$test_arr[$j]` = if(`$test_arr[$j]` = '0', '$user_name' , concat(`$test_arr[$j]`, '$user_name')) WHERE `name` = '$name' AND `event_name` = '$event_name' ";
       echo mysql_query($sql30);
 
     }
@@ -78,14 +80,25 @@ for($i = 0; $i < count($arr); $i++)
 
 ?>
 
-<script>
-//code to post
-var arr = ["0000", "0100"];
+//<script>
+//Javascript code to send array to php
+//JSON.stringify(arrayToSend)
 
-$.post('php/addAttendeeToEvent.php', {
-  data: arr
-}, function(response)
-{
-  console.log(response);
-  alert(response);
+//php code to get array from Javascript
+//$phpArray=json_decode($_POST['jsondata']);
+
+
+
+
+
+
+//code to post
+//var arr = ["0000", "0100"];
+
+//$.post('php/addAttendeeToEvent.php', {
+//  data: arr
+//}, function(response)
+//{
+//  console.log(response);
+//  alert(response);
 </script>
