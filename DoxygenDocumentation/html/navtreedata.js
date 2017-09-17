@@ -5,7 +5,6 @@ var NAVTREE =
       [ "File List", "files.html", "files" ],
       [ "Globals", "globals.html", [
         [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ]
       ] ]
     ] ]
@@ -14,7 +13,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_d_b_8php.html"
+"add_attendee_to_event_8php.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

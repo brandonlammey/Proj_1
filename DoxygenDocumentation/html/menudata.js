@@ -6,10 +6,7 @@ var menudata={children:[
 {text:"All",url:"globals.html",children:[
 {text:"$",url:"globals.html#index_0x24"},
 {text:"e",url:"globals.html#index_e"},
-{text:"g",url:"globals.html#index_g"},
-{text:"s",url:"globals.html#index_s"},
 {text:"w",url:"globals.html#index_w"}]},
-{text:"Functions",url:"globals_func.html"},
 {text:"Variables",url:"globals_vars.html",children:[
 {text:"$",url:"globals_vars.html#index_0x24"},
 {text:"e",url:"globals_vars.html#index_e"},
