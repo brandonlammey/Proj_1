@@ -4,6 +4,7 @@ include 'getEventsFromDB.php';
 //if(isset($_POST)){
   //  if(isset($_POST['data'])){
     //$array = $_POST['data'];
+$time_arr=json_decode("$_GET[time_arr]");
 $user_name = "$_GET[user_name]";
 $name = "$_GET[name]";
 $event_name = "$_GET[event_name]";
@@ -65,11 +66,11 @@ for($i = 0; $i < count($events_arr); $i++)
   if($name == $events_arr[$i][1] && $event_name == $events_arr[$i][2])
   {
     //echo "got here \n"; //DEBUGGING
-    for($j = 0; $j < count($test_arr); $j++)
+    for($j = 0; $j < count($time_arr); $j++)
     {
 
-      //echo $test_arr[$j];
-      $sql30 = "UPDATE $tbl_name SET `$test_arr[$j]` = if(`$test_arr[$j]` = '0', '$user_name' , concat(`$test_arr[$j]`, '$user_name')) WHERE `name` = '$name' AND `event_name` = '$event_name' ";
+      //echo $time_arr[$j];
+      $sql30 = "UPDATE $tbl_name SET `$time_arr[$j]` = if(`$time_arr[$j]` = '0', '$user_name' , concat(`$time_arr[$j]`, '$user_name')) WHERE `name` = '$name' AND `event_name` = '$event_name' ";
 
       if(mysql_query($sql30))
       {
