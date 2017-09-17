@@ -23,7 +23,7 @@ include 'php/header.php'
   <!--Body-->
   <body>
     <script src="js/user.js"></script>
-    <div id = "organizer_error"><p>You're the organizer for this event! To review event info, please visit the <a href='../admin.php'>Admin page</a>.</p></div> 
+    <div id = "organizer_error" hidden><p>You're the organizer for this event! To review event info, please visit the <a href='../admin.php'>Admin page</a>.</p></div> 
     <div class="mainwrap">
 
       <!--Main One is the Top of the Page that makes it look pretty-->
