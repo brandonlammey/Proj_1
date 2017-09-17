@@ -25,6 +25,7 @@ function getEventsFromDB(path, callback)
 
 function pushToDB(user_name, creator_name, event_name, time_array)
 {
+  //alert(user_name + creator_name + event_name + time_array);
   var request2 = new XMLHttpRequest();
   request2.onreadystatechange = function ()
   {
@@ -32,7 +33,7 @@ function pushToDB(user_name, creator_name, event_name, time_array)
     {
       if (request2.status === 200)
       {
-        
+
       }
       else
       {
@@ -41,11 +42,16 @@ function pushToDB(user_name, creator_name, event_name, time_array)
     }
 
   }
-    alert(time_array);
-    
+
     var json = JSON.stringify(time_array);
-    var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + creator_name + "&event_name=" + event_name + "&user_name=" + user_name + ", &time_array=" + json + "&";
-    alert(urlToSendTo2);
+    //alert(user_name);
+
+    user_name = user_name + ", ";
+    //alert(user_name);
+    //alert(JSON.stringify(user_name));
+
+    var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&time_array=" + json + "&";
+    console.log(urlToSendTo2);
     request2.open("GET", urlToSendTo2, true);
     //request2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request2.send();
@@ -516,7 +522,7 @@ function makeTimeArr(n, name, arr)
     for(let m=0; m<att.length; m++)
     {
       att[m] = att[m].trim();
-    } 
+    }
     switch(i)
     {
       case 4:
@@ -538,7 +544,7 @@ function makeTimeArr(n, name, arr)
             break;
           }
         }
-        break;      
+        break;
       case 6:
       for(let k=0; k<att.length; k++)
         {
@@ -1047,7 +1053,8 @@ function showInfo(i, name)
     {
       let timeArr = [];
       makeTimeArr(i, name, timeArr);
-      alert(timeArr);
+      //alert(timeArr);
+      //alert(name + events_arr[i][1] + events_arr[i][2] + timeArr);
       pushToDB(name, events_arr[i][1], events_arr[i][2], timeArr);
       $("#user_table_12").hide();
       $("#user_Table_24").hide();

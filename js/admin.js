@@ -398,13 +398,15 @@ function formData(form)
             time = "0";
             break;
         }
+        if(attendees != 0){attendees = attendees + " ";}
         addOns += time + "=" + JSON.stringify(attendees) + "&";
 
     }
     //alert(addOns); //debugging
 
     var UrlToSend = PageToSendTo + "name=" + JSON.stringify(name) + "&event_name=" + JSON.stringify(ev_name) + "&date=" + JSON.stringify(date) + "&" + addOns;
-    console.log(JSON.stringify(name));
+
+    //console.log(JSON.stringify(name));
     xmlhttp.open("GET", UrlToSend, false);
     xmlhttp.send();
     //END ADAPTATION

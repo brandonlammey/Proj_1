@@ -5,18 +5,20 @@ include 'getEventsFromDB.php';
   //  if(isset($_POST['data'])){
     //$array = $_POST['data'];
 $time_arr=json_decode("$_GET[time_array]");
-//echo $time_arr;
 $user_name = json_decode("$_GET[user_name]");
+
 $user_name = mysql_real_escape_string($user_name);
+
 $name = json_decode("$_GET[name]");
 $name = mysql_real_escape_string($name);
+
 $event_name = json_decode("$_GET[event_name]");
 $event_name = mysql_real_escape_string($event_name);
-$date = "$_GET[date]";
+
 
 //echo count($events_arr); //DEBUGGING
 
-$test_arr = ["2000", "2030","2100","2130"];
+
 //$events_arr is obtained from the include of getEventsFromDB.php
 for($i = 0; $i < count($events_arr); $i++)
 {
