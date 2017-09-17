@@ -498,6 +498,7 @@ function showAllEvents(form)
   else
   {
     form.reset();
+    $("#event_list").empty();
     for(let i=0; i<events_arr.length; i++)
     {
       
@@ -658,6 +659,7 @@ $(document).ready(function(){
   $("#date_submit").click(
     function()
     {
+      $("#event_list").empty();
       getData(document.getElementById("date_form"));
     }
   ); 
