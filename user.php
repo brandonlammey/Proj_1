@@ -11,7 +11,9 @@ include 'php/header.php'
     <link rel = "stylesheet" href="css/useradmin.css">
     <!--Importing jquery-->
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!--jquery ui library for dialog boxes-->
+    <!-- Importing CSS styling for dialog box-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!--Importing Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -21,6 +23,7 @@ include 'php/header.php'
   <!--Body-->
   <body>
     <script src="js/user.js"></script>
+    <div id = "organizer_error"><p>You're the organizer for this event! To review event info, please visit the <a href='../admin.php'>Admin page</a>.</p></div> 
     <div class="mainwrap">
 
       <!--Main One is the Top of the Page that makes it look pretty-->

@@ -531,45 +531,52 @@ function showAllEvents(form)
 
 function showInfo(i, name)
 {
-  $("#event_info").html(
-    "Event Name: &nbsp"+events_arr[i][2]+"<br>"+
-    "Organizer Name: &nbsp"+events_arr[i][1]+"<br>"+
-    "Date: &nbsp"+events_arr[i][3]+"<br>"
-  );
-  $("#time_switch").empty();
-  let time_arr = [];
-  $("<button type = 'button' name = '12_time_select' id = 'time_select_12'>12 Hour Format</button>")
-    .click(function(){ 
-      time_arr.splice(0); 
-      $("#user_table_24").hide();
-      $("#user_table_12").toggle();
-    })
-    .appendTo(document.getElementById("time_switch"));
-  $("<button type = 'button' name = '24_time_select' id = 'time_select_24'>24 Hour Format</button>")
-    .click(function(){
-      time_arr.splice(0); 
-      $("#user_table_12").hide();
-      $("#user_table_24").toggle();
-    })
-    .appendTo(document.getElementById("time_switch"));
-  makeTable12(i, time_arr);
-  makeTable24(i, time_arr);
-  $("#time_select_24").show();
-  $("#time_select_24").show();
-  $("#event_time").show();
-  $("#user_table_12").show();
-  $("#user_table_24").hide();
+  if(name == events_arr[i][1])
+  {
+    $("#organizer_error").dialog();  
+  }
+  else
+  {
+    $("#event_info").html(
+      "Event Name: &nbsp"+events_arr[i][2]+"<br>"+
+      "Organizer Name: &nbsp"+events_arr[i][1]+"<br>"+
+      "Date: &nbsp"+events_arr[i][3]+"<br>"
+    );
+    $("#time_switch").empty();
+    let time_arr = [];
+    $("<button type = 'button' name = '12_time_select' id = 'time_select_12'>12 Hour Format</button>")
+      .click(function(){ 
+        time_arr.splice(0); 
+        $("#user_table_24").hide();
+        $("#user_table_12").toggle();
+      })
+      .appendTo(document.getElementById("time_switch"));
+    $("<button type = 'button' name = '24_time_select' id = 'time_select_24'>24 Hour Format</button>")
+      .click(function(){
+        time_arr.splice(0); 
+        $("#user_table_12").hide();
+        $("#user_table_24").toggle();
+      })
+      .appendTo(document.getElementById("time_switch"));
+    makeTable12(i, time_arr);
+    makeTable24(i, time_arr);
+    $("#time_select_24").show();
+    $("#time_select_24").show();
+    $("#event_time").show();
+    $("#user_table_12").show();
+    $("#user_table_24").hide();
 
-  $("<button type = 'button'>Submit</button>").click(function()
-    {
-      pushToDB(name, events_arr[i][1], events_arr[i][2], time_arr);
-      $("#user_table_12").empty().hide();
-      $("#user_table_24").empty().hide();
-      $("#time_switch").empty().hide();
-      $("#event_time").hide();
-      $("#event_info").empty().hide();
-      $("#time_submit").empty();
-    }).appendTo(document.getElementById("time_submit"));
+    $("<button type = 'button'>Submit</button>").click(function()
+      {
+        pushToDB(name, events_arr[i][1], events_arr[i][2], time_arr);
+        $("#user_table_12").empty().hide();
+        $("#user_table_24").empty().hide();
+        $("#time_switch").empty().hide();
+        $("#event_time").hide();
+        $("#event_info").empty().hide();
+        $("#time_submit").empty();
+      }).appendTo(document.getElementById("time_submit"));
+    }
 }
 
 function getData(form)
@@ -1051,6 +1058,7 @@ $(document).ready(function(){
     console.log(events_arr.length);
   });
 
+  $("#organizer_error").hide();
   $("#date_select").hide();
   $("#date_form").hide();
   $("#name_form").hide();
