@@ -524,6 +524,8 @@ function showAllEvents(form)
   else
   {
     form.reset();
+    $("#name_form").hide();
+    $("#form_replace").show();
     $("#event_list").empty();
     for(let i=0; i<events_arr.length; i++)
     {
@@ -597,6 +599,8 @@ function getData(form)
   else
   {
     form.reset();
+    $("#date_form").hide();
+    $("#form_replace").show();
     for(let i=0; i<events_arr.length; i++)
     {
       if(events_arr[i][3] == date)
@@ -1069,6 +1073,7 @@ $(document).ready(function(){
   $("#date_select").hide();
   $("#date_form").hide();
   $("#name_form").hide();
+  $("#form_replace").hide();
   $("#event_list").empty();
   $("#event_info").empty();
   $("#event_time").hide();

@@ -70,6 +70,8 @@ include 'php/header.php'
         <input type = "button" id = "name_submit" value = "Submit">
         </form>
 
+        <p id = "form_replace">Continue viewing events or <a href = "../user.php">CLICK HERE</a> to go back</p>
+
         <p id="event_list"></p>
 
         <p id="event_info"></p>
