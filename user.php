@@ -11,7 +11,9 @@ include 'php/header.php'
     <link rel = "stylesheet" href="css/useradmin.css">
     <!--Importing jquery-->
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!--jquery ui library for dialog boxes-->
+    <!-- Importing CSS styling for dialog box-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!--Importing Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -21,7 +23,7 @@ include 'php/header.php'
   <!--Body-->
   <body>
     <script src="js/user.js"></script>
-    <script src="js/chalk.js"></script>
+    <div id = "organizer_error"><p>You're the organizer for this event! To review event info, please visit the <a href='../admin.php'>Admin page</a>.</p></div> 
     <div class="mainwrap">
 
       <!--Main One is the Top of the Page that makes it look pretty-->
@@ -73,10 +75,10 @@ include 'php/header.php'
         <p id="event_info"></p>
 
         <p id="event_time">
-          Select Time Display<br><br>
-          <button type = 'button' name = '12_time_select' id = 'time_select_12'>12 Hour Format</button>
-          <button type = 'button' name = '24_time_select' id = 'time_select_24'>24 Hour Format</button>
-          <br><br><br>
+          Select Time Display<br>
+          <!--<button type = 'button' name = '12_time_select' id = 'time_select_12'>12 Hour Format</button>
+          <button type = 'button' name = '24_time_select' id = 'time_select_24'>24 Hour Format</button>-->
+          <p id = "time_switch"></p>
           <p id = "user_table_12"></p>
           <p id = "user_table_24"></p>
           <p id = "time_submit"></p>

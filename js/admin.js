@@ -203,7 +203,7 @@ function formData(form)
         if(time_arr[i].active)
         {
             timecheck = true;
-            time_arr[i].attendees = name + ",";
+            time_arr[i].attendees = name + ", ";
         }
     }
     if(name=="" || ev_name=="" || date=="" || (timecheck==false))
@@ -398,7 +398,7 @@ function formData(form)
             time = "0";
             break;
         }
-        if(attendees != 0){attendees = attendees + " ";}
+        
         addOns += time + "=" + JSON.stringify(attendees) + "&";
 
     }
