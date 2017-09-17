@@ -1,10 +1,12 @@
+
+<?php
 /////////////////////////////////////////////////////////////////////////////
 ///File: saveEventToDB.php
 ///Author: Kaiser Mittenburg
 ///Purpose: Save event information to the database.
 ///Last Modified: 9/17/2017
 /////////////////////////////////////////////////////////////////////////////
-<?php
+
 include 'header.php';
 
 ///Decode JSON string from javascript xmlhttprequest

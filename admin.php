@@ -52,7 +52,7 @@ include "php/header.php";
 
         </p>
 
-        
+
         Event Time:
 
         <input type = "button" name = "12_time_select" id = "time_select_12" value = "12 Hour Format">
