@@ -4,7 +4,8 @@ include 'getEventsFromDB.php';
 //if(isset($_POST)){
   //  if(isset($_POST['data'])){
     //$array = $_POST['data'];
-$time_arr=json_decode("$_GET[time_arr]");
+$time_arr=json_decode("$_GET[time_array]");
+//echo $time_arr;
 $user_name = "$_GET[user_name]";
 $name = "$_GET[name]";
 $event_name = "$_GET[event_name]";

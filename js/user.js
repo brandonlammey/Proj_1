@@ -26,27 +26,30 @@ function getEventsFromDB(path, callback)
 function pushToDB(user_name, creator_name, event_name, time_array)
 {
   var request2 = new XMLHttpRequest();
-  request.onreadystatechange = function ()
+  request2.onreadystatechange = function ()
   {
-    if (request.readyState === XMLHttpRequest.DONE)
+    if (request2.readyState === XMLHttpRequest.DONE)
     {
-      if (request.status === 200)
+      if (request2.status === 200)
       {
-        JSON.stringify(time_array);
-        callback();
+        
       }
       else
       {
 
       }
     }
-    urlToSendTo = "php/addAttendeeToEvent.php?" + "name=" + creator_name + "&event_name=" + event_name + "&user_name=" + user_name + "&";
 
-  };
-
-    request.open("GET", urlToSendTo, true);
-    request.send();
-    return request.onreadystatechange();
+  }
+    alert(time_array);
+    
+    var json = JSON.stringify(time_array);
+    var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + creator_name + "&event_name=" + event_name + "&user_name=" + user_name + ", &time_array=" + json + "&";
+    alert(urlToSendTo2);
+    request2.open("GET", urlToSendTo2, true);
+    //request2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    request2.send();
+    return request2.onreadystatechange();
 }
 function makeTable12(n, name)
 {
@@ -276,7 +279,7 @@ function makeTable12(n, name)
   }
 }
 
-function makeTable24(n, name)
+function makeTable24(n, name, arr)
 {
 
   $("#user_table_24").html(
@@ -504,6 +507,503 @@ function makeTable24(n, name)
   }
 }
 
+function makeTimeArr(n, name, arr)
+{
+  for(let i=4; i<52; i++)
+  {
+    let str = events_arr[n][i].substring(0, events_arr[n][i].length-1);
+    let att = str.split(",");
+    for(let m=0; m<att.length; m++)
+    {
+      att[m] = att[m].trim();
+    } 
+    switch(i)
+    {
+      case 4:
+        for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0000");
+            break;
+          }
+        }
+        break;
+      case 5:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0030");
+            break;
+          }
+        }
+        break;      
+      case 6:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0100");
+            break;
+          }
+        }
+        break;
+      case 7:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0130");
+            break;
+          }
+        }
+        break;
+      case 8:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0200");
+            break;
+          }
+        }
+        break;
+      case 9:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0230");
+            break;
+          }
+        }
+        break;
+      case 10:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0300");
+            break;
+          }
+        }
+        break;
+      case 11:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0330");
+            break;
+          }
+        }
+        break;
+      case 12:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0400");
+            break;
+          }
+        }
+        break;
+      case 13:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0430");
+            break;
+          }
+        }
+        break;
+      case 14:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0500");
+            break;
+          }
+        }
+        break;
+      case 15:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0530");
+            break;
+          }
+        }
+        break;
+      case 16:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0600");
+            break;
+          }
+        }
+        break;
+      case 17:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0630");
+            break;
+          }
+        }
+        break;
+      case 18:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0700");
+            break;
+          }
+        }
+        break;
+      case 19:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0730");
+            break;
+          }
+        }
+        break;
+      case 20:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0800");
+            break;
+          }
+        }
+        break;
+      case 21:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0830");
+            break;
+          }
+        }
+        break;
+      case 22:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0900");
+            break;
+          }
+        }
+        break;
+      case 23:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("0930");
+            break;
+          }
+        }
+        break;
+      case 24:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1000");
+            break;
+          }
+        }
+        break;
+      case 25:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1030");
+            break;
+          }
+        }
+        break;
+      case 26:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1100");
+            break;
+          }
+        }
+        break;
+      case 27:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1130");
+            break;
+          }
+        }
+        break;
+      case 28:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1200");
+            break;
+          }
+        }
+        break;
+      case 29:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1230");
+            break;
+          }
+        }
+        break;
+      case 30:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1300");
+            break;
+          }
+        }
+        break;
+      case 31:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1330");
+            break;
+          }
+        }
+        break;
+      case 32:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1400");
+            break;
+          }
+        }
+        break;
+      case 33:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1430");
+            break;
+          }
+        }
+        break;
+      case 34:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1500");
+            break;
+          }
+        }
+        break;
+      case 35:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1530");
+            break;
+          }
+        }
+        break;
+      case 36:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1600");
+            break;
+          }
+        }
+        break;
+      case 37:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1630");
+            break;
+          }
+        }
+        break;
+      case 38:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1700");
+            break;
+          }
+        }
+        break;
+      case 39:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1730");
+            break;
+          }
+        }
+        break;
+      case 40:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1800");
+            break;
+          }
+        }
+        break;
+      case 41:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1830");
+            break;
+          }
+        }
+        break;
+      case 42:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1900");
+            break;
+          }
+        }
+        break;
+      case 43:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("1930");
+            break;
+          }
+        }
+        break;
+      case 44:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("2000");
+            break;
+          }
+        }
+        break;
+      case 45:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("2030");
+            break;
+          }
+        }
+        break;
+      case 46:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("2100");
+            break;
+          }
+        }
+        break;
+      case 47:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("2130");
+            break;
+          }
+        }
+        break;
+      case 48:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("2200");
+            break;
+          }
+        }
+        break;
+      case 49:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("2230");
+            break;
+          }
+        }
+        break;
+      case 50:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("2300");
+            break;
+          }
+        }
+        break;
+      case 51:
+      for(let k=0; k<att.length; k++)
+        {
+          if(name == att[k])
+          {
+            arr.push("2330");
+            break;
+          }
+        }
+        break;
+      default:
+      break;
+    }
+  }
+}
 
 function showAllEvents(form)
 {
@@ -545,7 +1045,10 @@ function showInfo(i, name)
 
   $("<button type = 'button'>Submit</button>").click(function()
     {
-      pushToDB();
+      let timeArr = [];
+      makeTimeArr(i, name, timeArr);
+      alert(timeArr);
+      pushToDB(name, events_arr[i][1], events_arr[i][2], timeArr);
       $("#user_table_12").hide();
       $("#user_Table_24").hide();
       $("#event_time").hide();
