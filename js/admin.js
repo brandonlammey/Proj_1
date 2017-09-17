@@ -1,7 +1,22 @@
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///File Name: admin.js
+///Author: Andrew Growney, Kaiser Mittenburg, Juzer Zarif
+///Purpose: Running JavaScript scripts for HTML elements and contains back-end logic
+///Last Modified: 09/17/2017
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 {
+  /**
+   * Array to store information for all events; populated whenever page loads 
+   */
   var events_arr;
 
+  /** 
+ * Fetches events info from database and populates events_arr
+ * @param {string} path - file name that event info is obtained from
+ * @param {function} callback - function that can be defined while calling getEventsFromDB to perform required task
+ */
   function getEventsFromDB(path, callback)
   {
       var request = new XMLHttpRequest();
@@ -25,8 +40,12 @@
       request.send();
       return request.onreadystatechange();
   }
+  
+  
   //Call script
-  getEventsFromDB('php/getEventsFromDB.php', function printResults()
+  getEventsFromDB('php/getEventsFromDB.php', /**
+   * Debugging function that prints event detais to the console
+   */function printResults()
       {
             console.log(events_arr); //DEBUGGING
             console.log(events_arr[0]); //DEBUGGING
@@ -34,27 +53,11 @@
       });
 }
 
-
-////////////////////////////////////////////////////////////////////////////////
-//Test Code
-{
-  //var test_arr = [];
-  //let arr = []
-  //arr.push("Juzer");
-  //arr.push("Event1");
-  //arr.push("2017/09/01");
-  //for(let i=0; i<4; i++)
-  //{
-  //  arr.push("Juzer, Kaiser, Growney, Kari,");
-  //}
-  //for(let i=0; i<44; i++)
-  //{
-  //  arr.push("0");
-  //}
-  //test_arr.push(arr);
-}
-////////////////////////////////////////////////////////////////////////////////
-
+/** 
+ * Array that stores information about the status of every 30-minute time interval. 
+ * At every array index: object{active : boolean bit to denote whether that time interval is going to have an event during it or not  
+ *                              attendees: Set to organizer's name if the time interval is active, aet to "0" otherwise}
+ */
 var time_arr = [];
 for(let i=0; i<48; i++)
 {
@@ -62,6 +65,10 @@ for(let i=0; i<48; i++)
     time_arr.push(obj);
 }
 
+/**
+ * Resets the color of all the buttons for every time interval to its default setting.
+ * @param {number} col_num - Index corresponding to a time interval in "time_arr"  
+ */
 function colorReset(col_num){
   if(col_num==0){$("#am1200").css("background-color","#303030"); $("#t0000").css("background-color", "#303030")
   }else if(col_num==1){$("#am1230").css("background-color","#303030"); $("#t0030").css("background-color","#303030");
@@ -114,6 +121,10 @@ function colorReset(col_num){
   }
 }
 
+/**
+ * Changes color of the button for a time interval from default to green and vice versa when clicked.
+ * @param {number} col_num - Index corresponding to a time interval in "time_arr"
+ */
 function colorChange(col_num){
   if(col_num==0){$("#am1200").css("background-color","#80C468"); $("#t0000").css("background-color", "#80C468");
   }else if(col_num==2){$("#am100").css("background-color","#80C468"); $("#t100").css("background-color", "#80C468");
@@ -166,9 +177,10 @@ function colorChange(col_num){
   }
 }
 
-
-
-
+/**
+ * Defines the logic to be executed when a button for a specific time interval is clicked
+ * @param {number} num - Index corresponding to a time interval in "time_arr"
+ */
 function clickfunc(num)
 {
     time_arr[num].active = !time_arr[num].active;
@@ -182,6 +194,9 @@ function clickfunc(num)
     }
 }
 
+/**
+ * Resets the values of the object properties at every index in "time_arr"
+ */
 function timeReset()
 {
     for(let i=0; i<48; i++)
@@ -191,6 +206,10 @@ function timeReset()
     }
 }
 
+/**
+ * Collects input from form elements and the time table buttons and sends it to the database.
+ * @param {object} form - HTML form element that takes user input for Organizer Name, Event Name, Event Date, and Event Times 
+ */
 function formData(form)
 {
     let name = form.admin_name.value;
@@ -423,6 +442,10 @@ function formData(form)
     location.reload(true);
 }
 
+/**
+ * Populates a table with attendee information for every 30-minute interval for a specific event in 12-hour mode
+ * @param {number} n - Row number of the event in the database
+ */
 function makeTable12(n)
 {
   $("#review_table_12").html(
@@ -611,6 +634,10 @@ function makeTable12(n)
   }
 }
 
+/**
+ * Populates a table with attendee information for every 30-minute interval for a specific event in 24-hour mode
+ * @param {number} n - Row number of the event in the database 
+ */
 function makeTable24(n)
 {
   $("#review_table_24").html(
@@ -799,6 +826,10 @@ function makeTable24(n)
   }
 }
 
+/**
+ * Locates the given event and organizer combo in the database (displays appropriate error message in case of failure), and displays event information
+ * @param {object} form - HTML form element that takes input for Organizer Name, and Event Name 
+ */
 function getData(form)
 {
   let name = form.review_admin_name.value;
@@ -845,7 +876,7 @@ function getData(form)
   }
 }
 
-
+/** Defines behavior of various document elements with event handlers and appropriate function calls. Creates the 30-minute interval buttons for selecting event time. */
 $(document).ready(function()
 {
     $("#event_form").hide();
