@@ -487,7 +487,6 @@ function makeTable24(n, name)
 }
 
 
-
 function showAllEvents(form)
 {
   let name = form.name.value;
@@ -528,6 +527,10 @@ function showInfo(i, name)
 
   $("<button type = 'button'>Submit</button>").click(function()
     {
+      let cr_name = events_arr[i][1];
+      let ev_name = events_arr[i][2];
+      let timeArr = [];
+
       pushToDB(); 
       $("#user_table_12").hide();
       $("#user_Table_24").hide();
