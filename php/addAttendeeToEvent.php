@@ -56,21 +56,29 @@ $_2200 = "$_GET[2200]";
 $_2230 = "$_GET[2230]";
 $_2300 = "$_GET[2300]";
 $_2330 = "$_GET[2330]";
-//echo count($arr); //DEBUGGING
+//echo count($events_arr); //DEBUGGING
 
-$test_arr = ["0000", "0100"];
-//$arr is obtained from the include of getEventsFromDB.php
-for($i = 0; $i < count($arr); $i++)
+$test_arr = ["2000", "2030","2100","2130"];
+//$events_arr is obtained from the include of getEventsFromDB.php
+for($i = 0; $i < count($events_arr); $i++)
 {
-  if($name == $arr[$i][1] && $event_name == $arr[$i][2])
+  if($name == $events_arr[$i][1] && $event_name == $events_arr[$i][2])
   {
     //echo "got here \n"; //DEBUGGING
-    for($j = 0; $j < count($arrr); $j++)
+    for($j = 0; $j < count($test_arr); $j++)
     {
 
-      echo $arrr[$j];
+      //echo $test_arr[$j];
       $sql30 = "UPDATE $tbl_name SET `$test_arr[$j]` = if(`$test_arr[$j]` = '0', '$user_name' , concat(`$test_arr[$j]`, '$user_name')) WHERE `name` = '$name' AND `event_name` = '$event_name' ";
-      echo mysql_query($sql30);
+
+      if(mysql_query($sql30))
+      {
+          echo "Records inserted successfully.";
+      }
+      else
+      {
+          echo "ERROR: Could not execute ." ;
+      }
 
     }
   }
