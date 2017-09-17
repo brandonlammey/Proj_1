@@ -38,8 +38,8 @@ include 'php/header.php'
       view events, and expand events-->
       <div class="maintwo">
         <br><br>
-        <button id="view_all" class="side_menu">Search All Events</button>
-        <button id="expand_all" class="side_menu">Expand All Events</button>
+        <button id="date_event" class="side_menu">Search Events by Date</button>
+        <button id="all_event" class="side_menu">See all Events</button>
 
         <br>
       </div>
@@ -52,23 +52,34 @@ include 'php/header.php'
         <br>
 
         <center>
-        <p id="All_Events_Show"></p>
+        <p id="date_select">
 
+        <form id = "date_form">
+        Name: &nbsp;<input type = "text" id = "event_name" name = "event_name" placeholder = "(required)"><br><br>
+        Date: &nbsp;<input type = "date" id = "event_date" name = "event_date"><br><br>
+        <input type = "button" id = "date_submit" value = "Submit">
+        </form>
 
-        <p id="Events_List">
-          Select Time Display<br><br>
-          <input type = 'button' name = '12_time_select' id = 'time_select_12' value = '12 Hour Format'>
-          <input type = 'button' name = '24_time_select' id = 'time_select_24' value = '24 Hour Format'>
         </p>
-        </center>
 
-        <center>
-        <p id="Event_Info"></p>
-        </center>
+        <form id="name_form">
+        Name: &nbsp;<input type="text" id="name" name="name" placeholder="(required)"><br><br>
+        <input type = "button" id = "name_submit" value = "Submit">
+        </form>
 
-        <center>
-        <p id = "review_table_12"></p>
-        <p id = "review_table_24"></p>
+        <p id="event_list"></p>
+
+        <p id="event_info"></p>
+
+        <p id="event_time">
+          Select Time Display<br><br>
+          <button type = 'button' name = '12_time_select' id = 'time_select_12'>12 Hour Format</button>
+          <button type = 'button' name = '24_time_select' id = 'time_select_24'>24 Hour Format</button>
+          <br><br><br>
+          <p id = "user_table_12"></p>
+          <p id = "user_table_24"></p>
+          <p id = "time_submit"></p>
+        </p>
         </center>
 
       </div>
