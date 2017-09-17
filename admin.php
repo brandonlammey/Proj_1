@@ -1,23 +1,24 @@
-<?php
-session_start();
-ob_start();
-include "php/header.php";
-?>
-
-
 <html>
-<head>
-  <link rel = "stylesheet" href="css/useradmin.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src = "js/admin.js"></script>
+<!--
+/////////////////////////////////////////////////////////////////////////////
+///File: admin.html
+///Author: Andrew Growney, Kaiser Mittenburg, Juzer Zarif,
+///Purpose: HTML file to show the admin page
+///Last Modified: 9/17/2017
+/////////////////////////////////////////////////////////////////////////////
+-->
+  <head>
+    <link rel = "stylesheet" href="css/useradmin.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src = "js/admin.js"></script>
+  </head>
 
-</head>
 <body>
-
+  <!-- Top horizontal bar of screen -->
   <div class="mainwrap">
     <div class="mainone">
     <br><a href = "../">Back To Home</a>
@@ -29,6 +30,7 @@ include "php/header.php";
       </center>
     </div>
 
+    <!-- Leftmost vertical bar with navigation buttons -->
     <div class="maintwo">
       <br><br>
       <p id = "Events"></p>
@@ -36,7 +38,7 @@ include "php/header.php";
       <button type="button" id="review_event" class="side_menu">Review Event</button>
       <br>
     </div>
-
+    <!-- Bulk of middle page with text boxes and buttons -->
     <div class="mainthree">
 
       <br><br>
@@ -66,26 +68,27 @@ include "php/header.php";
 
         <p>
           <form name = "review" id = "review">
-          User Name: <input type = "text" id = "review_admin_name" name = "review_admin_name" placeholder="(required)">
-          <br><br>
-          Event Name: <input type = "text" id = "review_event_name" name = "review_event_name" placeholder="(required)">
-          <br><br>
-          <input type = "button" id = "review_submit" name = "review_submit" value = "Submit"></form>
+            User Name: <input type = "text" id = "review_admin_name" name = "review_admin_name" placeholder="(required)">
+            <br><br>
+            Event Name: <input type = "text" id = "review_event_name" name = "review_event_name" placeholder="(required)">
+            <br><br>
+            <input type = "button" id = "review_submit" name = "review_submit" value = "Submit">
+          </form>
         </p>
+
         <br><br>
         <p id = "review_details">
-        <p id = "event_review"></p>
-        <button type = "button" class="rev_button_format" id = "12_review">12 Hour Format</button>
-        <button type = "button" class="rev_button_format" id = "24_review">24 Hour Format</button>
+          <p id = "event_review"></p>
+          <button type = "button" class="rev_button_format" id = "12_review">12 Hour Format</button>
+          <button type = "button" class="rev_button_format" id = "24_review">24 Hour Format</button>
 
-        <p id = "review_table_12"></p>
-        <p id = "review_table_24"></p>
+          <p id = "review_table_12"></p>
+          <p id = "review_table_24"></p>
         </p>
       </center>
 
-
     </div>
-
   </div>
 </body>
+
 </html>
