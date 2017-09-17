@@ -1,4 +1,11 @@
+/** Array to store information for all events; populated whenever page loads */
 var events_arr;
+
+/** 
+ * Fetches events info from database and populates events_arr
+ * @param {string} path - file name that event info is obtained from
+ * @param {function} callback - function that can be defined while calling getEventsFromDB to perform required task
+ */
 function getEventsFromDB(path, callback)
 {
   var request = new XMLHttpRequest();
@@ -23,6 +30,13 @@ function getEventsFromDB(path, callback)
     return request.onreadystatechange();
 }
 
+/**
+ * Sends and stores user availability information for events to the database
+ * @param {string} user_name - The name of the attendee
+ * @param {string} creator_name - The name of the event organizer
+ * @param {string} event_name - The name of the event
+ * @param {Array} time_array - An array with the times the attendee can make it to the event
+ */
 function pushToDB(user_name, creator_name, event_name, time_array)
 {
   //alert(user_name + creator_name + event_name + time_array);
@@ -57,6 +71,11 @@ function pushToDB(user_name, creator_name, event_name, time_array)
     return request2.onreadystatechange();
 }
 
+/**
+ * Creates a 12-hour mode time selection table with every 30-minute interval represented by a button. Only time intervals with an event going on have enabled buttons. Calls function "updateArr" to update "tarr". 
+ * @param {number} n - Row number of event in the database 
+ * @param {Array} tarr - Array to store the time intervals a user can attend the event 
+ */
 function makeTable12(n, tarr)
 {
   $("#user_table_12").html(
@@ -285,6 +304,11 @@ function makeTable12(n, tarr)
   }
 }
 
+/**
+ * Creates a 24-hour mode time selection table with every 30-minute interval represented by a button. Only time intervals with an event going on have enabled buttons. Calls function "updateArr" to update "tarr".
+ * @param {number} n - Row number of event in the database
+ * @param {Array} tarr - Array to store the time intervals a user can attend the event
+ */
 function makeTable24(n, tarr)
 {
 
@@ -514,6 +538,10 @@ function makeTable24(n, tarr)
   }
 }
 
+/**
+ * Displays all events in the databse as individual buttons (with event overview). Buttons call function "showInfo" on click to display event information.
+ * @param {object} form - HTML form element that takes user input for Attendee Name
+ */
 function showAllEvents(form)
 {
   let name = form.name.value;
@@ -538,6 +566,11 @@ function showAllEvents(form)
   }
 }
 
+/**
+ * Displays event information and calls "makeTable12" and "makeTable24" to populate time tables and allow attendee to RSVP for the event. Collects availability info for attendee and passes it to "pushToDB" 
+ * @param {number} i - Row number of the event in the database 
+ * @param {string} name - The name of the attendee
+ */
 function showInfo(i, name)
 {
   if(name == events_arr[i][1])
@@ -588,6 +621,10 @@ function showInfo(i, name)
     }
 }
 
+/**
+ * Displays events for a specified date as individual buttons (with event overview). Buttons call function "showInfo" on click to display event information.
+ * @param {object} form - HTML form element that takes user input for Attendee Name and Event Date 
+ */
 function getData(form)
 {
   let name = form.event_name.value;
@@ -614,6 +651,12 @@ function getData(form)
   }
 }
 
+/**
+ * Updates availability information for an attendee for a specific 30-minute time interval determined by the event attribute column number in the database, and adds it to "arr"
+ * @param {number} i - Row number of the event in the database
+ * @param {number} j - Column number for the event attribute in the database
+ * @param {Array} arr - Array to store the time intervals a user can attend the event
+ */
 function updateArr(i, j, arr)
 {
   let check = false;
@@ -1058,9 +1101,14 @@ function updateArr(i, j, arr)
   console.log(arr);
 }
 
+/**
+ * Defines behavior of various document elements with event handlers and appropriate function calls. Calls "getEventsFromDB" to populate the events array when dicument is ready.
+ */
 $(document).ready(function(){
 
-  getEventsFromDB('php/getEventsFromDB.php', function printResults()
+  getEventsFromDB('php/getEventsFromDB.php', /**
+   * Prints the info obtained from the path file to the console for debugging
+   */function printResults()
   {
     console.log(events_arr.length); //DEBUGGING
     console.log(events_arr[0]); //DEBUGGING
