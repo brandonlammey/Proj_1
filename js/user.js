@@ -615,16 +615,16 @@ function showInfo(i, name)
     $("#user_table_12").show();
     $("#user_table_24").hide();
 
-    $("<button type = 'button'>Submit</button>").click(function()
+    $("#time_submit").html($("<button type = 'button'>Submit</button>").click(function()
       {
         pushToDB(name, events_arr[i][1], events_arr[i][2], time_arr);
         $("#user_table_12").empty().hide();
         $("#user_table_24").empty().hide();
-        $("#time_switch").empty().hide();
+        $("#time_switch").empty();
         $("#event_time").hide();
         $("#event_info").empty().hide();
         $("#time_submit").empty();
-      }).appendTo(document.getElementById("time_submit"));
+      }));
     }
 }
 
