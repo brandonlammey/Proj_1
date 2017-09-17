@@ -22,13 +22,31 @@ function getEventsFromDB(path, callback)
     request.send();
     return request.onreadystatechange();
 }
-  
-function pushToDB()
+
+function pushToDB(user_name, creator_name, event_name, time_array)
 {
-  /*
-  This function is called after the user is done fucking with events_arr, and it has been updated accrodingly.
-  Do whatever you want in here.
-  */
+  var request2 = new XMLHttpRequest();
+  request.onreadystatechange = function ()
+  {
+    if (request.readyState === XMLHttpRequest.DONE)
+    {
+      if (request.status === 200)
+      {
+        JSON.stringify(time_array);
+        callback();
+      }
+      else
+      {
+
+      }
+    }
+    urlToSendTo = "php/addAttendeeToEvent.php?" + "name=" + creator_name + "&event_name=" + event_name + "&user_name=" + user_name + "&";
+
+  };
+
+    request.open("GET", urlToSendTo, true);
+    request.send();
+    return request.onreadystatechange();
 }
 function makeTable12(n, name)
 {
@@ -500,7 +518,7 @@ function showAllEvents(form)
     $("#event_list").empty();
     for(let i=0; i<events_arr.length; i++)
     {
-      
+
       $("<button type='button'> Event:<br>"+events_arr[i][2]+"<br> Organizer:<br>"+events_arr[i][1]+"</button>")
         .click(function(){ showInfo(i,name);})
         .appendTo(document.getElementById("event_list"));
@@ -527,11 +545,7 @@ function showInfo(i, name)
 
   $("<button type = 'button'>Submit</button>").click(function()
     {
-      let cr_name = events_arr[i][1];
-      let ev_name = events_arr[i][2];
-      let timeArr = [];
-
-      pushToDB(); 
+      pushToDB();
       $("#user_table_12").hide();
       $("#user_Table_24").hide();
       $("#event_time").hide();
@@ -574,7 +588,7 @@ function updateArr(i, j, name)
   {
     att[m] = att[m].trim();
   }
-  
+
   for(let k=0; k<att.length; k++)
   {
     if(name == att[0])
@@ -597,7 +611,7 @@ function updateArr(i, j, name)
     for(let l=1; l<att.length; l++)
     {
       if(att[l] != "")
-      {  
+      {
         newStr += " "+att[l]+",";
       }
     }
@@ -612,7 +626,7 @@ function updateArr(i, j, name)
 }
 
 $(document).ready(function(){
-  
+
   getEventsFromDB('php/getEventsFromDB.php', function printResults()
   {
     console.log(events_arr.length); //DEBUGGING
@@ -648,7 +662,7 @@ $(document).ready(function(){
     $("#date_form").hide();
     $("#event_list").empty();
     $("#event_list").hide();
-    $("#name_form").toggle();  
+    $("#name_form").toggle();
     $("#event_list").empty();
     $("#event_info").empty();
     $("#user_table_12").empty();
@@ -665,8 +679,8 @@ $(document).ready(function(){
       $("#event_list").empty();
       getData(document.getElementById("date_form"));
     }
-  ); 
-  
+  );
+
   $("#time_select_12").click(
     function()
     {
