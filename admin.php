@@ -20,8 +20,9 @@ include "php/header.php";
 
   <div class="mainwrap">
     <div class="mainone">
+    <br><a href = "../">Back To Home</a>
       <center>
-        <br><br><br>
+        <br>
         <h1> Admin Event Planner </h1>
         <h6> by <span class="groupname">Purple C#bras</span></h6>
 

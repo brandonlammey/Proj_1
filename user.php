@@ -26,8 +26,9 @@ include 'php/header.php'
 
       <!--Main One is the Top of the Page that makes it look pretty-->
       <div class="mainone">
+      <br><a href = "../">Back To Home</a>
         <center>
-          <br><br><br>
+          <br>
           <h1> User Event Planner </h1>
           <h6> by <span class="groupname">Purple C#bras</span> </h6>
         </center>
