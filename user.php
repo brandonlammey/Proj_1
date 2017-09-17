@@ -21,7 +21,6 @@ include 'php/header.php'
   <!--Body-->
   <body>
     <script src="js/user.js"></script>
-    <script src="js/chalk.js"></script>
     <div class="mainwrap">
 
       <!--Main One is the Top of the Page that makes it look pretty-->
@@ -73,10 +72,10 @@ include 'php/header.php'
         <p id="event_info"></p>
 
         <p id="event_time">
-          Select Time Display<br><br>
-          <button type = 'button' name = '12_time_select' id = 'time_select_12'>12 Hour Format</button>
-          <button type = 'button' name = '24_time_select' id = 'time_select_24'>24 Hour Format</button>
-          <br><br><br>
+          Select Time Display<br>
+          <!--<button type = 'button' name = '12_time_select' id = 'time_select_12'>12 Hour Format</button>
+          <button type = 'button' name = '24_time_select' id = 'time_select_24'>24 Hour Format</button>-->
+          <p id = "time_switch"></p>
           <p id = "user_table_12"></p>
           <p id = "user_table_24"></p>
           <p id = "time_submit"></p>

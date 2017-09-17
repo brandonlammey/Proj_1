@@ -41,17 +41,16 @@ function pushToDB(user_name, creator_name, event_name, time_array)
     }
 
   }
-    alert(time_array);
     
     var json = JSON.stringify(time_array);
     var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + creator_name + "&event_name=" + event_name + "&user_name=" + user_name + ", &time_array=" + json + "&";
-    alert(urlToSendTo2);
+    
     request2.open("GET", urlToSendTo2, true);
-    //request2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request2.send();
     return request2.onreadystatechange();
 }
-function makeTable12(n, name)
+
+function makeTable12(n, tarr)
 {
   $("#user_table_12").html(
     "<center>Event Schedule</center><br>"+
@@ -130,148 +129,148 @@ function makeTable12(n, name)
     switch(i)
     {
       case 4:
-        if(att != "0"){$("#1200am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:00am</button>");}
+        if(att != "0"){$("#1200am").html($("<button type = 'button'>12:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 5:
-        if(att != "0"){$("#1230am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:30am</button>");}
+        if(att != "0"){$("#1230am").html($("<button type = 'button'>12:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 6:
-        if(att != "0"){$("#100am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:00am</button>");}
+        if(att != "0"){$("#100am").html($("<button type = 'button'>1:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 7:
-        if(att != "0"){$("#130am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:30am</button>");}
+        if(att != "0"){$("#130am").html($("<button type = 'button'>1:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 8:
-        if(att != "0"){$("#200am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:00am</button>");}
+        if(att != "0"){$("#200am").html($("<button type = 'button'>2:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 9:
-        if(att != "0"){$("#230am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:30am</button>");}
+        if(att != "0"){$("#230am").html($("<button type = 'button'>2:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 10:
-        if(att != "0"){$("#300am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:00am</button>");}
+        if(att != "0"){$("#300am").html($("<button type = 'button'>3:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 11:
-        if(att != "0"){$("#330am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:30am</button>");}
+        if(att != "0"){$("#330am").html($("<button type = 'button'>3:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 12:
-        if(att != "0"){$("#400am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:00am</button>");}
+        if(att != "0"){$("#400am").html($("<button type = 'button'>4:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 13:
-        if(att != "0"){$("#430am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:30am</button>");}
+        if(att != "0"){$("#430am").html($("<button type = 'button'>4:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 14:
-        if(att != "0"){$("#500am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:00am</button>");}
+        if(att != "0"){$("#500am").html($("<button type = 'button'>5:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 15:
-        if(att != "0"){$("#530am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:30am</button>");}
+        if(att != "0"){$("#530am").html($("<button type = 'button'>5:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 16:
-        if(att != "0"){$("#600am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:00am</button>");}
+        if(att != "0"){$("#600am").html($("<button type = 'button'>6:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 17:
-        if(att != "0"){$("#630am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:30am</button>");}
+        if(att != "0"){$("#630am").html($("<button type = 'button'>6:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 18:
-        if(att != "0"){$("#700am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:00am</button>");}
+        if(att != "0"){$("#700am").html($("<button type = 'button'>7:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 19:
-        if(att != "0"){$("#730am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:30am</button>");}
+        if(att != "0"){$("#730am").html($("<button type = 'button'>7:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 20:
-        if(att != "0"){$("#800am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:00am</button>");}
+        if(att != "0"){$("#800am").html($("<button type = 'button'>8:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 21:
-        if(att != "0"){$("#830am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:30am</button>");}
+        if(att != "0"){$("#830am").html($("<button type = 'button'>8:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 22:
-        if(att != "0"){$("#900am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:00am</button>");}
+        if(att != "0"){$("#900am").html($("<button type = 'button'>9:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 23:
-        if(att != "0"){$("#930am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:30am</button>");}
+        if(att != "0"){$("#930am").html($("<button type = 'button'>9:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 24:
-        if(att != "0"){$("#1000am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:00am</button>");}
+        if(att != "0"){$("#1000am").html($("<button type = 'button'>10:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 25:
-        if(att != "0"){$("#1030am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:30am</button>");}
+        if(att != "0"){$("#1030am").html($("<button type = 'button'>10:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 26:
-        if(att != "0"){$("#1100am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:00am</button>");}
+        if(att != "0"){$("#1100am").html($("<button type = 'button'>11:00am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 27:
-        if(att != "0"){$("#1130am").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:30am</button>");}
+        if(att != "0"){$("#1130am").html($("<button type = 'button'>11:30am</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 28:
-        if(att != "0"){$("#1200pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:00pm</button>");}
+        if(att != "0"){$("#1200pm").html($("<button type = 'button'>12:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 29:
-        if(att != "0"){$("#1230pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:30pm</button>");}
+        if(att != "0"){$("#1230pm").html($("<button type = 'button'>12:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 30:
-        if(att != "0"){$("#100pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:00pm</button>");}
+        if(att != "0"){$("#100pm").html($("<button type = 'button'>1:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 31:
-        if(att != "0"){$("#130pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:30pm</button>");}
+        if(att != "0"){$("#130pm").html($("<button type = 'button'>1:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 32:
-        if(att != "0"){$("#200pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:00pm</button>");}
+        if(att != "0"){$("#200pm").html($("<button type = 'button'>2:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 33:
-        if(att != "0"){$("#230pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:30pm</button>");}
+        if(att != "0"){$("#230pm").html($("<button type = 'button'>2:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 34:
-        if(att != "0"){$("#300pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:00pm</button>");}
+        if(att != "0"){$("#300pm").html($("<button type = 'button'>3:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 35:
-        if(att != "0"){$("#330pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:30pm</button>");}
+        if(att != "0"){$("#330pm").html($("<button type = 'button'>3:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 36:
-        if(att != "0"){$("#400pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:00pm</button>");}
+        if(att != "0"){$("#400pm").html($("<button type = 'button'>4:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 37:
-        if(att != "0"){$("#430pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:30pm</button>");}
+        if(att != "0"){$("#430pm").html($("<button type = 'button'>4:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 38:
-        if(att != "0"){$("#500pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:00pm</button>");}
+        if(att != "0"){$("#500pm").html($("<button type = 'button'>5:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 39:
-        if(att != "0"){$("#530pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:30pm</button>");}
+        if(att != "0"){$("#530pm").html($("<button type = 'button'>5:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 40:
-        if(att != "0"){$("#600pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:00pm</button>");}
+        if(att != "0"){$("#600pm").html($("<button type = 'button'>6:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 41:
-        if(att != "0"){$("#630pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:30pm</button>");}
+        if(att != "0"){$("#630pm").html($("<button type = 'button'>6:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 42:
-        if(att != "0"){$("#700pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:00pm</button>");}
+        if(att != "0"){$("#700pm").html($("<button type = 'button'>7:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 43:
-        if(att != "0"){$("#730pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:30pm</button>");}
+        if(att != "0"){$("#730pm").html($("<button type = 'button'>7:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 44:
-        if(att != "0"){$("#800pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:00pm</button>");}
+        if(att != "0"){$("#800pm").html($("<button type = 'button'>8:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 45:
-        if(att != "0"){$("#830pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:30pm</button>");}
+        if(att != "0"){$("#830pm").html($("<button type = 'button'>8:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 46:
-        if(att != "0"){$("#900pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:00pm</button>");}
+        if(att != "0"){$("#900pm").html($("<button type = 'button'>9:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 47:
-        if(att != "0"){$("#930pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:30pm</button>");}
+        if(att != "0"){$("#930pm").html($("<button type = 'button'>9:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 48:
-        if(att != "0"){$("#1000pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:00pm</button>");}
+        if(att != "0"){$("#1000pm").html($("<button type = 'button'>10:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 49:
-        if(att != "0"){$("#1030pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:30pm</button>");}
+        if(att != "0"){$("#1030pm").html($("<button type = 'button'>10:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 50:
-        if(att != "0"){$("#1100pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:00pm</button>");}
+        if(att != "0"){$("#1100pm").html($("<button type = 'button'>11:00pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 51:
-        if(att != "0"){$("#1130pm").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:30pm</button>");}
+        if(att != "0"){$("#1130pm").html($("<button type = 'button'>11:30pm</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       default:
         break;
@@ -279,7 +278,7 @@ function makeTable12(n, name)
   }
 }
 
-function makeTable24(n, name, arr)
+function makeTable24(n, tarr)
 {
 
   $("#user_table_24").html(
@@ -359,648 +358,151 @@ function makeTable24(n, name, arr)
     switch(i)
     {
       case 4:
-        if(att != "0"){$("#0000").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>00:00</button>");}
+        if(att != "0"){$("#0000").html($("<button type = 'button'>00:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 5:
-        if(att != "0"){$("#0030").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>00:30</button>");}
+        if(att != "0"){$("#0030").html($("<button type = 'button'>00:30</button>").click(function(){updateArr(n,i,tarr);}));}
+        break;
       case 6:
-        if(att != "0"){$("#100").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:00</button>");}
+        if(att != "0"){$("#100").html($("<button type = 'button'>1:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 7:
-        if(att != "0"){$("#130").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>1:30</button>");}
+        if(att != "0"){$("#130").html($("<button type = 'button'>1:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 8:
-        if(att != "0"){$("#200").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:00</button>");}
+        if(att != "0"){$("#200").html($("<button type = 'button'>2:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 9:
-        if(att != "0"){$("#230").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>2:30</button>");}
+        if(att != "0"){$("#230").html($("<button type = 'button'>2:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 10:
-        if(att != "0"){$("#300").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:00</button>");}
+        if(att != "0"){$("#300").html($("<button type = 'button'>3:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 11:
-        if(att != "0"){$("#330").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>3:30</button>");}
+        if(att != "0"){$("#330").html($("<button type = 'button'>3:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 12:
-        if(att != "0"){$("#400").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:00</button>");}
+        if(att != "0"){$("#400").html($("<button type = 'button'>4:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 13:
-        if(att != "0"){$("#430").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>4:30</button>");}
+        if(att != "0"){$("#430").html($("<button type = 'button'>4:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 14:
-        if(att != "0"){$("#500").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:00</button>");}
+        if(att != "0"){$("#500").html($("<button type = 'button'>5:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 15:
-        if(att != "0"){$("#530").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>5:30</button>");}
+        if(att != "0"){$("#530").html($("<button type = 'button'>5:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 16:
-        if(att != "0"){$("#600").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:00</button>");}
+        if(att != "0"){$("#600").html($("<button type = 'button'>6:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 17:
-        if(att != "0"){$("#630").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>6:30</button>");}
+        if(att != "0"){$("#630").html($("<button type = 'button'>6:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 18:
-        if(att != "0"){$("#700").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:00</button>");}
+        if(att != "0"){$("#700").html($("<button type = 'button'>7:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 19:
-        if(att != "0"){$("#730").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>7:30</button>");}
+        if(att != "0"){$("#730").html($("<button type = 'button'>7:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 20:
-        if(att != "0"){$("#800").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:00</button>");}
+        if(att != "0"){$("#800").html($("<button type = 'button'>8:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 21:
-        if(att != "0"){$("#830").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>8:30</button>");}
+        if(att != "0"){$("#830").html($("<button type = 'button'>8:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 22:
-        if(att != "0"){$("#900").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:00</button>");}
+        if(att != "0"){$("#900").html($("<button type = 'button'>9:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 23:
-        if(att != "0"){$("#930").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>9:30</button>");}
+        if(att != "0"){$("#930").html($("<button type = 'button'>9:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 24:
-        if(att != "0"){$("#1000").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:00</button>");}
+        if(att != "0"){$("#1000").html($("<button type = 'button'>10:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 25:
-        if(att != "0"){$("#1030").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>10:30</button>");}
+        if(att != "0"){$("#1030").html($("<button type = 'button'>10:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 26:
-        if(att != "0"){$("#1100").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:00</button>");}
+        if(att != "0"){$("#1100").html($("<button type = 'button'>11:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 27:
-        if(att != "0"){$("#1130").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>11:30</button>");}
+        if(att != "0"){$("#1130").html($("<button type = 'button'>11:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 28:
-        if(att != "0"){$("#1200").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:00</button>");}
+        if(att != "0"){$("#1200").html($("<button type = 'button'>12:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 29:
-        if(att != "0"){$("#1230").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>12:30</button>");}
+        if(att != "0"){$("#1230").html($("<button type = 'button'>12:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 30:
-        if(att != "0"){$("#1300").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>13:00</button>");}
+        if(att != "0"){$("#1300").html($("<button type = 'button'>13:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 31:
-        if(att != "0"){$("#1330").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>13:30</button>");}
+        if(att != "0"){$("#1330").html($("<button type = 'button'>13:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 32:
-        if(att != "0"){$("#1400").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>14:00</button>");}
+        if(att != "0"){$("#1400").html($("<button type = 'button'>14:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 33:
-        if(att != "0"){$("#1430").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>14:30</button>");}
+        if(att != "0"){$("#1430").html($("<button type = 'button'>14:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 34:
-        if(att != "0"){$("#1500").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>15:00</button>");}
+        if(att != "0"){$("#1500").html($("<button type = 'button'>15:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 35:
-        if(att != "0"){$("#1530").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>15:30</button>");}
+        if(att != "0"){$("#1530").html($("<button type = 'button'>15:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 36:
-        if(att != "0"){$("#1600").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>16:00</button>");}
+        if(att != "0"){$("#1600").html($("<button type = 'button'>16:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 37:
-        if(att != "0"){$("#1630").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>16:30</button>");}
+        if(att != "0"){$("#1630").html($("<button type = 'button'>16:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 38:
-        if(att != "0"){$("#1700").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>17:00</button>");}
+        if(att != "0"){$("#1700").html($("<button type = 'button'>17:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 39:
-        if(att != "0"){$("#1730").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>17:30</button>");}
+        if(att != "0"){$("#1730").html($("<button type = 'button'>17:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 40:
-        if(att != "0"){$("#1800").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>18:00</button>");}
+        if(att != "0"){$("#1800").html($("<button type = 'button'>18:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 41:
-        if(att != "0"){$("#1830").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>18:30</button>");}
+        if(att != "0"){$("#1830").html($("<button type = 'button'>18:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 42:
-        if(att != "0"){$("#1900").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>19:00</button>");}
+        if(att != "0"){$("#1900").html($("<button type = 'button'>19:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 43:
-        if(att != "0"){$("#1930").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>19:30</button>");}
+        if(att != "0"){$("#1930").html($("<button type = 'button'>19:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 44:
-        if(att != "0"){$("#2000").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>20:00</button>");}
+        if(att != "0"){$("#2000").html($("<button type = 'button'>20:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 45:
-        if(att != "0"){$("#2030").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>20:30</button>");}
+        if(att != "0"){$("#2030").html($("<button type = 'button'>20:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 46:
-        if(att != "0"){$("#2100").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>21:00</button>");}
+        if(att != "0"){$("#2100").html($("<button type = 'button'>21:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 47:
-        if(att != "0"){$("#2130").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>21:30</button>");}
+        if(att != "0"){$("#2130").html($("<button type = 'button'>21:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 48:
-        if(att != "0"){$("#2200").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>22:00</button>");}
+        if(att != "0"){$("#2200").html($("<button type = 'button'>22:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 49:
-        if(att != "0"){$("#2230").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>22:30</button>");}
+        if(att != "0"){$("#2230").html($("<button type = 'button'>22:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 50:
-        if(att != "0"){$("#2300").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>23:00</button>");}
+        if(att != "0"){$("#2300").html($("<button type = 'button'>23:00</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       case 51:
-        if(att != "0"){$("#2330").html("<button type = 'button' onClick = 'updateArr("+n+","+i+",\""+name+"\")'>23:30</button>");}
+        if(att != "0"){$("#2330").html($("<button type = 'button'>23:30</button>").click(function(){updateArr(n,i,tarr);}));}
         break;
       default:
         break;
-    }
-  }
-}
-
-function makeTimeArr(n, name, arr)
-{
-  for(let i=4; i<52; i++)
-  {
-    let str = events_arr[n][i].substring(0, events_arr[n][i].length-1);
-    let att = str.split(",");
-    for(let m=0; m<att.length; m++)
-    {
-      att[m] = att[m].trim();
-    } 
-    switch(i)
-    {
-      case 4:
-        for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0000");
-            break;
-          }
-        }
-        break;
-      case 5:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0030");
-            break;
-          }
-        }
-        break;      
-      case 6:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0100");
-            break;
-          }
-        }
-        break;
-      case 7:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0130");
-            break;
-          }
-        }
-        break;
-      case 8:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0200");
-            break;
-          }
-        }
-        break;
-      case 9:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0230");
-            break;
-          }
-        }
-        break;
-      case 10:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0300");
-            break;
-          }
-        }
-        break;
-      case 11:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0330");
-            break;
-          }
-        }
-        break;
-      case 12:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0400");
-            break;
-          }
-        }
-        break;
-      case 13:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0430");
-            break;
-          }
-        }
-        break;
-      case 14:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0500");
-            break;
-          }
-        }
-        break;
-      case 15:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0530");
-            break;
-          }
-        }
-        break;
-      case 16:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0600");
-            break;
-          }
-        }
-        break;
-      case 17:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0630");
-            break;
-          }
-        }
-        break;
-      case 18:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0700");
-            break;
-          }
-        }
-        break;
-      case 19:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0730");
-            break;
-          }
-        }
-        break;
-      case 20:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0800");
-            break;
-          }
-        }
-        break;
-      case 21:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0830");
-            break;
-          }
-        }
-        break;
-      case 22:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0900");
-            break;
-          }
-        }
-        break;
-      case 23:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("0930");
-            break;
-          }
-        }
-        break;
-      case 24:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1000");
-            break;
-          }
-        }
-        break;
-      case 25:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1030");
-            break;
-          }
-        }
-        break;
-      case 26:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1100");
-            break;
-          }
-        }
-        break;
-      case 27:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1130");
-            break;
-          }
-        }
-        break;
-      case 28:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1200");
-            break;
-          }
-        }
-        break;
-      case 29:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1230");
-            break;
-          }
-        }
-        break;
-      case 30:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1300");
-            break;
-          }
-        }
-        break;
-      case 31:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1330");
-            break;
-          }
-        }
-        break;
-      case 32:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1400");
-            break;
-          }
-        }
-        break;
-      case 33:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1430");
-            break;
-          }
-        }
-        break;
-      case 34:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1500");
-            break;
-          }
-        }
-        break;
-      case 35:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1530");
-            break;
-          }
-        }
-        break;
-      case 36:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1600");
-            break;
-          }
-        }
-        break;
-      case 37:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1630");
-            break;
-          }
-        }
-        break;
-      case 38:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1700");
-            break;
-          }
-        }
-        break;
-      case 39:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1730");
-            break;
-          }
-        }
-        break;
-      case 40:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1800");
-            break;
-          }
-        }
-        break;
-      case 41:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1830");
-            break;
-          }
-        }
-        break;
-      case 42:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1900");
-            break;
-          }
-        }
-        break;
-      case 43:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("1930");
-            break;
-          }
-        }
-        break;
-      case 44:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("2000");
-            break;
-          }
-        }
-        break;
-      case 45:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("2030");
-            break;
-          }
-        }
-        break;
-      case 46:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("2100");
-            break;
-          }
-        }
-        break;
-      case 47:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("2130");
-            break;
-          }
-        }
-        break;
-      case 48:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("2200");
-            break;
-          }
-        }
-        break;
-      case 49:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("2230");
-            break;
-          }
-        }
-        break;
-      case 50:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("2300");
-            break;
-          }
-        }
-        break;
-      case 51:
-      for(let k=0; k<att.length; k++)
-        {
-          if(name == att[k])
-          {
-            arr.push("2330");
-            break;
-          }
-        }
-        break;
-      default:
-      break;
     }
   }
 }
@@ -1027,7 +529,6 @@ function showAllEvents(form)
   }
 }
 
-
 function showInfo(i, name)
 {
   $("#event_info").html(
@@ -1035,8 +536,24 @@ function showInfo(i, name)
     "Organizer Name: &nbsp"+events_arr[i][1]+"<br>"+
     "Date: &nbsp"+events_arr[i][3]+"<br>"
   );
-  makeTable12(i, name);
-  makeTable24(i, name);
+  $("#time_switch").empty();
+  let time_arr = [];
+  $("<button type = 'button' name = '12_time_select' id = 'time_select_12'>12 Hour Format</button>")
+    .click(function(){ 
+      time_arr.splice(0); 
+      $("#user_table_24").hide();
+      $("#user_table_12").toggle();
+    })
+    .appendTo(document.getElementById("time_switch"));
+  $("<button type = 'button' name = '24_time_select' id = 'time_select_24'>24 Hour Format</button>")
+    .click(function(){
+      time_arr.splice(0); 
+      $("#user_table_12").hide();
+      $("#user_table_24").toggle();
+    })
+    .appendTo(document.getElementById("time_switch"));
+  makeTable12(i, time_arr);
+  makeTable24(i, time_arr);
   $("#time_select_24").show();
   $("#time_select_24").show();
   $("#event_time").show();
@@ -1045,14 +562,12 @@ function showInfo(i, name)
 
   $("<button type = 'button'>Submit</button>").click(function()
     {
-      let timeArr = [];
-      makeTimeArr(i, name, timeArr);
-      alert(timeArr);
-      pushToDB(name, events_arr[i][1], events_arr[i][2], timeArr);
-      $("#user_table_12").hide();
-      $("#user_Table_24").hide();
+      pushToDB(name, events_arr[i][1], events_arr[i][2], time_arr);
+      $("#user_table_12").empty().hide();
+      $("#user_table_24").empty().hide();
+      $("#time_switch").empty().hide();
       $("#event_time").hide();
-      $("#event_info").hide();
+      $("#event_info").empty().hide();
       $("#time_submit").empty();
     }).appendTo(document.getElementById("time_submit"));
 }
@@ -1081,51 +596,448 @@ function getData(form)
   }
 }
 
-function updateArr(i, j, name)
+function updateArr(i, j, arr)
 {
   let check = false;
-  let index = 0;
-  let str = events_arr[i][j].substring(0, events_arr[i][j].length-1);
-  let att = str.split(",");
-  for(let m=0; m<att.length; m++)
+  switch(j)
   {
-    att[m] = att[m].trim();
-  }
-
-  for(let k=0; k<att.length; k++)
-  {
-    if(name == att[0])
-    {
-      alert("The organizer has to attend their own event!");
-      break;
-    }
-    if(name == att[k])
-    {
-      check = true;
-      index = k;
-      break;
-    }
-  }
-
-  if(check)
-  {
-    att[index] = "";
-    let newStr = att[0]+",";
-    for(let l=1; l<att.length; l++)
-    {
-      if(att[l] != "")
+    case 4:
+      check = false;
+      if(arr.length == 0){arr.push("0000");}else{
+      for(let k=0; k<arr.length; k++)
       {
-        newStr += " "+att[l]+",";
+        if(arr[k] == "0000"){check =true; arr.splice(k, 1);}
       }
-    }
-    events_arr[i][j] = newStr;
-  }
-  else
-  {
-    events_arr[i][j] += " "+name+",";
+      if(!check){arr.push("0000");}}
+      break;
+    case 5:
+    check = false;
+    if(arr.length == 0){arr.push("0030");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0030"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0030");}}
+      break;      
+    case 6:
+    check = false;
+    if(arr.length == 0){arr.push("0100");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0100"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0100");}}
+      break;
+    case 7:
+    check = false;
+    if(arr.length == 0){arr.push("0130");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0130"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0130");}}
+      break;
+    case 8:
+    check = false;
+    if(arr.length == 0){arr.push("0200");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0200"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0200");}}
+      break;
+    case 9:
+    check = false;
+    if(arr.length == 0){arr.push("0230");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0230"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0230");}}
+      break;
+    case 10:
+    check = false;
+    if(arr.length == 0){arr.push("0300");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0300"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0300");}}
+      break;
+    case 11:
+    check = false;
+    if(arr.length == 0){arr.push("0330");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0330"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0330");}}
+      break;
+    case 12:
+    check = false;
+    if(arr.length == 0){arr.push("0400");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0400"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0400");}}
+      break;
+    case 13:
+    check = false;
+    if(arr.length == 0){arr.push("0430");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0430"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0430");}}
+      break;
+    case 14:
+    check = false;
+    if(arr.length == 0){arr.push("0500");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0500"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0500");}}
+      break;
+    case 15:
+    check = false;
+    if(arr.length == 0){arr.push("0530");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0530"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0530");}}
+      break;
+    case 16:
+    check = false;
+    if(arr.length == 0){arr.push("0600");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0600"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0600");}}
+      break;
+    case 17:
+    check = false;
+    if(arr.length == 0){arr.push("0630");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0630"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0630");}}
+      break;
+    case 18:
+    check = false;
+    if(arr.length == 0){arr.push("0700");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0700"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0700");}}
+      break;
+    case 19:
+    check = false;
+    if(arr.length == 0){arr.push("0730");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0730"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0730");}}
+      break;
+    case 20:
+    check = false;
+    if(arr.length == 0){arr.push("0800");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0800"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0800");}}
+      break;
+    case 21:
+    check = false;
+    if(arr.length == 0){arr.push("0830");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0830"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0830");}}
+      break;
+    case 22:
+    check = false;
+    if(arr.length == 0){arr.push("0900");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0900"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0900");}}
+      break;
+    case 23:
+    check = false;
+    if(arr.length == 0){arr.push("0930");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "0930"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("0930");}}
+      break;
+    case 24:
+    check = false;
+    if(arr.length == 0){arr.push("1000");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1000"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1000");}}
+      break;
+    case 25:
+    check = false;
+    if(arr.length == 0){arr.push("1030");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1030"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1030");}}
+      break;
+    case 26:
+    check = false;
+    if(arr.length == 0){arr.push("1100");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1100"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1100");}}
+      break;
+    case 27:
+    check = false;
+    if(arr.length == 0){arr.push("1130");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1130"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1130");}}
+      break;
+    case 28:
+    check = false;
+    if(arr.length == 0){arr.push("1200");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1200"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1200");}}
+      break;
+    case 29:
+    check = false;
+    if(arr.length == 0){arr.push("1230");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1230"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1230");}}
+      break;
+    case 30:
+    check = false;
+    if(arr.length == 0){arr.push("1300");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1300"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1300");}}
+      break;
+    case 31:
+    check = false;
+    if(arr.length == 0){arr.push("1330");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1330"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1330");}}
+      break;
+    case 32:
+    check = false;
+    if(arr.length == 0){arr.push("1400");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1400"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1400");}}
+      break;
+    case 33:
+    check = false;
+    if(arr.length == 0){arr.push("1430");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1430"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1430");}}
+      break;
+    case 34:
+    check = false;
+    if(arr.length == 0){arr.push("1500");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1500"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1500");}}
+      break;
+    case 35:
+    check = false;
+    if(arr.length == 0){arr.push("1530");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1530"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1530");}}
+      break;
+    case 36:
+    check = false;
+    if(arr.length == 0){arr.push("1600");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1600"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1600");}}
+      break;
+    case 37:
+    check = false;
+    if(arr.length == 0){arr.push("1630");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1630"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1630");}}
+      break;
+    case 38:
+    check = false;
+    if(arr.length == 0){arr.push("1700");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1700"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1700");}}
+      break;
+    case 39:
+    check = false;
+    if(arr.length == 0){arr.push("1730");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1730"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1730");}}
+      break;
+    case 40:
+    check = false;
+    if(arr.length == 0){arr.push("1800");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1800"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1800");}}
+      break;
+    case 41:
+    check = false;
+    if(arr.length == 0){arr.push("1830");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1830"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1830");}}
+      break;
+    case 42:
+    check = false;
+    if(arr.length == 0){arr.push("1900");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1900"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1900");}}
+      break;
+    case 43:
+    check = false;
+    if(arr.length == 0){arr.push("1930");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "1930"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("1930");}}
+      break;
+    case 44:
+    check = false;
+    if(arr.length == 0){arr.push("2000");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "2000"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("2000");}}
+      break;
+    case 45:
+    check = false;
+    if(arr.length == 0){arr.push("2030");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "2030"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("2030");}}
+      break;
+    case 46:
+    check = false;
+    if(arr.length == 0){arr.push("2100");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "2100"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("2100");}}
+      break;
+    case 47:
+    check = false;
+    if(arr.length == 0){arr.push("2130");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "2130"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("2130");}}
+      break;
+    case 48:
+    check = false;
+    if(arr.length == 0){arr.push("2200");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "2200"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("2200");}}
+      break;
+    case 49:
+    check = false;
+    if(arr.length == 0){arr.push("2230");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "2230"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("2230");}}
+      break;
+    case 50:
+    check = false;
+    if(arr.length == 0){arr.push("2300");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "2300"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("2300");}}
+      break;
+    case 51:
+    check = false;
+    if(arr.length == 0){arr.push("2330");}else{
+      for(let k=0; k<arr.length; k++)
+      {
+        if(arr[k] == "2330"){check =true; arr.splice(k, 1);}
+      }
+      if(!check){arr.push("2330");}}
+      break;
+    default:
+    break;
   }
 
-  console.log(events_arr[i][j]);
+  console.log(arr);
 }
 
 $(document).ready(function(){
@@ -1137,7 +1049,6 @@ $(document).ready(function(){
     console.log(events_arr[1]); //DEBUGGING
     console.log(events_arr[1][1]);
     console.log(events_arr.length);
-    //showAllEvents(events_arr);
   });
 
   $("#date_select").hide();
