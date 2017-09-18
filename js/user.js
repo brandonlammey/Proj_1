@@ -8,7 +8,7 @@
 /** Array to store information for all events; populated whenever page loads */
 var events_arr;
 
-/** 
+/**
  * Fetches events info from database and populates events_arr
  * @param {string} path - file name that event info is obtained from
  * @param {function} callback - function that can be defined while calling getEventsFromDB to perform required task
@@ -80,7 +80,7 @@ function pushToDB(user_name, creator_name, event_name, time_array)
 
 /**
  * Resets the color of all the buttons for every time interval to its default setting.
- * @param {number} col_num - Index corresponding to a time interval in "time_arr"  
+ * @param {number} col_num - Index corresponding to a time interval in "time_arr"
  */
 function colorReset(col_num){
   if(col_num==0){$("#am1200").css("background-color","#303030"); $("#t0000").css("background-color", "#303030")
@@ -191,9 +191,9 @@ function colorChange(col_num){
 }
 
 /**
- * Creates a 12-hour mode time selection table with every 30-minute interval represented by a button. Only time intervals with an event going on have enabled buttons. Calls function "updateArr" to update "tarr". 
- * @param {number} n - Row number of event in the database 
- * @param {Array} tarr - Array to store the time intervals a user can attend the event 
+ * Creates a 12-hour mode time selection table with every 30-minute interval represented by a button. Only time intervals with an event going on have enabled buttons. Calls function "updateArr" to update "tarr".
+ * @param {number} n - Row number of event in the database
+ * @param {Array} tarr - Array to store the time intervals a user can attend the event
  */
 function makeTable12(n, tarr)
 {
@@ -677,7 +677,7 @@ function showAllEvents(form)
     for(let i=0; i<events_arr.length; i++)
     {
 
-      $("<button type='button'> Event:<br>"+events_arr[i][2]+"<br> Organizer:<br>"+events_arr[i][1]+"</button>")
+      $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
         .click(function(){ showInfo(i,name);})
         .appendTo(document.getElementById("event_list"));
         $("#event_list").show();
@@ -686,8 +686,8 @@ function showAllEvents(form)
 }
 
 /**
- * Displays event information and calls "makeTable12" and "makeTable24" to populate time tables and allow attendee to RSVP for the event. Collects availability info for attendee and passes it to "pushToDB" 
- * @param {number} i - Row number of the event in the database 
+ * Displays event information and calls "makeTable12" and "makeTable24" to populate time tables and allow attendee to RSVP for the event. Collects availability info for attendee and passes it to "pushToDB"
+ * @param {number} i - Row number of the event in the database
  * @param {string} name - The name of the attendee
  */
 function showInfo(i, name)
@@ -750,7 +750,7 @@ function showInfo(i, name)
 
 /**
  * Displays events for a specified date as individual buttons (with event overview). Buttons call function "showInfo" on click to display event information.
- * @param {object} form - HTML form element that takes user input for Attendee Name and Event Date 
+ * @param {object} form - HTML form element that takes user input for Attendee Name and Event Date
  */
 function getData(form)
 {
