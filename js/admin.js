@@ -113,7 +113,7 @@ function colorReset(col_num){
   }else if(col_num==40){$("#pm800").css("background-color","#303030"); $("#t2000").css("background-color", "#303030");
   }else if(col_num==41){$("#pm830").css("background-color","#303030"); $("#t2030").css("background-color", "#303030");
   }else if(col_num==42){$("#pm900").css("background-color","#303030"); $("#t2100").css("background-color", "#303030");
-  }else if(col_num==43){$("#pm930").css("background-color","#303030"); $("#2130").css("background-color", "#303030");
+  }else if(col_num==43){$("#pm930").css("background-color","#303030"); $("#t2130").css("background-color", "#303030");
   }else if(col_num==44){$("#pm1000").css("background-color","#303030"); $("#t2200").css("background-color", "#303030");
   }else if(col_num==45){$("#pm1030").css("background-color","#303030"); $("#t2230").css("background-color", "#303030");
   }else if(col_num==46){$("#pm1100").css("background-color","#303030"); $("#t2300").css("background-color", "#303030");
