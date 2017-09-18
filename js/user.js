@@ -1256,6 +1256,8 @@ $(document).ready(function(){
   $("#date_event").click(function()
   {
     $("#name_form").hide();
+    $("#form_replace").hide();
+    $("#time_switch").empty();
     $("#event_list").empty();
     $("#event_list").hide();
     $("#date_form").toggle();
@@ -1269,6 +1271,8 @@ $(document).ready(function(){
   $("#all_event").click(function()
   {
     $("#date_form").hide();
+    $("#form_replace").hide();
+    $("#time_switch").empty();
     $("#event_list").empty();
     $("#event_list").hide();
     $("#name_form").toggle();
