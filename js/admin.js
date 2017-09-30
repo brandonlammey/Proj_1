@@ -556,7 +556,7 @@ function formData(form)
     for(var i=0;i<48;i++){
       colorReset(i);
     }
-    location.reload(true);
+    //location.reload(true);
 
     //removes elements from date array
     let size = date_arr.length;
@@ -564,16 +564,17 @@ function formData(form)
     {
       date_arr.pop;
     }
-    }
+
     //Reload page. FORCE RELOAD (do not reload from cache) is true,
-
     location.reload(true);
-
-    //make admin able to change event_name and admin_name again
     makeTaskBoxVisible();
     document.getElementById('task_name').readOnly = false;
     document.getElementById('admin_name').readOnly = false;
     document.getElementById('event_name').readOnly = false;
+
+    }
+
+
 }
 
 function formDataAndNext(form)
