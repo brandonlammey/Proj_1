@@ -58,6 +58,7 @@
  * At every array index: object{active : boolean bit to denote whether that time interval is going to have an event during it or not
  *                              attendees: Set to organizer's name if the time interval is active, aet to "0" otherwise}
  */
+var taskList = [];
 var time_arr = [];
 for(let i=0; i<48; i++)
 {
@@ -420,14 +421,20 @@ function formData(form)
 
         addOns += time + "=" + JSON.stringify(attendees) + "&";
 
-        //make admin able to change event_name and admin_name again
-        document.getElementById('admin_name').readOnly = false;
-        document.getElementById('event_name').readOnly = false;
     }
     //alert(addOns); //debugging
 
-    var UrlToSend = PageToSendTo + "name=" + JSON.stringify(name) + "&event_name=" + JSON.stringify(ev_name) + "&date=" + JSON.stringify(date) + "&" + addOns;
 
+    var taskAddOns = "";
+    for(var i = 0; i < taskList.length; i++)
+    {
+        taskAddOns += taskList[i] + ", ";
+    }
+    //alert(taskAddOns);
+    //alert(taskList.length);
+
+    var UrlToSend = PageToSendTo + "name=" + JSON.stringify(name) + "&event_name=" + JSON.stringify(ev_name) + "&date=" + JSON.stringify(date) + "&" + addOns + "task_list=" + JSON.stringify(taskAddOns);
+    //alert(UrlToSend);
     //console.log(JSON.stringify(name));
     xmlhttp.open("GET", UrlToSend, false);
     xmlhttp.send();
@@ -435,6 +442,7 @@ function formData(form)
     //////////////////////////////////////////////////////////////////////
     form.reset();
     timeReset();
+    resetTask();
 
     //Reset all time colors
     for(var i=0;i<48;i++){
@@ -443,14 +451,16 @@ function formData(form)
     }
     //Reload page. FORCE RELOAD (do not reload from cache) is true,
     location.reload(true);
+
+    //make admin able to change event_name and admin_name again
+    makeTaskBoxVisible();
+    document.getElementById('task_name').readOnly = false;
+    document.getElementById('admin_name').readOnly = false;
+    document.getElementById('event_name').readOnly = false;
 }
 
 function formDataAndNext(form)
 {
-    //make admin unable to change event_name and admin_name
-    document.getElementById('admin_name').readOnly = true;
-    document.getElementById('event_name').readOnly = true;
-
     let name = form.admin_name.value;
     let ev_name = form.event_name.value;
     let date = form.event_date.value;
@@ -470,6 +480,11 @@ function formDataAndNext(form)
     }
     else
     {
+      //make admin unable to change event_name and admin_name
+      makeTaskBoxHidden();
+      document.getElementById('task_name').readOnly = true;
+      document.getElementById('admin_name').readOnly = true;
+      document.getElementById('event_name').readOnly = true;
     /////////////////////////////////////////////////////////////////////
     //Adapted from code found at https://www.w3schools.com/php/php_ajax_database.asp
     // 9/10/2017 15:25
@@ -662,7 +677,13 @@ function formDataAndNext(form)
     }
     //alert(addOns); //debugging
 
-    var UrlToSend = PageToSendTo + "name=" + JSON.stringify(name) + "&event_name=" + JSON.stringify(ev_name) + "&date=" + JSON.stringify(date) + "&" + addOns;
+    var taskAddOns = "";
+    for(var i = 0; i < taskList.length; i++)
+    {
+        taskAddOns += taskList[i] + ", ";
+    }
+
+    var UrlToSend = PageToSendTo + "name=" + JSON.stringify(name) + "&event_name=" + JSON.stringify(ev_name) + "&date=" + JSON.stringify(date) + "&" + addOns + "task_list=" + JSON.stringify(taskAddOns);
 
     //console.log(JSON.stringify(name));
     xmlhttp.open("GET", UrlToSend, false);
@@ -679,6 +700,48 @@ function formDataAndNext(form)
     }
     //Reload page. FORCE RELOAD (do not reload from cache) is true,
     //location.reload(true);
+}
+
+function makeTaskBoxHidden()
+{
+  //document.getElementById('task_name').style.visibility = "hidden";
+  document.getElementById('task_button').style.visibility = "hidden";
+  //document.getElementById('hint').style.visibility = "hidden";
+  document.getElementById('taskmsg').style.visibility = "hidden";
+  //document.getElementById('task_field').style.visibility = "hidden";
+  document.getElementById('task_name').placeholder = "No longer able to add tasks";
+}
+
+function makeTaskBoxVisible()
+{
+  //document.getElementById('task_name').style.visibility = "visible";
+  document.getElementById('task_button').style.visibility = "visible";
+  //document.getElementById('hint').style.visibility = "visible";
+  document.getElementById('taskmsg').style.visibility = "visible";
+  //document.getElementById('task_field').style.visibility = "visible";
+  document.getElementById('task_name').placeholder = "(not required)";
+}
+
+function addTask()
+{
+  var newTask = document.getElementById("task_name").value;
+  if(newTask != '')
+  {
+    taskList.push(newTask);
+    document.getElementById("taskmsg").innerHTML = "'" + document.getElementById('task_name').value + "' has been added to the task list!";
+    document.getElementById("task_name").value = '';
+  }
+  //console.log(taskList.length);
+}
+
+function resetTask()
+{
+  var size = taskList.length;
+  for(var i; i < size; i++)
+  {
+    taskList.pop();
+  }
+  //console.log(taskList.length);
 }
 
 /**
@@ -1135,9 +1198,11 @@ $(document).ready(function()
             $("#review_table_24").empty();
             $("#event_time_12").hide();
             $("#event_time_24").hide();
+            $("#taskmsg").empty();
+            resetTask();
+            makeTaskBoxVisible();
             $("#event_form").toggle();
         });
-
 
     $("#event_time_12").hide();
     $("#event_time_24").hide();
@@ -1301,6 +1366,9 @@ $(document).ready(function()
             $("#12_review").hide();
             $("#24_review").hide();
             $("#event_form").hide();
+            $("#taskmsg").empty();
+            resetTask();
+            makeTaskBoxVisible();
             $("#review").toggle();
         }
     );

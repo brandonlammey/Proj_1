@@ -61,8 +61,13 @@
             <p id = "event_time_12"></p>
             <p id = "event_time_24"></p>
             <br>
-            <input type = "button" name = "submit" id="submit_button" value = "Add Another Day" onClick = "formDataAndNext(this.form)">
-            <input type = "button" name = "submit" id="submit_button" value = "Submit" onClick = "formData(this.form)">
+            <span id = "hint"><i>NOTE: Tasks can only be added on initial day creation</i></span><br><br>
+            <span id = "task_field">Task Name:</span><input type = "text" id = "task_name" name = "task_name" placeholder="(not required)">
+            <input type = "button" name = "submit" id = "task_button" value = "Add Task" onClick = "addTask()"><br>
+            <span id = "taskmsg"></span>
+            <br><br>
+            <input type = "button" name = "submit" id = "submit_button" value = "Add Another Day" onClick = "formDataAndNext(this.form)">
+            <input type = "button" name = "submit" id = "submit_button" value = "Submit" onClick = "formData(this.form)">
           </form>
         </p>
 
