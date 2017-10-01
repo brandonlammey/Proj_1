@@ -49,9 +49,9 @@
    * Debugging function that prints event detais to the console
    */function printResults()
       {
-            console.log(events_arr); //DEBUGGING
-            console.log(events_arr[0]); //DEBUGGING
-            console.log(events_arr[1]); //DEBUGGING
+            //console.log(events_arr); //DEBUGGING
+            //console.log(events_arr[0]); //DEBUGGING
+            //console.log(events_arr[1]); //DEBUGGING
       });
 }
 /**
