@@ -1229,7 +1229,7 @@ function updateArr(i, j, arr)
 }
 
 /**
- * Defines behavior of various document elements with event handlers and appropriate function calls. Calls "getEventsFromDB" to populate the events array when dicument is ready.
+ * Defines behavior of various document elements with event handlers and appropriate function calls. Calls "getEventsFromDB" to populate the events array when document is ready.
  */
 $(document).ready(function(){
 
