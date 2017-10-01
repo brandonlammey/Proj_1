@@ -536,7 +536,7 @@ function formData(form)
     var taskAddOns = "";
     for(var i = 0; i < taskList.length; i++)
     {
-        taskAddOns += taskList[i] + ".: ";
+        taskAddOns += taskList[i] + ".:";
     }
     //alert(taskAddOns);
     //alert(taskList.length);
@@ -844,7 +844,7 @@ function formDataAndNext(form)
     var taskAddOns = "";
     for(var i = 0; i < taskList.length; i++)
     {
-        taskAddOns += taskList[i] + ".: ";
+        taskAddOns += taskList[i] + ".:";
     }
 
     var UrlToSend = PageToSendTo + "name=" + JSON.stringify(name) + "&event_name=" + JSON.stringify(ev_name) + "&date=" + JSON.stringify(date) + "&" + addOns + "task_list=" + JSON.stringify(taskAddOns);
