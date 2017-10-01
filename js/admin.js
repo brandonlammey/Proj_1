@@ -1306,6 +1306,7 @@ function getData(form)
   let ev_date = "";
   let check = false;
   let row_num = 0;
+  var dateLoc_Arr = [];//used to keep track of days and where they are in the database
   if(name=="" || ev_name=="")
   {
     form.reset();
@@ -1317,6 +1318,7 @@ function getData(form)
     {
       if(name == events_arr[i][1] && ev_name == events_arr[i][2])
       {
+        dateLoc_Arr.push(i);
         row_num = i;
         check = true;
       }
@@ -1331,15 +1333,20 @@ function getData(form)
     }
     else
     {
+
+      
+
+
+
       form.reset();
-      ev_date = events_arr[row_num][3];
+      ev_date = events_arr[dateLoc_Arr[j]][3];
       $("#event_review").append("Event: "+ev_name+"<br><br>");
       $("#event_review").append("Organizer: "+name+"<br><br>");
       $("#event_review").append("Date: "+ev_date);
       $("#12_review").show();
       $("#24_review").show();
-      makeTable12(row_num);
-      makeTable24(row_num);
+      makeTable12(dateLoc_Arr[j]);
+      makeTable24(dateLoc_Arr[j]);
       $("#review_table_24").hide();
     }
   }
