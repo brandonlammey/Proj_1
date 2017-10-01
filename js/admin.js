@@ -11,7 +11,9 @@
    * Array to store information for all events; populated whenever page loads
    */
   var events_arr;
-
+  var date_arr = [];//used to keep track of days that have been entered for the event
+  var daySpanAmount = 1;//keeps track of the number of days an event spans
+  var originalAddOns = ""; //the original times entered for the first day
   /**
  * Fetches events info from database and populates events_arr
  * @param {string} path - file name that event info is obtained from
@@ -51,6 +53,71 @@
             console.log(events_arr[0]); //DEBUGGING
             console.log(events_arr[1]); //DEBUGGING
       });
+}
+/**
+* Checks the events array to see if there is an event of the same admin previously entred
+* @param {string} adminname  - name of the admin
+* @param {string} eventname - name of the event
+* @return {bool} check - if an event of that date exists
+*/
+
+function checkRepeatEvent(adminname, eventname)
+{
+    let check = false;
+
+
+  //  alert("Admin Name:" + adminname );
+  //  alert("Event Name:" + eventname );
+  //  alert("Event Date:" + eventdate );
+  //  alert("Event Date:" + events_arr.length );
+
+    for(let i=0; i<events_arr.length; i++)
+    {
+      if(adminname == events_arr[i][1] && eventname == events_arr[i][2])
+      {
+        //alert("We made it!");
+        check = true;
+      }
+    }
+
+    return check;
+}
+
+
+/**
+* Adds an additional date to the date_arr
+* @param {string} additionalDate  - date
+*/
+function updateDateArr(additionalDate)
+{
+    //alert("Date to add:" + additionalDate);
+
+    date_arr.push(additionalDate);
+}
+
+/**
+* Compares the new date to previous dates and returns true if the event has already been created on that day
+* @param {string} checkDate  - date to be compared to previously entered dates
+* @return {bool} returs true if the event has already been scheduled for that day, false if it hasnt
+*/
+function checkRepeatDateArray(checkDate)
+{
+
+    for(let i =0; i < date_arr.length; i++)
+    {
+
+      //alert("Date at index" + i + " is " +date_arr[i]);//testing
+      //alert("Date to check:" + checkDate);//testing
+
+
+      if(checkDate == date_arr[i])
+      {
+        //alert("Dates Match!");//testing
+        return true;
+      }
+  }
+
+  return false;
 }
 
 /**
@@ -213,6 +280,15 @@ function timeReset()
  */
 function formData(form)
 {
+    let copyTimesCheck = false;
+    let orgDateTime = form.copyTimesCheckHTML.value;
+    //decide if the user has cheked the check times box
+    if(orgDateTime == "Yes")
+    {
+      copyTimesCheck = true;
+      //alert("YES");
+    }
+
     let name = form.admin_name.value;
     let ev_name = form.event_name.value;
     let date = form.event_date.value;
@@ -226,9 +302,26 @@ function formData(form)
             time_arr[i].attendees = name + ", ";
         }
     }
-    if(name=="" || ev_name=="" || date=="" || (timecheck==false))
+
+    if(name== "" || ev_name== "" || orgDateTime == "")
     {
         alert("All fields are mandatory!");
+    }
+    else if(copyTimesCheck == true && daySpanAmount == 1)
+    {
+      alert("An inital day must be created before you can copy it!");
+    }
+    else if(date=="" || ((timecheck == false) && copyTimesCheck == false))
+    {
+        alert("All fields are mandatory!");
+    }
+    else if(checkRepeatDateArray(date) == true)
+    {
+      alert("You can't pick the same date again!");
+    }
+    else if(checkRepeatEvent(name, ev_name) == true)
+    {
+      alert("Someone with your name has already made an event named that!\nChange one of the two");
     }
     else
     {
@@ -420,7 +513,22 @@ function formData(form)
         }
 
         addOns += time + "=" + JSON.stringify(attendees) + "&";
+        //alert(addOns);
 
+        //make admin able to change event_name and admin_name again
+        document.getElementById('admin_name').readOnly = false;
+        document.getElementById('event_name').readOnly = false;
+
+        //use the copied days values
+        if(daySpanAmount == 1)
+        {
+          originalAddOns = addOns;
+        }
+
+        if(copyTimesCheck == true)
+        {
+          addOns = originalAddOns;
+        }
     }
     //alert(addOns); //debugging
 
@@ -440,7 +548,7 @@ function formData(form)
     xmlhttp.send();
     //END ADAPTATION
     //////////////////////////////////////////////////////////////////////
-    form.reset();
+    //form.reset();
     timeReset();
     resetTask();
 
@@ -448,19 +556,42 @@ function formData(form)
     for(var i=0;i<48;i++){
       colorReset(i);
     }
+    //location.reload(true);
+
+    //removes elements from date array
+    let size = date_arr.length;
+    for(let i = 0; i< size; i++)
+    {
+      date_arr.pop;
     }
+
     //Reload page. FORCE RELOAD (do not reload from cache) is true,
     location.reload(true);
-
-    //make admin able to change event_name and admin_name again
     makeTaskBoxVisible();
     document.getElementById('task_name').readOnly = false;
     document.getElementById('admin_name').readOnly = false;
     document.getElementById('event_name').readOnly = false;
+
+    }
+
+
 }
 
 function formDataAndNext(form)
 {
+    //make admin unable to change event_name and admin_name
+    document.getElementById('admin_name').readOnly = true;
+    document.getElementById('event_name').readOnly = true;
+    let copyTimesCheck = false;
+    let orgDateTime = form.copyTimesCheckHTML.value;
+
+    //decide if the user has cheked the check times box
+    //alert(form.copyTimesCheckHTML.value);
+    if(orgDateTime == "Yes")
+    {
+      copyTimesCheck = true;
+      //alert("YES");
+    }
     let name = form.admin_name.value;
     let ev_name = form.event_name.value;
     let date = form.event_date.value;
@@ -474,9 +605,31 @@ function formDataAndNext(form)
             time_arr[i].attendees = name + ", ";
         }
     }
-    if(name=="" || ev_name=="" || date=="" || (timecheck==false))
+
+    //alert(checkRepeatDateArray(date));
+    if(name== "" || ev_name== "" || orgDateTime == "")
     {
         alert("All fields are mandatory!");
+        document.getElementById('admin_name').readOnly = false;
+        document.getElementById('event_name').readOnly = false;
+    }
+    else if(copyTimesCheck == true && daySpanAmount == 1)
+    {
+      alert("An inital day must be created before you can copy it!");
+    }
+    else if(date=="" || ((timecheck == false) && copyTimesCheck == false))
+    {
+        alert("All fields are mandatory!");
+    }
+    else if(checkRepeatDateArray(date) == true)
+    {
+      alert("You can't pick the same date again!");
+    }
+    else if(checkRepeatEvent(name, ev_name) == true)
+    {
+      alert("Someone with your name has already made an event named that!\nChange one of the two");
+      document.getElementById('admin_name').readOnly = false;
+      document.getElementById('event_name').readOnly = false;
     }
     else
     {
@@ -677,6 +830,17 @@ function formDataAndNext(form)
     }
     //alert(addOns); //debugging
 
+
+    if(daySpanAmount == 1)
+    {
+      originalAddOns = addOns;
+    }
+
+    if(copyTimesCheck == true)
+    {
+      addOns = originalAddOns;
+    }
+
     var taskAddOns = "";
     for(var i = 0; i < taskList.length; i++)
     {
@@ -685,6 +849,7 @@ function formDataAndNext(form)
 
     var UrlToSend = PageToSendTo + "name=" + JSON.stringify(name) + "&event_name=" + JSON.stringify(ev_name) + "&date=" + JSON.stringify(date) + "&" + addOns + "task_list=" + JSON.stringify(taskAddOns);
 
+    //alert(UrlToSend);
     //console.log(JSON.stringify(name));
     xmlhttp.open("GET", UrlToSend, false);
     xmlhttp.send();
@@ -697,6 +862,8 @@ function formDataAndNext(form)
     for(var i=0;i<48;i++){
       colorReset(i);
     }
+    updateDateArr(date);
+    daySpanAmount++;
     }
     //Reload page. FORCE RELOAD (do not reload from cache) is true,
     //location.reload(true);
