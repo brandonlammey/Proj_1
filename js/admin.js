@@ -49,9 +49,9 @@
    * Debugging function that prints event detais to the console
    */function printResults()
       {
-            console.log(events_arr); //DEBUGGING
-            console.log(events_arr[0]); //DEBUGGING
-            console.log(events_arr[1]); //DEBUGGING
+            //console.log(events_arr); //DEBUGGING
+            //console.log(events_arr[0]); //DEBUGGING
+            //console.log(events_arr[1]); //DEBUGGING
       });
 }
 /**
@@ -536,7 +536,7 @@ function formData(form)
     var taskAddOns = "";
     for(var i = 0; i < taskList.length; i++)
     {
-        taskAddOns += taskList[i] + ", ";
+        taskAddOns += taskList[i] + ".:";
     }
     //alert(taskAddOns);
     //alert(taskList.length);
@@ -844,7 +844,7 @@ function formDataAndNext(form)
     var taskAddOns = "";
     for(var i = 0; i < taskList.length; i++)
     {
-        taskAddOns += taskList[i] + ", ";
+        taskAddOns += taskList[i] + ".:";
     }
 
     var UrlToSend = PageToSendTo + "name=" + JSON.stringify(name) + "&event_name=" + JSON.stringify(ev_name) + "&date=" + JSON.stringify(date) + "&" + addOns + "task_list=" + JSON.stringify(taskAddOns);
@@ -950,7 +950,7 @@ function makeTable12(n)
   for(let i=4; i<52; i++)
   {
     let att = events_arr[n][i];
-    console.log(att);
+    //console.log(att);
     switch(i)
     {
       case 4:
@@ -1142,7 +1142,7 @@ function makeTable24(n)
   for(let i=4; i<52; i++)
   {
     let att = events_arr[n][i];
-    console.log(att);
+    //console.log(att);
     switch(i)
     {
       case 4:
@@ -1295,6 +1295,37 @@ function makeTable24(n)
   }
 }
 
+function removeReviewTask()
+{
+  document.getElementById("review_tasks").innerHTML = '';
+}
+
+function removeSemis(strList)
+{
+    var list_arr = strList.split(":");
+    //alert(list_arr[0]);
+    return list_arr;
+}
+
+function format4Names(strArr)
+{
+    var taskName = [];
+    var list_arr = [];
+    for(var i = 0; i < strArr.length - 1; i++)
+    {
+      taskName = strArr[i].split(".");
+      if(taskName[1] != '')
+      {
+        list_arr[i] = "<span id = 'taskee'>" + taskName[1] + "</span> will do task, '<span id = 'task'>" + taskName[0] + "</span>'<br>";
+      }
+      else
+      {
+        list_arr[i] = "No one signed up to do task, '" + taskName[0] + "'<br>";
+      }
+    }
+    return list_arr;
+}
+
 /**
  * Locates the given event and organizer combo in the database (displays appropriate error message in case of failure), and displays event information
  * @param {object} form - HTML form element that takes input for Organizer Name, and Event Name
@@ -1304,6 +1335,7 @@ function getData(form)
   let name = form.review_admin_name.value;
   let ev_name = form.review_event_name.value;
   let ev_date = "";
+  //let ev_tasks = ""
   let check = false;
   let row_num = 0;
   var dateLoc_Arr = [];//used to keep track of days and where they are in the database
@@ -1334,7 +1366,7 @@ function getData(form)
     else
     {
 
-      
+
 
 
 
@@ -1343,11 +1375,20 @@ function getData(form)
       $("#event_review").append("Event: "+ev_name+"<br><br>");
       $("#event_review").append("Organizer: "+name+"<br><br>");
       $("#event_review").append("Date: "+ev_date);
+      //$("#event_review").append("Date: "+ev_tasks);
       $("#12_review").show();
       $("#24_review").show();
       makeTable12(dateLoc_Arr[j]);
       makeTable24(dateLoc_Arr[j]);
       $("#review_table_24").hide();
+      $("#task_list").show();
+      var taskFormat = removeSemis(events_arr[row_num][52]);
+      taskFormat = format4Names(taskFormat);
+      //alert(taskFormat);
+      for(var i = 0; i < taskFormat.length; i++)
+      {
+        document.getElementById("review_tasks").innerHTML += taskFormat[i];
+      }
     }
   }
 }
@@ -1375,6 +1416,8 @@ $(document).ready(function()
             $("#taskmsg").empty();
             resetTask();
             makeTaskBoxVisible();
+            $("#task_list").hide();
+            removeReviewTask();
             $("#event_form").toggle();
         });
 
@@ -1543,6 +1586,8 @@ $(document).ready(function()
             $("#taskmsg").empty();
             resetTask();
             makeTaskBoxVisible();
+            $("#task_list").hide();
+            removeReviewTask();
             $("#review").toggle();
         }
     );
@@ -1555,6 +1600,8 @@ $(document).ready(function()
           $("#24_review").hide();
           $("#review_table_12").empty();
           $("#review_table_24").empty();
+          $("#task_list").hide();
+          removeReviewTask();
           getData(document.getElementById("review"));
         }
     );
