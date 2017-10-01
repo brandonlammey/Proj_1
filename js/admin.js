@@ -14,6 +14,8 @@
   var date_arr = [];//used to keep track of days that have been entered for the event
   var daySpanAmount = 1;//keeps track of the number of days an event spans
   var originalAddOns = ""; //the original times entered for the first day
+  var dateLoc_Arr = [];//used to keep track of days and where they are in the database
+
   /**
  * Fetches events info from database and populates events_arr
  * @param {string} path - file name that event info is obtained from
@@ -83,6 +85,12 @@ function checkRepeatEvent(adminname, eventname)
     return check;
 }
 
+
+
+function finishViewing()
+{
+  location.reload();
+}
 
 /**
 * Adds an additional date to the date_arr
@@ -295,7 +303,7 @@ function formData(form)
     let timecheck = false;
     for(let i=0; i<48; i++)
     {
-        console.log(time_arr[i].active);
+        //console.log(time_arr[i].active);
         if(time_arr[i].active)
         {
             timecheck = true;
@@ -598,7 +606,7 @@ function formDataAndNext(form)
     let timecheck = false;
     for(let i=0; i<48; i++)
     {
-        console.log(time_arr[i].active);
+        //console.log(time_arr[i].active);
         if(time_arr[i].active)
         {
             timecheck = true;
@@ -1338,7 +1346,6 @@ function getData(form)
   //let ev_tasks = ""
   let check = false;
   let row_num = 0;
-  var dateLoc_Arr = [];//used to keep track of days and where they are in the database
   if(name=="" || ev_name=="")
   {
     form.reset();
@@ -1351,6 +1358,7 @@ function getData(form)
       if(name == events_arr[i][1] && ev_name == events_arr[i][2])
       {
         dateLoc_Arr.push(i);
+        //console.log(dateLoc_Arr);
         row_num = i;
         check = true;
       }
@@ -1359,37 +1367,94 @@ function getData(form)
     {
       form.reset();
       $("#event_review").empty();
+      $("#date_review").empty();
       $("#review_table_12").empty();
       $("#review_table_24").empty();
       alert("Could not find event and/or name. Please verify input is valid");
     }
     else
     {
-
-
-
-
-
       form.reset();
-      ev_date = events_arr[dateLoc_Arr[j]][3];
+      $("#review").hide();
       $("#event_review").append("Event: "+ev_name+"<br><br>");
       $("#event_review").append("Organizer: "+name+"<br><br>");
-      $("#event_review").append("Date: "+ev_date);
-      //$("#event_review").append("Date: "+ev_tasks);
-      $("#12_review").show();
-      $("#24_review").show();
-      makeTable12(dateLoc_Arr[j]);
-      makeTable24(dateLoc_Arr[j]);
-      $("#review_table_24").hide();
-      $("#task_list").show();
-      var taskFormat = removeSemis(events_arr[row_num][52]);
-      taskFormat = format4Names(taskFormat);
-      //alert(taskFormat);
-      for(var i = 0; i < taskFormat.length; i++)
+      $("#event_review").append("<u>Date Options<u><br>");
+
+      for(let j=0; j<dateLoc_Arr.length; j++)
       {
-        document.getElementById("review_tasks").innerHTML += taskFormat[i];
+        ev_date = events_arr[dateLoc_Arr[j]][3];
+        $("#event_review").append(ev_date + "<br>");
       }
+      document.getElementById('review_admin_name').readOnly = true;
+      document.getElementById('review_event_name').readOnly = true;
+
+
+      $("#date_review").append("Select a date from the dates listed:<br>");
+      //$("#event_review").append("<button type = 'button' class='date_display' id = 'date_pick' hidden>Test Button</button>");
+
+      $("#review_date_selection").show();
+
+
     }
+  }
+}
+
+function getDate(form)
+{
+  let seldate = form.review_date.value;
+  let handPickedDate = 0;
+  let check = false;
+
+  //console.log(dateLoc_Arr.length);
+
+  for(let j=0; j<dateLoc_Arr.length; j++)
+  {
+    if(events_arr[dateLoc_Arr[j]][3] == seldate)
+    {
+      handPickedDate = j;
+      check = true;
+    }
+
+  }
+
+  //console.log(handPickedDate);
+  //console.log(dateLoc_Arr[handPickedDate]);
+
+  document.getElementById('review_date').readOnly = true;
+
+
+  //alert(form.review_date.value);
+
+  //alert(dateLoc_Arr[handPickedDate]);
+
+  if(seldate == "")
+  {
+    alert("You must enter a date!");
+    document.getElementById('review_date').readOnly = false;
+  }
+  else if(check == false)
+  {
+    alert("You must enter a date option!");
+    document.getElementById('review_date').readOnly = false;
+  }
+  else
+  {
+    var row = dateLoc_Arr[handPickedDate];
+    $("#12_review").show();
+    $("#24_review").show();
+    makeTable12(row);
+    makeTable24(row);
+    $("#review_table_24").hide();
+    $("#task_list").show();
+    var taskFormat = removeSemis(events_arr[row][52]);
+    taskFormat = format4Names(taskFormat);
+    //alert(taskFormat);
+    for(var i = 0; i < taskFormat.length; i++)
+    {
+      document.getElementById("review_tasks").innerHTML += taskFormat[i];
+    }
+    $("#refreshButton").show();
+
   }
 }
 
@@ -1407,6 +1472,7 @@ $(document).ready(function()
             timeReset();
             $("#review").hide();
             $("#event_review").empty();
+            $("#date_review").empty();
             $("#12_review").hide();
             $("#24_review").hide();
             $("#review_table_12").empty();
@@ -1578,6 +1644,7 @@ $(document).ready(function()
         function()
         {
             $("#event_review").empty();
+            $("#date_review").empty();
             $("#review_table_12").empty();
             $("#review_table_24").empty();
             $("#12_review").hide();
@@ -1596,13 +1663,31 @@ $(document).ready(function()
         function()
         {
           $("#event_review").empty();
+          $("#date_review").empty();
+          //$("#12_review").hide();
+          //$("#24_review").hide();
+          //$("#review_table_12").empty();
+          //$("#review_table_24").empty();
+          //$("#task_list").hide();
+
+          //removeReviewTask();
+          getData(document.getElementById("review"));
+        }
+    );
+
+    $("#review_date_submit").click(
+        function()
+        {
+          //$("#event_review").empty();
+          //$("#date_review").empty();
           $("#12_review").hide();
           $("#24_review").hide();
           $("#review_table_12").empty();
           $("#review_table_24").empty();
           $("#task_list").hide();
+
           removeReviewTask();
-          getData(document.getElementById("review"));
+          getDate(document.getElementById("review_date_selection"));
         }
     );
 

@@ -88,14 +88,26 @@
 
         <p id = "review_details" hidden>
           <p id = "event_review"></p>
+          <p id = "date_review"></p>
+
+          <form name = "review_date_selection" id = "review_date_selection" hidden>
+            <input type = "date" id = "review_date" name = "review_date">
+            <input type = "button" id = "review_date_submit" name = "review_date_submit" value = "Submit">
+          </form>
+
+          <br><br>
           <button type = "button" class="rev_button_format" id = "12_review" hidden>12 Hour Format</button>
           <button type = "button" class="rev_button_format" id = "24_review" hidden>24 Hour Format</button>
 
           <p id = "review_table_12"></p>
           <p id = "review_table_24"></p>
+          <br>
+          <br>
           <u id = "task_list" hidden>Task List for this Event:<br></u>
           <span id = "review_tasks"></span>
-        </p>
+          <br>
+          <button id = "refreshButton" onclick = "finishViewing()" hidden>Done Viewing!</button>
+         </p>
       </center>
 
     </div>
