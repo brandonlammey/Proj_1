@@ -1316,7 +1316,7 @@ function format4Names(strArr)
       taskName = strArr[i].split(".");
       if(taskName[1] != '')
       {
-        list_arr[i] = taskName[1] + " will do task, '" + taskName[0] + "'<br>";
+        list_arr[i] = "<span id = 'taskee'>" + taskName[1] + "</span> will do task, '<span id = 'task'>" + taskName[0] + "</span>'<br>";
       }
       else
       {

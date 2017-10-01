@@ -24,6 +24,12 @@ body {
   color: #9D63AD;
   letter-spacing: 0.1em;
 }
+
+.newgroupname{
+  color: #3FEA6A;
+  letter-spacing: 0.1em;
+}
+
 .mainone{
   background-color: #303030;
   color: white;
@@ -195,4 +201,12 @@ input[type=text]{
 }
 #event_list button:hover{
   background-color: #80C468;
+}
+
+span #taskee {
+  color: #3FEA6A;
+}
+
+span #task {
+  color: #EA473F;
 }
