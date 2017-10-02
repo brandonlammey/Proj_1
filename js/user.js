@@ -663,6 +663,7 @@ function makeTable24(n, tarr)
  */
 function showAllEvents(form)
 {
+  $("#event_list").empty();
   let name = form.name.value;
   if(name=="")
   {
