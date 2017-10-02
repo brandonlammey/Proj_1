@@ -670,24 +670,51 @@ function showAllEvents(form)
   }
   else
   {
-    for(let i=0; i<events_arr.length; i++){
-      if(i==0){
+    for(let i=0; i<events_arr.length; i++)
+    {
+      if(i==0)
+      {
         $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
-        .click(function(){ showInfo(i,name);})
+        .click(function(){ showAllDates(i,name);})
         .appendTo(document.getElementById("event_list"));
         $("#event_list").show();
       }
-      else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1]){
+      else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1])
+      {
         $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
-        .click(function(){ showInfo(i,name);})
+        .click(function(){ showAllDates(i,name);})
         .appendTo(document.getElementById("event_list"));
         $("#event_list").show();
       }
 
     }
+
   }
+}
+
+/**
+ * Emptys current event list of all events
+ * Displays dates of an event in the databse as individual buttons. 
+ * Buttons call function "showInfo" on click to display event information.
+ * @param {object} form - HTML form element that takes user input for Attendee Name
+ */
+function showAllDates(i, name)
+{
+
+  $("#event_list").empty();
 
 
+  for(let j=i; j<events_arr.length; j++)
+  {
+    if(events_arr[j][1] == events_arr[i][1])
+    {
+      $("<button type='button'> <b>Date</b>:<br>"+events_arr[j][3]+"</button>")
+      .click(function(){ showInfo(j,name);})
+      .appendTo(document.getElementById("event_list"));
+      $("#event_list").show();
+    }
+  }
+}
 
 
 
@@ -706,7 +733,7 @@ function showAllEvents(form)
         $("#event_list").show();
     }
   }*/
-}
+
 
 /**
  * Displays event information and calls "makeTable12" and "makeTable24" to populate time tables and allow attendee to RSVP for the event. Collects availability info for attendee and passes it to "pushToDB"
