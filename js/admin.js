@@ -11,6 +11,8 @@
    * Array to store information for all events; populated whenever page loads
    */
   var events_arr;
+  var lockBool = false;
+  var taskLockBool = false;
   var date_arr = [];//used to keep track of days that have been entered for the event
   var daySpanAmount = 1;//keeps track of the number of days an event spans
   var originalAddOns = ""; //the original times entered for the first day
@@ -598,6 +600,8 @@ function unlockElements()
   document.getElementById("lock3").innerHTML += "";
   document.getElementById("lock4").innerHTML += "";
   document.getElementById("lock5").innerHTML += "";
+  lockBool = false;
+  taskLockBool = false;
 }
 
 function lockElements()
@@ -609,11 +613,15 @@ function lockElements()
   document.getElementById("review_event").disabled = true;
   document.getElementById('ret_home').disabled=true;
   document.getElementById('ret_home').removeAttribute('href');
-  document.getElementById("lock0").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
-  document.getElementById("lock1").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
-  document.getElementById("lock2").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
-  document.getElementById("lock3").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
-  document.getElementById("lock4").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+  if(lockBool == false)
+  {
+    document.getElementById("lock0").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+    document.getElementById("lock1").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+    document.getElementById("lock2").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+    document.getElementById("lock3").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+    document.getElementById("lock4").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+    lockBool = true;
+  }
 }
 
 function formDataAndNext(form)
@@ -673,7 +681,11 @@ function formDataAndNext(form)
       //make admin unable to change event_name and admin_name
       makeTaskBoxHidden();
       document.getElementById('task_name').readOnly = true;
-      document.getElementById("lock5").innerHTML += "<img src = 'lock-icon.png' width = '20px' height = '20px'>";
+      if(taskLockBool == false)
+      {
+        document.getElementById("lock5").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+        taskLockBool = true;
+      }
       document.getElementById('admin_name').readOnly = true;
       document.getElementById('event_name').readOnly = true;
     /////////////////////////////////////////////////////////////////////
@@ -1472,9 +1484,6 @@ function getDate(form)
 
   //console.log(handPickedDate);
   //console.log(dateLoc_Arr[handPickedDate]);
-
-  document.getElementById('review_date').readOnly = true;
-
 
   //alert(form.review_date.value);
 
