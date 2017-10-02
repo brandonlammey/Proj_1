@@ -89,6 +89,7 @@ function checkRepeatEvent(adminname, eventname)
 
 function finishViewing()
 {
+  unlockElements();
   location.reload();
 }
 
@@ -106,7 +107,7 @@ function updateDateArr(additionalDate)
 /**
 * Compares the new date to previous dates and returns true if the event has already been created on that day
 * @param {string} checkDate  - date to be compared to previously entered dates
-* @return {bool} returs true if the event has already been scheduled for that day, false if it hasnt
+* @return {bool} returns true if the event has already been scheduled for that day, false if it hasn't
 */
 function checkRepeatDateArray(checkDate)
 {
@@ -576,20 +577,48 @@ function formData(form)
     //Reload page. FORCE RELOAD (do not reload from cache) is true,
     location.reload(true);
     makeTaskBoxVisible();
-    document.getElementById('task_name').readOnly = false;
-    document.getElementById('admin_name').readOnly = false;
-    document.getElementById('event_name').readOnly = false;
+    unlockElements();
 
     }
 
 
 }
 
+function unlockElements()
+{
+  document.getElementById('task_name').readOnly = false;
+  document.getElementById('admin_name').readOnly = false;
+  document.getElementById('event_name').readOnly = false;
+  document.getElementById("create_event").disabled = false;
+  document.getElementById("review_event").disabled = false;
+  document.getElementById('ret_home').setAttribute("href","../");
+  document.getElementById("lock0").innerHTML += "";
+  document.getElementById("lock1").innerHTML += "";
+  document.getElementById("lock2").innerHTML += "";
+  document.getElementById("lock3").innerHTML += "";
+  document.getElementById("lock4").innerHTML += "";
+  document.getElementById("lock5").innerHTML += "";
+}
+
+function lockElements()
+{
+  //make admin unable to change event_name and admin_name
+  document.getElementById('admin_name').readOnly = true;
+  document.getElementById('event_name').readOnly = true;
+  document.getElementById("create_event").disabled = true;
+  document.getElementById("review_event").disabled = true;
+  document.getElementById('ret_home').disabled=true;
+  document.getElementById('ret_home').removeAttribute('href');
+  document.getElementById("lock0").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+  document.getElementById("lock1").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+  document.getElementById("lock2").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+  document.getElementById("lock3").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+  document.getElementById("lock4").innerHTML += "<img src = 'images/lock-icon.png' width = '20px' height = '20px'>";
+}
+
 function formDataAndNext(form)
 {
-    //make admin unable to change event_name and admin_name
-    document.getElementById('admin_name').readOnly = true;
-    document.getElementById('event_name').readOnly = true;
+    lockElements();
     let copyTimesCheck = false;
     let orgDateTime = form.copyTimesCheckHTML.value;
 
@@ -644,6 +673,7 @@ function formDataAndNext(form)
       //make admin unable to change event_name and admin_name
       makeTaskBoxHidden();
       document.getElementById('task_name').readOnly = true;
+      document.getElementById("lock5").innerHTML += "<img src = 'lock-icon.png' width = '20px' height = '20px'>";
       document.getElementById('admin_name').readOnly = true;
       document.getElementById('event_name').readOnly = true;
     /////////////////////////////////////////////////////////////////////
@@ -877,6 +907,9 @@ function formDataAndNext(form)
     //location.reload(true);
 }
 
+/**
+ * Makes hidden elements regarding task functionality hidden when called.
+ */
 function makeTaskBoxHidden()
 {
   //document.getElementById('task_name').style.visibility = "hidden";
@@ -887,6 +920,9 @@ function makeTaskBoxHidden()
   document.getElementById('task_name').placeholder = "No longer able to add tasks";
 }
 
+/**
+ * Makes hidden elements regarding task functionality visible when called.
+ */
 function makeTaskBoxVisible()
 {
   //document.getElementById('task_name').style.visibility = "visible";
@@ -897,6 +933,9 @@ function makeTaskBoxVisible()
   document.getElementById('task_name').placeholder = "(not required)";
 }
 
+/**
+ * Adds an admin created task to an array when called.
+ */
 function addTask()
 {
   var newTask = document.getElementById("task_name").value;
@@ -909,6 +948,9 @@ function addTask()
   //console.log(taskList.length);
 }
 
+/**
+ * Removes all tasks from an array when called.
+ */
 function resetTask()
 {
   var size = taskList.length;
@@ -1308,6 +1350,11 @@ function removeReviewTask()
   document.getElementById("review_tasks").innerHTML = '';
 }
 
+/**
+ * Parses a string and splits it at ':'. Each section is then placed in a seperate part of an array.
+ * @param {string} strList - String that is formated like 'task_name.person_name:task_name.person_name:' ...
+ * @return {array} list_arr - a list array that has a task name and person name in each element.
+ */
 function removeSemis(strList)
 {
     var list_arr = strList.split(":");
@@ -1315,6 +1362,12 @@ function removeSemis(strList)
     return list_arr;
 }
 
+/**
+ * Parses an array of strings and splits it at '.' to seperate the task name and person completing the task (if any).
+ * It then adds the task name and person name to an array, then returns that array.
+ * @param {array} strArr - Array that has Task name . Person name in each element.
+ * @return {array} list_arr - a list array that has who is doing what task (If any).
+ */
 function format4Names(strArr)
 {
     var taskName = [];
@@ -1680,6 +1733,7 @@ $(document).ready(function()
         {
           //$("#event_review").empty();
           //$("#date_review").empty();
+          lockElements();
           $("#12_review").hide();
           $("#24_review").hide();
           $("#review_table_12").empty();

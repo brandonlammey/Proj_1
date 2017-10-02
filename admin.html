@@ -22,6 +22,7 @@
   <div class="mainwrap">
     <div class="mainone">
     <br><a id="ret_home" href = "../" style = "color:white">Back To Home</a>
+    <span id = "lock2"></span>
       <center>
         <br>
         <h1> Admin Event Planner </h1>
@@ -34,8 +35,8 @@
     <div class="maintwo">
       <br><br>
       <p id = "Events"></p>
-      <button type="button" id="create_event" class="side_menu">Create New Event</button>
-      <button type="button" id="review_event" class="side_menu">Review Event</button>
+      <button type="button" id="create_event" class="side_menu">Create New Event<span id = "lock3"></span></button>
+      <button type="button" id="review_event" class="side_menu">Review Event<span id = "lock4"></span></button>
       <br>
     </div>
     <!-- Bulk of middle page with text boxes and buttons -->
@@ -46,8 +47,10 @@
         <p hidden>
           <form name = "event_details" id="event_form" action = "" method = "GET" hidden>
             User Name: <input type = "text" id = "admin_name" name = "admin_name" placeholder="(required)">
+            <span id = "lock0"></span>
             <br><br>
             Event Name: <input type = "text" id = "event_name" name = "event_name" placeholder="(required)">
+            <span id = "lock1"></span>
             <br><br>
             Date: <input type = "date" id = "datepicker" name = "event_date">
             <br><br>
@@ -68,6 +71,7 @@
             <br>
             <span id = "hint"><i>NOTE: Tasks can only be added on initial day creation</i></span><br><br>
             <span id = "task_field">Task Name:</span><input type = "text" id = "task_name" name = "task_name" placeholder="(not required)">
+            <span id = "lock5"></span>
             <input type = "button" name = "submit" id = "task_button" value = "Add Task" onClick = "addTask()"><br>
             <span id = "taskmsg"></span>
             <br><br>
