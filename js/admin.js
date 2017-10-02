@@ -91,6 +91,7 @@ function checkRepeatEvent(adminname, eventname)
 
 function finishViewing()
 {
+  document.getElementById("review_date").value = '';
   unlockElements();
   location.reload();
 }
