@@ -58,13 +58,13 @@
             //console.log(events_arr[1]); //DEBUGGING
       });
 }
+
 /**
-* Checks the events array to see if there is an event of the same admin previously entred
+* Checks the events array to see if there is an event of the same admin previously entered
 * @param {string} adminname  - name of the admin
 * @param {string} eventname - name of the event
 * @return {bool} check - if an event of that date exists
 */
-
 function checkRepeatEvent(adminname, eventname)
 {
     let check = false;
@@ -87,8 +87,9 @@ function checkRepeatEvent(adminname, eventname)
     return check;
 }
 
-
-
+/**
+* Resets the review page and then reloads the page.
+*/
 function finishViewing()
 {
   document.getElementById("review_date").value = '';
@@ -287,7 +288,7 @@ function timeReset()
 }
 
 /**
- * Collects input from form elements and the time table buttons and sends it to the database.
+ * Collects input from form elements and the time table buttons and sends it to the database. This is used when the "Submit" button is pressed.
  * @param {object} form - HTML form element that takes user input for Organizer Name, Event Name, Event Date, and Event Times
  */
 function formData(form)
@@ -544,7 +545,6 @@ function formData(form)
     }
     //alert(addOns); //debugging
 
-
     var taskAddOns = "";
     for(var i = 0; i < taskList.length; i++)
     {
@@ -583,10 +583,11 @@ function formData(form)
     unlockElements();
 
     }
-
-
 }
 
+/**
+* Unlocks certain elements to be interacted with. (Allow input in fields and clickable links/buttons)
+*/
 function unlockElements()
 {
   document.getElementById('task_name').readOnly = false;
@@ -605,6 +606,9 @@ function unlockElements()
   taskLockBool = false;
 }
 
+/**
+* Locks certain elements of the page. (Denies input in fields and removes option to click certain links/buttons)
+*/
 function lockElements()
 {
   //make admin unable to change event_name and admin_name
@@ -625,6 +629,10 @@ function lockElements()
   }
 }
 
+/**
+ * Collects input from form elements and the time table buttons and sends it to the database. This is used for adding more dates.
+ * @param {object} form - HTML form element that takes user input for Organizer Name, Event Name, Event Date, and Event Times
+ */
 function formDataAndNext(form)
 {
     lockElements();
@@ -881,7 +889,6 @@ function formDataAndNext(form)
     }
     //alert(addOns); //debugging
 
-
     if(daySpanAmount == 1)
     {
       originalAddOns = addOns;
@@ -892,6 +899,7 @@ function formDataAndNext(form)
       addOns = originalAddOns;
     }
 
+    //takes tasks from the task list array and adds them to a string
     var taskAddOns = "";
     for(var i = 0; i < taskList.length; i++)
     {
@@ -1358,6 +1366,9 @@ function makeTable24(n)
   }
 }
 
+/**
+ * Resets the task list on the review page when called.
+*/
 function removeReviewTask()
 {
   document.getElementById("review_tasks").innerHTML = '';
@@ -1454,13 +1465,10 @@ function getData(form)
       document.getElementById('review_admin_name').readOnly = true;
       document.getElementById('review_event_name').readOnly = true;
 
-
       $("#date_review").append("Select a date from the dates listed:<br>");
       //$("#event_review").append("<button type = 'button' class='date_display' id = 'date_pick' hidden>Test Button</button>");
 
       $("#review_date_selection").show();
-
-
     }
   }
 }
@@ -1502,6 +1510,7 @@ function getDate(form)
   }
   else
   {
+    lockElements();
     var row = dateLoc_Arr[handPickedDate];
     $("#12_review").show();
     $("#24_review").show();
@@ -1743,7 +1752,7 @@ $(document).ready(function()
         {
           //$("#event_review").empty();
           //$("#date_review").empty();
-          lockElements();
+          //lockElements();
           $("#12_review").hide();
           $("#24_review").hide();
           $("#review_table_12").empty();
