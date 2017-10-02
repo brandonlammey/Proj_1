@@ -670,6 +670,29 @@ function showAllEvents(form)
   }
   else
   {
+    for(let i=0; i<events_arr.length; i++){
+      if(i==0){
+        $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
+        .click(function(){ showInfo(i,name);})
+        .appendTo(document.getElementById("event_list"));
+        $("#event_list").show();
+      }
+      else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1]){
+        $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
+        .click(function(){ showInfo(i,name);})
+        .appendTo(document.getElementById("event_list"));
+        $("#event_list").show();
+      }
+
+    }
+  }
+
+
+
+
+
+  /*else
+  {
     form.reset();
     $("#name_form").hide();
     $("#form_replace").show();
@@ -682,7 +705,7 @@ function showAllEvents(form)
         .appendTo(document.getElementById("event_list"));
         $("#event_list").show();
     }
-  }
+  }*/
 }
 
 /**
@@ -1237,11 +1260,12 @@ $(document).ready(function(){
    * Prints the info obtained from the path file to the console for debugging
    */function printResults()
   {
-    console.log(events_arr.length); //DEBUGGING
-    console.log(events_arr[0]); //DEBUGGING
-    console.log(events_arr[1]); //DEBUGGING
-    console.log(events_arr[1][1]);
-    console.log(events_arr.length);
+    //console.log(events_arr.length); //DEBUGGING
+    //console.log(events_arr[0]); //DEBUGGING
+    //console.log(events_arr[1]); //DEBUGGING
+    //console.log(events_arr[1][1]);
+    //console.log(events_arr.length);
+
   });
 
   $("#organizer_error").hide();
