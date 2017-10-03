@@ -50,7 +50,6 @@
       view events, and expand events-->
       <div class="maintwo">
         <br><br>
-        <button id="date_event" class="side_menu">Search Events by Date</button>
         <button id="all_event" class="side_menu">See all Events</button>
 
         <br>
@@ -75,9 +74,15 @@
         </p>
 
         <form id="name_form" hidden>
+        <div id=namePortion>
         Name: &nbsp;<input type="text" id="name" name="name" placeholder="(required)"><br><br>
+        </div>
         <input type = "button" id = "name_submit" value = "Submit">
         </form>
+
+        <!--<h3 id="chooseEvent"> Choose an Event: </h3>-->
+        <h3 class="chooseEvent" id="chooseEvent"></h3>
+        <h3 class="chooseDate" id="chooseDate"></h3>
 
         <p id = "form_replace">Continue viewing events or <a href = "../user.html" style = "color:white">CLICK HERE</a> to go back</p>
 

@@ -43,8 +43,9 @@ function getEventsFromDB(path, callback)
  * @param {string} creator_name - The name of the event organizer
  * @param {string} event_name - The name of the event
  * @param {Array} time_array - An array with the times the attendee can make it to the event
+ * @param {string} date -
  */
-function pushToDB(user_name, creator_name, event_name, time_array)
+function pushToDB(user_name, creator_name, event_name, time_array, date)
 {
   //alert(user_name + creator_name + event_name + time_array);
   var request2 = new XMLHttpRequest();
@@ -71,6 +72,8 @@ function pushToDB(user_name, creator_name, event_name, time_array)
     //alert(user_name);
     //alert(JSON.stringify(user_name));
 
+
+    //HERE
     var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&time_array=" + json + "&";
     console.log(urlToSendTo2);
     request2.open("GET", urlToSendTo2, true);
@@ -668,6 +671,8 @@ function showAllEvents(form)
   if(name=="")
   {
     alert("All fields are mandatory");
+    document.getElementById("chooseEvent").style.visibility="hidden";
+    $("#name_form").hide();
   }
   else
   {
@@ -712,6 +717,14 @@ function showAllDates(i, name)
       $("<button type='button'> <b>Date</b>:<br>"+events_arr[j][3]+"</button>")
       .click(function(){ showInfo(j,name);})
       .appendTo(document.getElementById("event_list"));
+      document.getElementById("chooseEvent").style.visibility="hidden";
+      document.getElementById("chooseDate").style.visibility="visible";
+      document.querySelector('.chooseDate').innerHTML = 'Choose a date for ' + events_arr[j][2] + ':';
+      document.getElementById("name_submit").style.visibility="visible";
+      $('.chooseDate').html('Choose a date for '+ events_arr[j][2] + ': \n');
+      document.getElementById('name_submit').value = "Go back to All Events";
+      $("#name_form").show();
+
       $("#event_list").show();
     }
   }
@@ -788,7 +801,7 @@ function showInfo(i, name)
 
     $("#time_submit").html($("<button type = 'button'>Submit</button>").click(function()
       {
-        pushToDB(name, events_arr[i][1], events_arr[i][2], time_arr);
+        pushToDB(name, events_arr[i][1], events_arr[i][2], time_arr, events_arr[i][3]); //NOTE
         $("#user_table_12").empty().hide();
         $("#user_table_24").empty().hide();
         $("#time_switch").empty();
@@ -1288,6 +1301,7 @@ $(document).ready(function(){
    * Prints the info obtained from the path file to the console for debugging
    */function printResults()
   {
+    //document.getElementById("chooseEvent").style.visibility="hidden";
     //console.log(events_arr.length); //DEBUGGING
     //console.log(events_arr[0]); //DEBUGGING
     //console.log(events_arr[1]); //DEBUGGING
@@ -1304,6 +1318,7 @@ $(document).ready(function(){
   $("#event_list").empty();
   $("#event_info").empty();
   $("#event_time").hide();
+  $("#chooseForm").hide();
 
   $("#date_event").click(function()
   {
@@ -1334,13 +1349,37 @@ $(document).ready(function(){
     $("#user_table_24").empty();
     $("#time_submit").empty();
     $("#event_time").hide();
+    //Hides:
+    document.getElementById("chooseEvent").style.visibility="hidden";
+    document.getElementById("chooseDate").style.visibility="hidden";
+    document.getElementById("namePortion").style.visibility="";
+
+    document.getElementById('name_submit').value = "Submit";
   });
 
-  $("#name_submit").click(function(){showAllEvents(document.getElementById("name_form"));});
+  $("#name_submit").click(function()
+  {
+    //document.getElementById("nameForm").style.display="none";
+    $("#name_form").hide();
+    document.querySelector('.chooseEvent').innerHTML = 'Choose an Event:';
+    $('.chooseEvent').html('Choose an Event:');
+    document.getElementById("chooseEvent").style.visibility="visible";
+    showAllEvents(document.getElementById("name_form"));
+    document.getElementById("chooseDate").style.visibility="hidden";
+    document.getElementById("namePortion").style.visibility="hidden";
+
+    $("#time_switch").empty();
+    $("#event_info").empty();
+    $("#user_table_12").empty();
+    $("#user_table_24").empty();
+    $("#time_submit").empty();
+    $("#event_time").hide();
+  });
 
   $("#date_submit").click(
     function()
     {
+      console.log("Here!");
       $("#event_list").empty();
       getData(document.getElementById("date_form"));
     }
