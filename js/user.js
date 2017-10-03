@@ -670,7 +670,7 @@ function showAllEvents(form)
   if(name=="")
   {
     alert("All fields are mandatory");
-    document.getElementById("chooseEvent").style.visibility="hidden";
+    $("#chooseEvent").hide();
     $("#name_form").hide();
   }
   else
@@ -716,10 +716,11 @@ function showAllDates(i, name)
       $("<button type='button'> <b>Date</b>:<br>"+events_arr[j][3]+"</button>")
       .click(function(){ showInfo(j,name);})
       .appendTo(document.getElementById("event_list"));
-      document.getElementById("chooseEvent").style.visibility="hidden";
-      document.getElementById("chooseDate").style.visibility="visible";
+      $("#chooseEvent").hide();
+      $("#chooseDate").show();
       document.querySelector('.chooseDate').innerHTML = 'Choose a date for ' + events_arr[j][2] + ':';
-      document.getElementById("name_submit").style.visibility="visible";
+      //document.getElementById("name_submit").style.visibility="visible";
+      $("#name_submit").show();
       $('.chooseDate').html('Choose a date for '+ events_arr[j][2] + ': \n');
       document.getElementById('name_submit').value = "Go back to All Events";
       $("#name_form").show();
@@ -1349,23 +1350,22 @@ $(document).ready(function(){
     $("#time_submit").empty();
     $("#event_time").hide();
     //Hides:
-    document.getElementById("chooseEvent").style.visibility="hidden";
-    document.getElementById("chooseDate").style.visibility="hidden";
-    document.getElementById("namePortion").style.visibility="";
+    $("#chooseEvent").hide();
+    $("#chooseDate").hide();
+    $("#namePortion").show();
 
     document.getElementById('name_submit').value = "Submit";
   });
 
   $("#name_submit").click(function()
   {
-    //document.getElementById("nameForm").style.display="none";
     $("#name_form").hide();
     document.querySelector('.chooseEvent').innerHTML = 'Choose an Event:';
     $('.chooseEvent').html('Choose an Event:');
-    document.getElementById("chooseEvent").style.visibility="visible";
+    $("#chooseEvent").show();
     showAllEvents(document.getElementById("name_form"));
-    document.getElementById("chooseDate").style.visibility="hidden";
-    document.getElementById("namePortion").style.visibility="hidden";
+    $("#chooseDate").hide();
+    $("#namePortion").hide();
 
     $("#time_switch").empty();
     $("#event_info").empty();
