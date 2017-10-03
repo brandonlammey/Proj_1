@@ -1453,6 +1453,7 @@ function getData(form)
     {
       form.reset();
       $("#review").hide();
+      lockElements();
       $("#event_review").append("Event: "+ev_name+"<br><br>");
       $("#event_review").append("Organizer: "+name+"<br><br>");
       $("#event_review").append("<u>Date Options<u><br>");
@@ -1469,6 +1470,7 @@ function getData(form)
       //$("#event_review").append("<button type = 'button' class='date_display' id = 'date_pick' hidden>Test Button</button>");
 
       $("#review_date_selection").show();
+      $("#refreshButton").show();
     }
   }
 }
@@ -1510,7 +1512,7 @@ function getDate(form)
   }
   else
   {
-    lockElements();
+    //lockElements();
     var row = dateLoc_Arr[handPickedDate];
     $("#12_review").show();
     $("#24_review").show();
@@ -1525,7 +1527,6 @@ function getDate(form)
     {
       document.getElementById("review_tasks").innerHTML += taskFormat[i];
     }
-    $("#refreshButton").show();
 
   }
 }
