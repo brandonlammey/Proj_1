@@ -51,7 +51,7 @@
       <div class="maintwo">
         <br><br>
         <button id="all_event" class="side_menu">See all Events</button>
-
+        <button id="chooseTask" class="side_menu">Choose Tasks</button>
         <br>
       </div>
 
@@ -80,6 +80,13 @@
         <input type = "button" id = "name_submit" value = "Submit">
         </form>
 
+        <form id="nameForm2" hidden>
+        <div id=namePortion2>
+        Name: &nbsp;<input type="text" id="name" name="name" placeholder="(required)"><br><br>
+        </div>
+        <input type = "button" id = "nameForm2Submit" value = "Submit">
+        </form>
+
         <!--<h3 id="chooseEvent"> Choose an Event: </h3>-->
         <h3 class="chooseEvent" id="chooseEvent"></h3>
         <h3 class="chooseDate" id="chooseDate"></h3>
@@ -100,6 +107,10 @@
           <p id = "time_submit"></p>
         </p>
         </center>
+
+        <from>
+            <p id="eventTaskPrint"></p>
+        </from>
 
       </div>
 

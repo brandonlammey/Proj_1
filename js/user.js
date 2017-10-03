@@ -7,6 +7,8 @@
 
 /** Array to store information for all events; populated whenever page loads */
 var events_arr;
+var seeEvents;
+var seeTasks;
 
 /**
  * Fetches events info from database and populates events_arr
@@ -665,35 +667,70 @@ function makeTable24(n, tarr)
  */
 function showAllEvents(form)
 {
-  $("#event_list").empty();
-  let name = form.name.value;
-  if(name=="")
+  if(seeEvents)
   {
-    alert("All fields are mandatory");
-    $("#chooseEvent").hide();
-    $("#name_form").hide();
+    $("#event_list").empty();
+    let name = form.name.value;
+    if(name=="")
+    {
+      alert("All fields are mandatory");
+      $("#chooseEvent").hide();
+      $("#name_form").hide();
+    }
+    else
+    {
+      for(let i=0; i<events_arr.length; i++)
+      {
+        if(i==0)
+        {
+          $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
+          .click(function(){ showAllDates(i,name);})
+          .appendTo(document.getElementById("event_list"));
+          $("#event_list").show();
+        }
+        else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1])
+        {
+          $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
+          .click(function(){ showAllDates(i,name);})
+          .appendTo(document.getElementById("event_list"));
+          $("#event_list").show();
+        }
+  
+      }
+  
+    }
   }
   else
   {
-    for(let i=0; i<events_arr.length; i++)
+    $("#event_list").empty();
+    let name = form.name.value;
+    if(name=="")
     {
-      if(i==0)
-      {
-        $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
-        .click(function(){ showAllDates(i,name);})
-        .appendTo(document.getElementById("event_list"));
-        $("#event_list").show();
-      }
-      else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1])
-      {
-        $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
-        .click(function(){ showAllDates(i,name);})
-        .appendTo(document.getElementById("event_list"));
-        $("#event_list").show();
-      }
-
+      alert("All fields are mandatory");
+      $("#chooseEvent").hide();
+      $("#name_form").hide();
     }
+    else
+    {
+      for(let i=0; i<events_arr.length; i++)
+      {
+        if(i==0)
+        {
+          $("#event_list").show();
+          $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
+          .click(function(){ showTasks(i,name);})
+          .appendTo(document.getElementById("event_list"));
+        }
+        else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1])
+        {
+          $("#event_list").show();
+          $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
+          .click(function(){ showTasks(i,name);})
+          .appendTo(document.getElementById("event_list"));
 
+        }
+      }
+    }  
   }
 }
 
@@ -728,6 +765,33 @@ function showAllDates(i, name)
       $("#event_list").show();
     }
   }
+}
+
+function showTasks(i, name)
+{
+  $("#event_list").empty();
+  $("#chooseEvent").hide();
+  //$("#eventTaskPrint").html($("<script type='checkbox' name='vehicle' value='Bike'> I have a bike<br></script>"));
+  /*var x = document.createElement("INPUT");
+  x.setAttribute("type", "checkbox");
+  document.body.appendChild(x);*/
+
+      
+  /*var taskName = [];
+  var list_arr = [];
+  for(var i = 0; i < strArr.length - 1; i++)
+  {
+    taskName = strArr[i].split(".");
+    if(taskName[1] != '')
+    {
+      list_arr[i] = "<span id = 'taskee'>" + taskName[1] + "</span> will do task, '<span id = 'task'>" + taskName[0] + "</span>'<br>";
+    }
+    else
+    {
+      list_arr[i] = "No one signed up to do task, '" + taskName[0] + "'<br>";
+    }
+  }
+  return list_arr;*/
 }
 
 
@@ -806,7 +870,7 @@ function showInfo(i, name)
         $("#user_table_24").empty().hide();
         $("#time_switch").empty();
         $("#event_time").hide();
-        $("#event_info").empty().hide();
+        $("#event_info").empty();
         $("#time_submit").empty();
       }));
     }
@@ -1337,6 +1401,8 @@ $(document).ready(function(){
 
   $("#all_event").click(function()
   {
+    seeEvents = false;
+    seeTasks = false;
     $("#date_form").hide();
     $("#form_replace").hide();
     $("#time_switch").empty();
@@ -1353,12 +1419,37 @@ $(document).ready(function(){
     $("#chooseEvent").hide();
     $("#chooseDate").hide();
     $("#namePortion").show();
+    $("#nameForm2").hide();
 
     document.getElementById('name_submit').value = "Submit";
   });
 
+  $("#chooseTask").click(function()
+  {
+    seeEvents = false;
+    seeTasks = false;
+    $("#nameForm2").toggle();
+    $("#name_form").hide();
+    $("#date_form").hide();
+    $("#form_replace").hide();
+    $("#time_switch").empty();
+    $("#event_list").empty();
+    $("#event_list").hide();
+    $("#event_list").empty();
+    $("#event_info").empty();
+    $("#user_table_12").empty();
+    $("#user_table_24").empty();
+    $("#time_submit").empty();
+    $("#event_time").hide();
+    //Hides:
+    $("#chooseEvent").hide();
+    $("#chooseDate").hide();
+    $("#namePortion").show();
+  });
+
   $("#name_submit").click(function()
   {
+    seeEvents = true;
     $("#name_form").hide();
     document.querySelector('.chooseEvent').innerHTML = 'Choose an Event:';
     $('.chooseEvent').html('Choose an Event:');
@@ -1374,6 +1465,29 @@ $(document).ready(function(){
     $("#time_submit").empty();
     $("#event_time").hide();
   });
+
+  $("#nameForm2Submit").click(function()
+  {
+    seeTasks = true;
+    $("#nameForm2").hide();
+    document.querySelector('.chooseEvent').innerHTML = 'Choose an Event:';
+    $('.chooseEvent').html('Choose an Event:');
+    $("#chooseEvent").show();
+    showAllEvents(document.getElementById("nameForm2"));
+    $("#chooseDate").hide();
+    $("#namePortion").hide();
+
+    $("#time_switch").empty();
+    $("#event_info").empty();
+    $("#user_table_12").empty();
+    $("#user_table_24").empty();
+    $("#time_submit").empty();
+    $("#event_time").hide();
+    
+
+    //$("#chooseEvent").show();
+
+  }); 
 
   $("#date_submit").click(
     function()
