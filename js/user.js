@@ -43,9 +43,8 @@ function getEventsFromDB(path, callback)
  * @param {string} creator_name - The name of the event organizer
  * @param {string} event_name - The name of the event
  * @param {Array} time_array - An array with the times the attendee can make it to the event
- * @param {string} date -
  */
-function pushToDB(user_name, creator_name, event_name, time_array, date)
+function pushToDB(user_name, creator_name, event_name, time_array)
 {
   //alert(user_name + creator_name + event_name + time_array);
   var request2 = new XMLHttpRequest();
