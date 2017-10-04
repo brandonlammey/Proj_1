@@ -779,23 +779,25 @@ function showTasks(i, name)
 
     for(let j=0; j<list_arr.length-1; j++)
     {
-      console.log(list_arr[j]);
-      //print out a button for each task
-
-        $("<button type='button' onclick='this.style.display=none';> <b>Task</b>:<br>"+list_arr[j]+"</button></br>")
-        .click(function(){ showInfo(j,name);})
-        .appendTo(document.getElementById("event_list"));
+      
+      
+        //print out a button for each task
+        //calls on showInfo
+        $("<button type='button'> <b>Task</b>:<br>"+list_arr[j]+"</button></br>").click(function()
+        {
+          pushTaskToDB(name, events_arr[i][1], events_arr[i][2], time_arr, events_arr[i][3]); //NOTE
+          $("#user_table_12").empty().hide();
+          $("#user_table_24").empty().hide();
+          $("#time_switch").empty();
+          $("#event_time").hide();
+          $("#event_info").empty();
+          $("#time_submit").empty();
+        }).appendTo(document.getElementById("event_list"));
 
         $("#chooseEvent").hide();
        // $("#chooseDate").show();
 
         document.querySelector('.chooseDate').innerHTML = 'Choose a task for ' + events_arr[j][2] + ':';
-        //document.getElementById("name_submit").style.visibility="visible";
-
-        //$("#name_submit").show();
-        //$('.chooseDate').html('Choose a date for '+ events_arr[j][2] + ': \n');
-        //document.getElementById('name_submit').value = "Go back to All Events";
-        //$("#name_form").show();
   
         $("#event_list").show();
       }
@@ -803,7 +805,7 @@ function showTasks(i, name)
       
 }
 
-function taskSelection(user_name, creator_name, event_name, taskName)
+function pushTaskToDB(user_name, creator_name, event_name, taskName)
 {
   //function pushToDB(user_name, creator_name, event_name, time_array, date)
   
