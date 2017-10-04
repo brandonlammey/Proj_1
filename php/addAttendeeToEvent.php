@@ -30,24 +30,30 @@ $event_name = json_decode("$_GET[event_name]");
 ///Escape characters not fit for sql statement
 //$event_name = mysql_real_escape_string($event_name);
 
+///Decode JSON string from javascript xmlhttprequest
+$date = json_decode("$_GET[date]");
 
 
-echo $name; echo $events_arr[0][1]; echo $event_name; echo $events_arr[0][2];
+echo $name; echo $events_arr[0][1]; echo $event_name; echo $events_arr[0][2]; echo $date; echo $events_arr[0][3];
+
 ///Cycle thru events and check if the event exists in the database
 ///$events_arr is obtained from the include of getEventsFromDB.php
 for($i = 0; $i < count($events_arr); $i++)
 {
-  if($name == $events_arr[$i][1] && $event_name == $events_arr[$i][2])
+  if($name == $events_arr[$i][1] && $event_name == $events_arr[$i][2] && $date == $events_arr[$i][3])
   {
     $user_name = mysql_real_escape_string($user_name);
     $event_name = mysql_real_escape_string($event_name);
     $name = mysql_real_escape_string($name);
+    $date = mysql_real_escape_string($date);
+
+    
     for($j = 0; $j < count($time_arr); $j++)
     {
       echo $time_arr[$j];
       
       ///Sql statement to Update (append) an existing row in the database
-      $sql30 = "UPDATE $tbl_name SET `$time_arr[$j]` = concat(`$time_arr[$j]`, '$user_name') WHERE `name` = '$name' AND `event_name` = '$event_name' ";
+      $sql30 = "UPDATE $tbl_name SET `$time_arr[$j]` = concat(`$time_arr[$j]`, '$user_name') WHERE `name` = '$name' AND `event_name` = '$event_name' AND `date` = '$date' ";
       ///Execute and check if the sql action was successful
       if(mysql_query($sql30))
       {
