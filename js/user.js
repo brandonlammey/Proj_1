@@ -44,10 +44,9 @@ function getEventsFromDB(path, callback)
  * @param {string} user_name - The name of the attendee
  * @param {string} creator_name - The name of the event organizer
  * @param {string} event_name - The name of the event
- * @param {string} date - The date of the event
  * @param {Array} time_array - An array with the times the attendee can make it to the event
  */
-function pushToDB(user_name, creator_name, event_name, time_array, date)
+function pushToDB(user_name, creator_name, event_name, time_array)
 {
   //alert(user_name + creator_name + event_name + time_array);
   var request2 = new XMLHttpRequest();
@@ -76,7 +75,7 @@ function pushToDB(user_name, creator_name, event_name, time_array, date)
 
 
     //HERE
-    var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&time_array=" + json + "&date=" + JSON.stringify(date) + "&";
+    var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&time_array=" + json + "&";
     console.log(urlToSendTo2);
     request2.open("GET", urlToSendTo2, true);
     request2.send();
@@ -1447,6 +1446,10 @@ $(document).ready(function(){
   {
     seeEvents = false;
     seeTasks = false;
+
+    document.querySelector('.chooseSeeAllEvents').innerHTML = 'See all Events: ';
+    $('.chooseSeeAllEvents').html('See all Events: ');
+
     $("#date_form").hide();
     $("#form_replace").hide();
     $("#time_switch").empty();
@@ -1464,6 +1467,7 @@ $(document).ready(function(){
     $("#chooseDate").hide();
     $("#namePortion").show();
     $("#nameForm2").hide();
+    $("#chooseSeeAllEvents").toggle();
 
     document.getElementById('name_submit').value = "Submit";
   });
@@ -1472,6 +1476,10 @@ $(document).ready(function(){
   {
     seeEvents = false;
     seeTasks = false;
+
+    document.querySelector('.chooseTasks').innerHTML = 'Choose tasks: ';
+    $('.chooseTasks').html('Choose tasks: ');
+
     $("#nameForm2").toggle();
     $("#name_form").hide();
     $("#date_form").hide();
@@ -1489,6 +1497,7 @@ $(document).ready(function(){
     $("#chooseEvent").hide();
     $("#chooseDate").hide();
     $("#namePortion").show();
+    $("#chooseTasks").toggle();
   });
 
   $("#name_submit").click(function()
