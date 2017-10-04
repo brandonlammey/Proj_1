@@ -1470,6 +1470,7 @@ $(document).ready(function(){
     $("#namePortion").show();
     $("#nameForm2").hide();
     $("#chooseSeeAllEvents").toggle();
+    $("#chooseTasks").hide();
 
     document.getElementById('name_submit').value = "Submit";
   });
@@ -1500,6 +1501,7 @@ $(document).ready(function(){
     $("#chooseDate").hide();
     $("#namePortion").show();
     $("#chooseTasks").toggle();
+    $("#chooseSeeAllEvents").hide();
   });
 
   $("#name_submit").click(function()
@@ -1519,6 +1521,7 @@ $(document).ready(function(){
     $("#user_table_24").empty();
     $("#time_submit").empty();
     $("#event_time").hide();
+    $("#chooseSeeAllEvents").hide();
   });
 
   $("#nameForm2Submit").click(function()
@@ -1538,6 +1541,7 @@ $(document).ready(function(){
     $("#user_table_24").empty();
     $("#time_submit").empty();
     $("#event_time").hide();
+    $("#chooseTasks").hide();
     
 
     //$("#chooseEvent").show();
