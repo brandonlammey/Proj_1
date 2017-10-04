@@ -663,7 +663,7 @@ function makeTable24(n, tarr)
 }
 
 /**
- * Displays all events in the databse as individual buttons (with event overview). Buttons call function "showInfo" on click to display event information.
+ * Displays all events in the database as individual buttons (with event overview). Buttons call function "showInfo" on click to display event information.
  * @param {object} form - HTML form element that takes user input for Attendee Name
  */
 function showAllEvents(form)
@@ -771,28 +771,71 @@ function showAllDates(i, name)
 function showTasks(i, name)
 {
   $("#event_list").empty();
-  $("#chooseEvent").hide();
-  //$("#eventTaskPrint").html($("<script type='checkbox' name='vehicle' value='Bike'> I have a bike<br></script>"));
-  /*var x = document.createElement("INPUT");
-  x.setAttribute("type", "checkbox");
-  document.body.appendChild(x);*/
+  //$("#chooseEvent").hide();
+  //position of task: events_arr[i][52])
+    
+  let list_arr = events_arr[i][52].split(":");
+  
+  //let taskFormat = removeSemis(events_arr[i][52]);
+
+    for(let j=0; j<list_arr.length-1; j++)
+    {
+      console.log(list_arr[j]);
+      //print out a button for each task
+
+        $("<button type='button' onclick='this.style.display=none';> <b>Task</b>:<br>"+list_arr[j]+"</button></br>")
+        .click(function(){ showInfo(j,name);})
+        .appendTo(document.getElementById("event_list"));
+
+        $("#chooseEvent").hide();
+       // $("#chooseDate").show();
+
+        document.querySelector('.chooseDate').innerHTML = 'Choose a task for ' + events_arr[j][2] + ':';
+        //document.getElementById("name_submit").style.visibility="visible";
+
+        //$("#name_submit").show();
+        //$('.chooseDate').html('Choose a date for '+ events_arr[j][2] + ': \n');
+        //document.getElementById('name_submit').value = "Go back to All Events";
+        //$("#name_form").show();
+  
+        $("#event_list").show();
+      }
 
       
-  /*var taskName = [];
-  var list_arr = [];
-  for(var i = 0; i < strArr.length - 1; i++)
-  {
-    taskName = strArr[i].split(".");
-    if(taskName[1] != '')
+}
+
+function taskSelection(user_name, creator_name, event_name, taskName)
+{
+  //function pushToDB(user_name, creator_name, event_name, time_array, date)
+  
+    //alert(user_name + creator_name + event_name + time_array);
+    var request2 = new XMLHttpRequest();
+    request2.onreadystatechange = function ()
     {
-      list_arr[i] = "<span id = 'taskee'>" + taskName[1] + "</span> will do task, '<span id = 'task'>" + taskName[0] + "</span>'<br>";
+      if (request2.readyState === XMLHttpRequest.DONE)
+      {
+        if (request2.status === 200)
+        {
+  
+        }
+        else
+        {
+  
+        }
+      }
+  
     }
-    else
-    {
-      list_arr[i] = "No one signed up to do task, '" + taskName[0] + "'<br>";
-    }
-  }
-  return list_arr;*/
+
+  
+      //user_name = user_name + ", ";
+  
+  
+      //HERE
+      var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&task_list=" + JSON.stringify(taskName) + "&";
+      console.log(urlToSendTo2);
+      request2.open("GET", urlToSendTo2, true);
+      request2.send();
+      return request2.onreadystatechange();
 }
 
 
