@@ -785,7 +785,8 @@ function showTasks(i, name)
         //calls on showInfo
         $("<button type='button'> <b>Task</b>:<br>"+list_arr[j]+"</button></br>").click(function()
         {
-          pushTaskToDB(name, events_arr[i][1], events_arr[i][2], time_arr, events_arr[i][3]); //NOTE
+          list_arr[j] = list_arr[j].concat(name);
+          pushTaskToDB(name, events_arr[i][1], events_arr[i][2], list_arr); //NOTE
           $("#user_table_12").empty().hide();
           $("#user_table_24").empty().hide();
           $("#time_switch").empty();
@@ -805,10 +806,11 @@ function showTasks(i, name)
       
 }
 
-function pushTaskToDB(user_name, creator_name, event_name, taskName)
+function pushTaskToDB(user_name, creator_name, event_name, task_list)
 {
   //function pushToDB(user_name, creator_name, event_name, time_array, date)
   
+  //alert(JSON.stringify(task_list))
     //alert(user_name + creator_name + event_name + time_array);
     var request2 = new XMLHttpRequest();
     request2.onreadystatechange = function ()
@@ -827,12 +829,22 @@ function pushTaskToDB(user_name, creator_name, event_name, taskName)
   
     }
 
+    let tasks = "";
+    for(let q = 0; q< task_list.length -1;q++)
+    {
+      tasks = tasks + task_list[q] + ": ";
+    }
+
+    //alert(JSON.stringify(tasks));
+    //alert(JSON.stringify(creator_name));
+    //alert(JSON.stringify(event_name));
+
   
       //user_name = user_name + ", ";
   
   
       //HERE
-      var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&task_list=" + JSON.stringify(taskName) + "&";
+      var urlToSendTo2 = "php/addAttendeeToTask.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&task_list=" + tasks + "&";
       console.log(urlToSendTo2);
       request2.open("GET", urlToSendTo2, true);
       request2.send();
