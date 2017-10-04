@@ -635,7 +635,6 @@ function lockElements()
  */
 function formDataAndNext(form)
 {
-    lockElements();
     let copyTimesCheck = false;
     let orgDateTime = form.copyTimesCheckHTML.value;
 
@@ -687,6 +686,7 @@ function formDataAndNext(form)
     }
     else
     {
+      lockElements();
       //make admin unable to change event_name and admin_name
       makeTaskBoxHidden();
       document.getElementById('task_name').readOnly = true;
