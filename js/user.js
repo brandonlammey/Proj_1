@@ -45,8 +45,9 @@ function getEventsFromDB(path, callback)
  * @param {string} creator_name - The name of the event organizer
  * @param {string} event_name - The name of the event
  * @param {Array} time_array - An array with the times the attendee can make it to the event
+ * @param {string} date - The date of the event
  */
-function pushToDB(user_name, creator_name, event_name, time_array)
+function pushToDB(user_name, creator_name, event_name, time_array, date)
 {
   //alert(user_name + creator_name + event_name + time_array);
   var request2 = new XMLHttpRequest();
@@ -75,7 +76,7 @@ function pushToDB(user_name, creator_name, event_name, time_array)
 
 
     //HERE
-    var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&time_array=" + json + "&";
+    var urlToSendTo2 = "php/addAttendeeToEvent.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&time_array=" + json + "&date=" + JSON.stringify(date) + "&";
     console.log(urlToSendTo2);
     request2.open("GET", urlToSendTo2, true);
     request2.send();
@@ -844,7 +845,7 @@ function pushTaskToDB(user_name, creator_name, event_name, task_list)
   
   
       //HERE
-      var urlToSendTo2 = "php/addAttendeeToTask.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&task_list=" + tasks + "&";
+      var urlToSendTo2 = "php/addAttendeeToTask.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&task_list=" + '"' + tasks + '"' + "&";
       console.log(urlToSendTo2);
       request2.open("GET", urlToSendTo2, true);
       request2.send();
