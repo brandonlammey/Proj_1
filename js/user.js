@@ -799,8 +799,8 @@ function showTasks(i, name)
         $("#chooseEvent").hide();
        // $("#chooseDate").show();
 
-        document.querySelector('.chooseDate').innerHTML = 'Choose a task for ' + events_arr[j][2] + ':';
-  
+        document.querySelector('#chooseDate').innerHTML = 'Choose a task for ' + events_arr[i][2] + ':';
+        $("#chooseDate").show();
         $("#event_list").show();
       }
 
@@ -862,7 +862,6 @@ function pushTaskToDB(user_name, creator_name, event_name, task_list)
     $("#event_list").empty();
     for(let i=0; i<events_arr.length; i++)
     {
-
       $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
         .click(function(){ showInfo(i,name);})
         .appendTo(document.getElementById("event_list"));
