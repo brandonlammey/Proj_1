@@ -3,7 +3,8 @@
 ///File: header.php
 ///Author: Kaiser Mittenburg
 ///Purpose: File to incude in all files that need to connect to the database
-///Last Modified: 9/17/2017
+///Last Modified: 09/29/2017
+///Updated to assign the table to PProject_2_Table_1
 /////////////////////////////////////////////////////////////////////////////
 
 ///Connection Variables

@@ -4,7 +4,7 @@
 ///File: saveEventToDB.php
 ///Author: Kaiser Mittenburg
 ///Purpose: Save event information to the database.
-///Last Modified: 9/17/2017
+///Last Modified: 10/04/2017
 /////////////////////////////////////////////////////////////////////////////
 
 include 'header.php';
@@ -75,6 +75,7 @@ $_2230 = mysql_real_escape_string(json_decode("$_GET[2230]"));
 $_2300 = mysql_real_escape_string(json_decode("$_GET[2300]"));
 $_2330 = mysql_real_escape_string(json_decode("$_GET[2330]"));
 
+//added to keep track of tasks
 $task_list = mysql_real_escape_string(json_decode("$_GET[task_list]"));
 
 ///Sql statement to insert (add) new row with event information into the DB
