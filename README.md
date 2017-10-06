@@ -18,17 +18,9 @@ Step 5: You are now ready to plan events!
 
 ## Documentation
 
-Click this link to view our documentation page: https://codedocs.xyz/brandonlammey/Project2/
-
-To generate and host this documentation page, we used CodeDocs. This service lets you document and publish code documentaion using Doxygen.
-
-Link to their website: https://codedocs.xyz/
-
-We also used JSDoc and Doxygen to generate local documentation files for our project. 
+We used JSDoc to generate local documentation files for our project.
 
 Link to JSDoc website: http://usejsdoc.org/
-
-Link to Doxygen website: http://www.stack.nl/~dimitri/doxygen/index.html
 
 ## Sources & References
 
