@@ -667,13 +667,8 @@ function makeTable24(n, tarr)
  */
 function showAllEvents(form)
 {
-<<<<<<< HEAD
   let eventCounter = 0;
   let inEvent = false;
-=======
-  let inEvent = false; //Checks if name is in any event. If so, print and set back to false.
-  let somethingInEvent = false; //Remains true if user is in event
->>>>>>> origin/master
   if(seeEvents)
   {
     $("#event_list").empty();
