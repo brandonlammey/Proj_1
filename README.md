@@ -26,10 +26,10 @@ Link to their website: https://codedocs.xyz/
 
 ## Sources & References
 
-Source Description
-* @author
-* @link 
-* @DateAccessed
+Source for learning how to split a string into an array:
+* @author James Hill
+* @link https://stackoverflow.com/questions/7979727/split-string-into-array
+* @DateAccessed 9-30-17
 
 ## Authors
 
