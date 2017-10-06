@@ -668,6 +668,7 @@ function makeTable24(n, tarr)
  */
 function showAllEvents(form)
 {
+  let inEvent = false;
   if(seeEvents)
   {
     $("#event_list").empty();
@@ -715,20 +716,37 @@ function showAllEvents(form)
     {
       for(let i=0; i<events_arr.length; i++)
       {
-        if(i==0)
+        for(let j=4; j<52; j++)
         {
-          $("#event_list").show();
-          $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
-          .click(function(){ showTasks(i,name);})
-          .appendTo(document.getElementById("event_list"));
+          let aa = events_arr[i][j].split(",");
+          for(let k = 0; k<aa.length; k++)
+          {
+            console.log(name);
+            console.log(aa[k]);
+            if(name == aa[k] || (" " + name) == aa[k] || ("  " + name) == aa[k])
+            {
+              inEvent = true;
+            }
+          }
         }
-        else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1])
+        if(inEvent)
         {
-          $("#event_list").show();
-          $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
-          .click(function(){ showTasks(i,name);})
-          .appendTo(document.getElementById("event_list"));
-
+          if(i==0)
+          {
+            $("#event_list").show();
+            $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
+            .click(function(){ showTasks(i,name);})
+            .appendTo(document.getElementById("event_list"));
+          }
+          else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1])
+          {
+            $("#event_list").show();
+            $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
+            .click(function(){ showTasks(i,name);})
+            .appendTo(document.getElementById("event_list"));
+  
+          }
+          inEvent = false;
         }
       }
     }  
@@ -778,15 +796,17 @@ function showTasks(i, name)
   
   //let taskFormat = removeSemis(events_arr[i][52]);
 
+  $("#nameForm2").show();
+  $("#namePortion2").hide();
+  document.getElementById('nameForm2Submit').value = "Go back to Events";
     for(let j=0; j<list_arr.length-1; j++)
-    {
-      
-      
+    { 
         //print out a button for each task
         //calls on showInfo
         $("<button type='button'> <b>Task</b>:<br>"+list_arr[j]+"</button></br>").click(function()
         {
           list_arr[j] = list_arr[j].concat(name);
+          console.log(list_arr);
           pushTaskToDB(name, events_arr[i][1], events_arr[i][2], list_arr); //NOTE
           $("#user_table_12").empty().hide();
           $("#user_table_24").empty().hide();
@@ -1539,6 +1559,7 @@ $(document).ready(function(){
   $("#nameForm2Submit").click(function()
   {
     seeTasks = true;
+    document.getElementById('nameForm2Submit').value = "Submit";
     $("#nameForm2").hide();
     document.querySelector('.chooseEvent').innerHTML = 'Choose an Event:';
     $('.chooseEvent').html('Choose an Event:');
