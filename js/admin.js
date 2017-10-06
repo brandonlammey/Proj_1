@@ -654,10 +654,6 @@ function formDataAndNext(form)
       copyTimesCheck = true;
       //alert("YES");
     }
-    else if (orgDateTime == "No")
-    {
-      
-    }
     let name = form.admin_name.value;
     let ev_name = form.event_name.value;
     let date = form.event_date.value;
@@ -675,7 +671,7 @@ function formDataAndNext(form)
     //alert(checkRepeatDateArray(date));
     if(name== "" || ev_name== "")
     {
-        alert("All fields are mandatory1!");
+        alert("All fields are mandatory!");
         document.getElementById('admin_name').readOnly = false;
         document.getElementById('event_name').readOnly = false;
     }
@@ -685,7 +681,7 @@ function formDataAndNext(form)
     }
     else if(date=="" || ((timecheck == false) && copyTimesCheck == false))
     {
-        alert("All fields are mandatory2!");
+        alert("All fields are mandatory!");
     }
     else if(checkRepeatDateArray(date) == true)
     {
