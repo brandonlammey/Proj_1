@@ -675,6 +675,7 @@ function showAllEvents(form)
   let inEvent = false; //Checks if user is signed up to event
   let printedEvents = []; //Creates an array of events the attendee is signe up to. Only prints if event hasn't been printed before.
   let shouldPrint = false; //Checks printedEvents to see if event button should be printed
+  let printNoEventsName = false; //Checks if error message for no events should be printed
   if(seeEvents)
   {
     $("#event_list").empty();
@@ -714,12 +715,14 @@ function showAllEvents(form)
     let name = form.name.value;
     if(name=="")
     {
+      printNoEventsName = false;
       alert("All fields are mandatory");
       $("#chooseEvent").hide();
       $("#name_form").hide();
     }
     else
     {
+      printNoEventsName = true;
       for(let i=0; i<events_arr.length; i++) //Checks whole document
       {
         for(let j=4; j<52; j++) //Checks only time columns
@@ -771,13 +774,15 @@ function showAllEvents(form)
       }
     }  
   }
-
-  if(eventCounter == 0)
+  if(printNoEventsName)
   {
-    document.querySelector('.noEvents').innerHTML = "You are not signed up for any events.";
-    $('.noEvents').html('You are not signed up for any events.')
-    $("#noEvents").show();
-    
+    if(eventCounter == 0)
+    {
+      document.querySelector('.noEvents').innerHTML = "You are not signed up for any events.";
+      $('.noEvents').html('You are not signed up for any events.')
+      $("#noEvents").show();
+      
+    }
   }
 }
 
