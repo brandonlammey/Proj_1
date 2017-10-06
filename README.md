@@ -12,7 +12,7 @@ Step 2: Navigate to the repository folder in your local directory. Use the comma
 
 Step 3: Type "php -S localhost:8080" into the console to compile the program.
 
-Step 4: Navigate to Google Chrome and tpye "http://localhost:8080/" in the address bar.
+Step 4: Navigate to Google Chrome and type "http://localhost:8080/" in the address bar.
 
 Step 5: You are now ready to plan events!
 
