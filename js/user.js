@@ -8,7 +8,6 @@
 /** Array to store information for all events; populated whenever page loads */
 var events_arr;
 var seeEvents;
-var seeTasks;
 
 /**
  * Fetches events info from database and populates events_arr
@@ -1462,7 +1461,6 @@ $(document).ready(function(){
   $("#all_event").click(function()
   {
     seeEvents = false;
-    seeTasks = false;
 
     document.querySelector('.chooseSeeAllEvents').innerHTML = 'See all Events: ';
     $('.chooseSeeAllEvents').html('See all Events: ');
@@ -1493,7 +1491,6 @@ $(document).ready(function(){
   $("#chooseTask").click(function()
   {
     seeEvents = false;
-    seeTasks = false;
 
     document.querySelector('.chooseTasks').innerHTML = 'Choose tasks: ';
     $('.chooseTasks').html('Choose tasks: ');
