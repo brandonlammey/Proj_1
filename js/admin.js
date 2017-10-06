@@ -355,7 +355,7 @@ function formData(form)
     {
         if (this.readyState==4 && this.status==200)
         {
-        document.getElementById("txtHint").innerHTML=this.responseText;
+          //document.getElementById("txtHint").innerHTML=this.responseText;
         }
     }
     var PageToSendTo = "php/saveEventToDB.php?";
@@ -556,7 +556,7 @@ function formData(form)
     var UrlToSend = PageToSendTo + "name=" + JSON.stringify(name) + "&event_name=" + JSON.stringify(ev_name) + "&date=" + JSON.stringify(date) + "&" + addOns + "task_list=" + JSON.stringify(taskAddOns);
     //alert(UrlToSend);
     //console.log(JSON.stringify(name));
-    xmlhttp.open("GET", UrlToSend, false);
+    xmlhttp.open("GET", UrlToSend);
     xmlhttp.send();
     //END ADAPTATION
     //////////////////////////////////////////////////////////////////////
@@ -714,7 +714,7 @@ function formDataAndNext(form)
     {
         if (this.readyState==4 && this.status==200)
         {
-        document.getElementById("txtHint").innerHTML=this.responseText;
+          //document.getElementById("txtHint").innerHTML=this.responseText;
         }
     }
     var PageToSendTo = "php/saveEventToDB.php?";
@@ -910,7 +910,7 @@ function formDataAndNext(form)
 
     //alert(UrlToSend);
     //console.log(JSON.stringify(name));
-    xmlhttp.open("GET", UrlToSend, false);
+    xmlhttp.open("GET", UrlToSend);
     xmlhttp.send();
     //END ADAPTATION
     //////////////////////////////////////////////////////////////////////
