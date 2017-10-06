@@ -9,6 +9,7 @@
 var events_arr;
 var seeEvents;
 var seeTasks;
+var changeMade = false;
 
 /**
  * Fetches events info from database and populates events_arr
@@ -780,35 +781,37 @@ function showTasks(i, name)
 
     for(let j=0; j<list_arr.length-1; j++)
     {
-      
-      
-        //print out a button for each task
-        //calls on showInfo
-        $("<button type='button'> <b>Task</b>:<br>"+list_arr[j]+"</button></br>").click(function()
-        {
-          list_arr[j] = list_arr[j].concat(name);
-          pushTaskToDB(name, events_arr[i][1], events_arr[i][2], list_arr); //NOTE
-          $("#user_table_12").empty().hide();
-          $("#user_table_24").empty().hide();
-          $("#time_switch").empty();
-          $("#event_time").hide();
-          $("#event_info").empty();
-          $("#time_submit").empty();
-        }).appendTo(document.getElementById("event_list"));
-
-        $("#chooseEvent").hide();
-       // $("#chooseDate").show();
-
-        document.querySelector('#chooseDate').innerHTML = 'Choose a task for ' + events_arr[i][2] + ':';
-        $("#chooseDate").show();
-        $("#event_list").show();
+      //Check for assigned tasks
+      if((list_arr[j].indexOf(".")+1)==(list_arr[j].length))
+      {
+          //print out a button for each task
+          //calls pushTaskToDB when clicked
+          $("<button type='button'> <b>Task</b>:<br>"+list_arr[j]+"</button></br>").click(function()
+          {
+            list_arr[j] = list_arr[j].concat(name);
+            pushTaskToDB(name, events_arr[i][1], events_arr[i][2], list_arr); //NOTE
+            $("#event_info").empty();
+            changeMade = true;
+            this.remove();
+            
+          }).appendTo(document.getElementById("event_list"));
       }
 
+      $("#chooseEvent").empty();
+      document.querySelector('#chooseDate').innerHTML = 'Choose a task for ' + events_arr[i][2] + ':';
+      $("#chooseDate").show();
+      $("#event_list").show();
+
+    }
       
 }
 
+
+
+
 function pushTaskToDB(user_name, creator_name, event_name, task_list)
 {
+  
   //function pushToDB(user_name, creator_name, event_name, time_array, date)
   
   //alert(JSON.stringify(task_list))
@@ -843,7 +846,7 @@ function pushTaskToDB(user_name, creator_name, event_name, task_list)
   
       //user_name = user_name + ", ";
   
-  
+      //$("#event_list").empty();
       //HERE
       var urlToSendTo2 = "php/addAttendeeToTask.php?" + "name=" + JSON.stringify(creator_name) + "&event_name=" + JSON.stringify(event_name) + "&user_name=" + JSON.stringify(user_name) + "&task_list=" + '"' + tasks + '"' + "&";
       console.log(urlToSendTo2);
@@ -1458,6 +1461,11 @@ $(document).ready(function(){
 
   $("#all_event").click(function()
   {
+    if(changeMade == true)
+    {
+      changeMade == false;
+      window.location.reload()
+    }
     seeEvents = false;
     seeTasks = false;
 
@@ -1489,6 +1497,12 @@ $(document).ready(function(){
 
   $("#chooseTask").click(function()
   {
+    if(changeMade == true)
+    {
+      changeMade == false;
+      window.location.reload()
+    }
+    
     seeEvents = false;
     seeTasks = false;
 
