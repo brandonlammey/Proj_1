@@ -757,6 +757,7 @@ function showAllEvents(form)
           }
           else if(shouldPrint)
           {
+            printedEvents.push(events_arr[i][1] + events_arr[i][2]);
             eventCounter++;
             $("#event_list").show();
             $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
