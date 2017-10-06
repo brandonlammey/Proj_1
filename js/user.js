@@ -668,7 +668,9 @@ function makeTable24(n, tarr)
 function showAllEvents(form)
 {
   let eventCounter = 0;
-  let inEvent = false;
+  let inEvent = false; //Checks if user is signed up to event
+  let printedEvents = []; //Creates an array of events the attendee is signe up to. Only prints if event hasn't been printed before.
+  let shouldPrint = false; //Checks printedEvents to see if event button should be printed
   if(seeEvents)
   {
     $("#event_list").empty();
@@ -721,31 +723,49 @@ function showAllEvents(form)
           let aa = events_arr[i][j].split(","); //Creates an array with all the attendees of event at given time
           for(let k = 0; k<aa.length; k++) //Checks every attendee for given time
           {
+            console.log(name);
+            console.log(aa[k]);
             if(name == aa[k] || (" " + name) == aa[k] || ("  " + name) == aa[k]) 
             {
+              console.log("hi!");
               inEvent = true;
             }
           }
         }
         if(inEvent)
         {
-          if(i==0)
+          for (let j=0; j<printedEvents.length; j++)
+          {
+            if(printedEvents[j] == (events_arr[i][1]+events_arr[i][2])) //Print only Events where attendee is signed up to
+            {
+              shouldPrint = false;
+            }
+            else
+            {
+              shouldPrint = true;
+            }
+          }
+          if(printedEvents.length == 0)
+          {
+            printedEvents.push(events_arr[i][1] + events_arr[i][2]);
+            eventCounter++;
+            $("#event_list").show();
+            $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
+            .click(function(){ showTasks(i,name);})
+            .appendTo(document.getElementById("event_list"));
+            console.log("Inside 1");
+          }
+          else if(shouldPrint)
           {
             eventCounter++;
             $("#event_list").show();
             $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
             .click(function(){ showTasks(i,name);})
             .appendTo(document.getElementById("event_list"));
+            console.log("Inside 2");
+            shouldPrint = false;
           }
-          else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1])
-          {
-            eventCounter++;
-            $("#event_list").show();
-            $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
-            .click(function(){ showTasks(i,name);})
-            .appendTo(document.getElementById("event_list"));
-  
-          }
+          
           inEvent = false;
         }
       }
