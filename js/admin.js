@@ -654,6 +654,10 @@ function formDataAndNext(form)
       copyTimesCheck = true;
       //alert("YES");
     }
+    else if (orgDateTime == "No")
+    {
+      
+    }
     let name = form.admin_name.value;
     let ev_name = form.event_name.value;
     let date = form.event_date.value;
@@ -669,9 +673,9 @@ function formDataAndNext(form)
     }
 
     //alert(checkRepeatDateArray(date));
-    if(name== "" || ev_name== "" || orgDateTime == "")
+    if(name== "" || ev_name== "")
     {
-        alert("All fields are mandatory!");
+        alert("All fields are mandatory1!");
         document.getElementById('admin_name').readOnly = false;
         document.getElementById('event_name').readOnly = false;
     }
@@ -681,7 +685,7 @@ function formDataAndNext(form)
     }
     else if(date=="" || ((timecheck == false) && copyTimesCheck == false))
     {
-        alert("All fields are mandatory!");
+        alert("All fields are mandatory2!");
     }
     else if(checkRepeatDateArray(date) == true)
     {
@@ -933,6 +937,7 @@ function formDataAndNext(form)
     }
     updateDateArr(date);
     daySpanAmount++;
+    $("#copyTimes").show();
     }
     //Reload page. FORCE RELOAD (do not reload from cache) is true,
     //location.reload(true);
@@ -1471,6 +1476,8 @@ function getData(form)
       $("#event_review").append("Event: "+ev_name+"<br><br>");
       $("#event_review").append("Organizer: "+name+"<br><br>");
       $("#event_review").append("<u>Date Options<u><br>");
+      $("#event_review").append("yyyy-mm-dd<br><br>");
+      
 
       for(let j=0; j<dateLoc_Arr.length; j++)
       {
