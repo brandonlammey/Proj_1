@@ -1,8 +1,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///File Name: user.js
 ///Author: Andrew Growney, Kaiser Mittenburg, Juzer Zarif
+///Modified By: Brandon Lammey, Giovanni Artavia
 ///Purpose: Running JavaScript scripts for HTML elements and contains back-end logic
-///Last Modified: 09/17/2017
+///Last Modified: 10//2017
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /** Array to store information for all events; populated whenever page loads */
@@ -40,6 +41,7 @@ function getEventsFromDB(path, callback)
 }
 
 /**
+ * Modified by: Brandon Lammey, Giovanni Artavia
  * Sends and stores user availability information for events to the database
  * @param {string} user_name - The name of the attendee
  * @param {string} creator_name - The name of the event organizer
@@ -663,6 +665,7 @@ function makeTable24(n, tarr)
 }
 
 /**
+ * Modified by: Brandon Lammey, Giovanni Artavia
  * Displays all events in the database as individual buttons (with event overview). Buttons call function "showInfo" on click to display event information.
  * @param {object} form - HTML form element that takes user input for Attendee Name
  */
@@ -778,10 +781,12 @@ function showAllEvents(form)
 }
 
 /**
+ * Created by: Brandon Lammey, Giovanni Artavia
  * Emptys current event list of all events
  * Displays dates of an event in the databse as individual buttons. 
  * Buttons call function "showInfo" on click to display event information.
- * @param {object} form - HTML form element that takes user input for Attendee Name
+ * @param {number} i - Row number of the event in the database 
+ * @param {string} name - The name of the attendee
  */
 function showAllDates(i, name)
 {
@@ -810,6 +815,11 @@ function showAllDates(i, name)
   }
 }
 
+/**
+ * Created by: Brandon Lammey, Giovanni Artavia
+ * @param {number} i - Row number of the event in the database
+ * @param {string} name - The name of the attendee
+ */
 function showTasks(i, name)
 {
   $("#event_list").empty();
@@ -861,10 +871,11 @@ function showTasks(i, name)
 
 /**
  * Sends and stores user task information for events to the database
- * @param {*} user_name - The name of the attendee
- * @param {*} creator_name - The name of the event organizer
- * @param {*} event_name - The name of the event
- * @param {*} task_list - The new list of tasks
+ * Created by: Brandon Lammey, Giovanni Artavia
+ * @param {string} user_name - The name of the attendee
+ * @param {string} creator_name - The name of the event organizer
+ * @param {string} event_name - The name of the event
+ * @param {string} task_list - The new list of tasks
  */
 function pushTaskToDB(user_name, creator_name, event_name, task_list)
 {
@@ -909,6 +920,7 @@ function pushTaskToDB(user_name, creator_name, event_name, task_list)
 
 /**
  * Displays event information and calls "makeTable12" and "makeTable24" to populate time tables and allow attendee to RSVP for the event. Collects availability info for attendee and passes it to "pushToDB"
+ * Modified by: Brandon Lammey, Giovanni Artavia
  * @param {number} i - Row number of the event in the database
  * @param {string} name - The name of the attendee
  */
@@ -959,7 +971,7 @@ function showInfo(i, name)
 
     $("#time_submit").html($("<button type = 'button'>Submit</button>").click(function()
       {
-        pushToDB(name, events_arr[i][1], events_arr[i][2], time_arr, events_arr[i][3]); //NOTE
+        pushToDB(name, events_arr[i][1], events_arr[i][2], time_arr, events_arr[i][3]);
         $("#user_table_12").empty().hide();
         $("#user_table_24").empty().hide();
         $("#time_switch").empty();
@@ -1451,6 +1463,7 @@ function updateArr(i, j, arr)
 }
 
 /**
+ * Modified by: Brandon Lammey, Giovanni Artavia
  * Defines behavior of various document elements with event handlers and appropriate function calls. Calls "getEventsFromDB" to populate the events array when document is ready.
  */
 $(document).ready(function(){
