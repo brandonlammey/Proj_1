@@ -3,7 +3,7 @@
 ///File Name: admin.js
 ///Author: Andrew Growney, Kaiser Mittenburg, Juzer Zarif
 ///Purpose: Running JavaScript scripts for HTML elements and contains back-end logic
-///Last Modified: 09/17/2017
+///Last Modified: 10/06/2017
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 {
@@ -11,12 +11,16 @@
    * Array to store information for all events; populated whenever page loads
    */
   var events_arr;
-  var lockBool = false;
-  var taskLockBool = false;
+
+  //varibles added by James Glass and Dylan Herrig
+  var lockBool = false;// keeps track if the page is locked
+  var taskLockBool = false; // keeps track if the page is locked
   var date_arr = [];//used to keep track of days that have been entered for the event
   var daySpanAmount = 1;//keeps track of the number of days an event spans
   var originalAddOns = ""; //the original times entered for the first day
   var dateLoc_Arr = [];//used to keep track of days and where they are in the database
+  var taskList = [];//initalizes a task list array that that stores the tasks that belong to an event
+
 
   /**
  * Fetches events info from database and populates events_arr
@@ -60,7 +64,8 @@
 }
 
 /**
-* Checks the events array to see if there is an event of the same admin previously entered
+* Checks the events array to see if there is an event of the same admin previously entered 
+* Created by James Glass and Dylan Herrig
 * @param {string} adminname  - name of the admin
 * @param {string} eventname - name of the event
 * @return {bool} check - if an event of that date exists
@@ -89,6 +94,7 @@ function checkRepeatEvent(adminname, eventname)
 
 /**
 * Resets the review page and then reloads the page.
+* Created by James Glass and Dylan Herrig
 */
 function finishViewing()
 {
@@ -99,6 +105,7 @@ function finishViewing()
 
 /**
 * Adds an additional date to the date_arr
+* Created by James Glass and Dylan Herrig
 * @param {string} additionalDate  - date
 */
 function updateDateArr(additionalDate)
@@ -110,6 +117,7 @@ function updateDateArr(additionalDate)
 
 /**
 * Compares the new date to previous dates and returns true if the event has already been created on that day
+* Created by James Glass and Dylan Herrig
 * @param {string} checkDate  - date to be compared to previously entered dates
 * @return {bool} returns true if the event has already been scheduled for that day, false if it hasn't
 */
@@ -138,7 +146,6 @@ function checkRepeatDateArray(checkDate)
  * At every array index: object{active : boolean bit to denote whether that time interval is going to have an event during it or not
  *                              attendees: Set to organizer's name if the time interval is active, aet to "0" otherwise}
  */
-var taskList = [];
 var time_arr = [];
 for(let i=0; i<48; i++)
 {
@@ -289,6 +296,7 @@ function timeReset()
 
 /**
  * Collects input from form elements and the time table buttons and sends it to the database. This is used when the "Submit" button is pressed.
+ * Modified by James Glass and Dylan Herrig to check for aditional errors and submit additional data
  * @param {object} form - HTML form element that takes user input for Organizer Name, Event Name, Event Date, and Event Times
  */
 function formData(form)
@@ -631,6 +639,7 @@ function lockElements()
 
 /**
  * Collects input from form elements and the time table buttons and sends it to the database. This is used for adding more dates.
+ * Created by James Glass and Dylan Herrig, addapted from original formData function
  * @param {object} form - HTML form element that takes user input for Organizer Name, Event Name, Event Date, and Event Times
  */
 function formDataAndNext(form)
@@ -889,6 +898,7 @@ function formDataAndNext(form)
     }
     //alert(addOns); //debugging
 
+    //keeps track of the original date's times
     if(daySpanAmount == 1)
     {
       originalAddOns = addOns;
@@ -1367,6 +1377,7 @@ function makeTable24(n)
 }
 
 /**
+ * Created by James Glass & Dylan Herrig
  * Resets the task list on the review page when called.
 */
 function removeReviewTask()
@@ -1375,6 +1386,7 @@ function removeReviewTask()
 }
 
 /**
+ * Created by James Glass
  * Parses a string and splits it at ':'. Each section is then placed in a seperate part of an array.
  * @param {string} strList - String that is formated like 'task_name.person_name:task_name.person_name:' ...
  * @return {array} list_arr - a list array that has a task name and person name in each element.
@@ -1387,6 +1399,7 @@ function removeSemis(strList)
 }
 
 /**
+ * Created by James Glass
  * Parses an array of strings and splits it at '.' to seperate the task name and person completing the task (if any).
  * It then adds the task name and person name to an array, then returns that array.
  * @param {array} strArr - Array that has Task name . Person name in each element.
@@ -1412,6 +1425,7 @@ function format4Names(strArr)
 }
 
 /**
+ *  Modified by James Glass & Dylan Herrig
  * Locates the given event and organizer combo in the database (displays appropriate error message in case of failure), and displays event information
  * @param {object} form - HTML form element that takes input for Organizer Name, and Event Name
  */
@@ -1475,6 +1489,10 @@ function getData(form)
   }
 }
 
+
+/**Searches the Database for the date that the user selects then shows a table of those days 
+ * @param {object} form - HTML form element that takes input for Organizer Name, and Event Name
+ */
 function getDate(form)
 {
   let seldate = form.review_date.value;
@@ -1531,7 +1549,9 @@ function getDate(form)
   }
 }
 
-/** Defines behavior of various document elements with event handlers and appropriate function calls. Creates the 30-minute interval buttons for selecting event time. */
+/** Defines behavior of various document elements with event handlers and appropriate function calls. Creates the 30-minute interval buttons for selecting event time.
+ * Split the review event function to allow the user to pick a date by Dylan Herrig and James Glass
+ */
 $(document).ready(function()
 {
     $("#event_form").hide();
