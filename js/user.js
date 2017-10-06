@@ -669,6 +669,7 @@ function makeTable24(n, tarr)
  */
 function showAllEvents(form)
 {
+  let eventCounter = 0;
   let inEvent = false;
   if(seeEvents)
   {
@@ -734,6 +735,7 @@ function showAllEvents(form)
         {
           if(i==0)
           {
+            eventCounter++;
             $("#event_list").show();
             $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
             .click(function(){ showTasks(i,name);})
@@ -741,6 +743,7 @@ function showAllEvents(form)
           }
           else if(events_arr[i-1][2] != events_arr[i][2] && events_arr[i-1][1] != events_arr[i][1])
           {
+            eventCounter++;
             $("#event_list").show();
             $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
             .click(function(){ showTasks(i,name);})
@@ -751,6 +754,14 @@ function showAllEvents(form)
         }
       }
     }  
+  }
+
+  if(eventCounter == 0)
+  {
+    document.querySelector('.noEvents').innerHTML = "You are not signed up for any events.";
+    $('.noEvents').html('You are not signed up for any events.')
+    $("#noEvents").show();
+    
   }
 }
 
@@ -794,7 +805,8 @@ function showTasks(i, name)
   //position of task: events_arr[i][52])
     
   let list_arr = events_arr[i][52].split(":");
-  
+  let taskCounter = 0;
+
   //let taskFormat = removeSemis(events_arr[i][52]);
 
   $("#nameForm2").show();
@@ -805,6 +817,7 @@ function showTasks(i, name)
       //Check for assigned tasks
       if((list_arr[j].indexOf(".")+1)==(list_arr[j].length))
       {
+        taskCounter++;
           //print out a button for each task
           //calls pushTaskToDB when clicked
           $("<button type='button'> <b>Task</b>:<br>"+list_arr[j]+"</button></br>").click(function()
@@ -817,12 +830,20 @@ function showTasks(i, name)
             
           }).appendTo(document.getElementById("event_list"));
       }
+      
 
       $("#chooseEvent").empty();
-      document.querySelector('#chooseDate').innerHTML = 'Choose a task for ' + events_arr[i][2] + ':';
       $("#chooseDate").show();
       $("#event_list").show();
 
+    }
+    if(taskCounter>0)
+    {
+      document.querySelector('#chooseDate').innerHTML = 'Choose a task for ' + events_arr[i][2] + ':';
+    }
+    else
+    {
+      document.querySelector('#chooseDate').innerHTML = 'No current tasks available for this event';
     }
       
 }
@@ -1512,6 +1533,7 @@ $(document).ready(function(){
     $("#nameForm2").hide();
     $("#chooseSeeAllEvents").toggle();
     $("#chooseTasks").hide();
+    $("#noEvents").hide();
 
     document.getElementById('name_submit').value = "Submit";
   });
@@ -1549,6 +1571,7 @@ $(document).ready(function(){
     $("#namePortion").show();
     $("#chooseTasks").toggle();
     $("#chooseSeeAllEvents").hide();
+    $("#noEvents").hide();
   });
 
   $("#name_submit").click(function()
