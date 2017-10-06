@@ -26,12 +26,12 @@ body {
 }
 
 .newgroupname{
-  color: #3FEA6A;
+  color: #19E619;
   letter-spacing: 0.1em;
 }
 
 .mainone{
-  background-color: #303030;
+  background-color: #504E4E;
   color: white;
   font-family: 'Comfortaa';
   letter-spacing: 0.2em;
@@ -52,7 +52,7 @@ input[type=text]{
 }
 
 .maintwo{
-  background-color: #303030;
+  background-color: #504E4E;
   color: red;
   font-family: 'Raleway';
   grid-row: 2;
@@ -60,7 +60,7 @@ input[type=text]{
 }
 
 .mainthree{
-  background-color: #303030;
+  background-color: #504E4E;
   color: white;
   font-family: 'Raleway';
   padding-left: 10px;
@@ -95,27 +95,27 @@ input[type=text]{
 }
 
 #time_select_12{
-  color: #B65252;
-  background-color: inherit;
-  border: 1px solid #B65252;
+  color: white;
+  background-color: F7A40B;
+  border: 1px solid #F7A40B;
   border-radius: 5px;
   margin: 0.2em;
   padding: 0.5em;
 
 }
 #time_select_12:hover{
-  background-color: #B65252;
-  color: #303030;
+  background-color: #F7A40B;
+  color: #5D5D5D;
 }
 #time_select_24:hover{
-  background-color: #80C468;
-  color: #303030;
+  background-color: #195AE6;
+  color: #5D5D5D;
 }
 
 #time_select_24{
-  color: #80C468;
-  background-color: inherit;
-  border: 1px solid #80C468;
+  color: white;
+  background-color: #195AE6;
+  border: 1px solid #195AE6;
   border-radius: 5px;
   margin: 0.2em;
   padding: 0.5em;
@@ -128,10 +128,10 @@ input[type=text]{
   font-size: small;
   width: 10%;
   padding: 0.5em;
-  color: #303030;
+  color: #5D5D5D;
 }
 #submit_button:active{
-  background-color: #303030;
+  background-color: #504E4E;
   color: white;
 }
 .rev_button_format{
@@ -144,7 +144,7 @@ input[type=text]{
   margin-bottom: 0em;
   margin-top: 0em;
   padding: 0.5em;
-  color: #303030;
+  color: #5D5D5D;
 }
 
 #rev_table{
@@ -164,9 +164,9 @@ input[type=text]{
   margin: 0px;
 }
 #rev_table button:disabled{
-  background-color: #B65252;
+  background-color: #F7A40B;
   color: white;
-  border: 1px solid #B65252;
+  border: 1px solid #F7A40B;
 }
 #rev_table button:enabled{
   background-color: transparent;
@@ -174,7 +174,7 @@ input[type=text]{
   border: 1px solid white;
 }
 #rev_table button:enabled:hover{
-  background-color: #80C468;
+  background-color: #195AE6;
 }
 
 .allevent_butt{
@@ -185,7 +185,7 @@ input[type=text]{
   width: 11em;
   height: 7em;
   margin: 0.1em;
-  color: #303030;
+  color: #5D5D5D;
 }
 #Event_Info{
   line-height: 1.2;
@@ -196,15 +196,15 @@ input[type=text]{
   color: white;
   height: 6em;
   width: 12em;
-  border: 1px solid #80C468;
+  border: 1px solid #195AE6;
   border-radius: 5px;
 }
 #event_list button:hover{
-  background-color: #80C468;
+  background-color: #195AE6;
 }
 
 span #taskee {
-  color: #3FEA6A;
+  color: #195AE6;
 }
 
 span #task {

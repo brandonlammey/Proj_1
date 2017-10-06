@@ -18,7 +18,7 @@ body {
   color: #9D63AD;
 }
 .mainone{
-  background-color: #303030;
+  background-color: #504E4E;
   color: white;
   font-family: 'Comfortaa';
   padding-left: 10px;
@@ -28,7 +28,7 @@ body {
 }
 
 .maintwo{
-  background-color: #303030;
+  background-color: #504E4E;
   color: red;
   font-family: 'Raleway';
   padding-left: 10px;
@@ -46,10 +46,12 @@ body {
   height: 55%;
 }
 #us_butt{
-  background-color: #B65252;
+  /*background-color: #F7A40B;*/
+  background-color: #195AE6;
 }
 #ad_butt{
-  background-color: #80C468;
+  /*background-color: #80C468;*/
+  background-color: #F7A40B;  
 }
 
 .main_button:hover{
