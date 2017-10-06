@@ -324,7 +324,7 @@ function formData(form)
         }
     }
 
-    if(name== "" || ev_name== "" || orgDateTime == "")
+    if(name== "" || ev_name== "")
     {
         alert("All fields are mandatory!");
     }
