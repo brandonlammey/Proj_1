@@ -9,7 +9,6 @@
 var events_arr;
 var seeEvents;
 var seeTasks;
-var changeMade = false;
 
 /**
  * Fetches events info from database and populates events_arr
@@ -669,7 +668,8 @@ function makeTable24(n, tarr)
  */
 function showAllEvents(form)
 {
-  let inEvent = false;
+  let inEvent = false; //Checks if name is in any event. If so, print and set back to false.
+  let somethingInEvent = false; //Remains true if user is in event
   if(seeEvents)
   {
     $("#event_list").empty();
@@ -715,16 +715,14 @@ function showAllEvents(form)
     }
     else
     {
-      for(let i=0; i<events_arr.length; i++)
+      for(let i=0; i<events_arr.length; i++) //Checks whole document
       {
-        for(let j=4; j<52; j++)
+        for(let j=4; j<52; j++) //Checks only time columns
         {
-          let aa = events_arr[i][j].split(",");
-          for(let k = 0; k<aa.length; k++)
+          let aa = events_arr[i][j].split(","); //Creates an array with all the attendees of event at given time
+          for(let k = 0; k<aa.length; k++) //Checks every attendee for given time
           {
-            console.log(name);
-            console.log(aa[k]);
-            if(name == aa[k] || (" " + name) == aa[k] || ("  " + name) == aa[k])
+            if(name == aa[k] || (" " + name) == aa[k] || ("  " + name) == aa[k]) 
             {
               inEvent = true;
             }
@@ -812,7 +810,6 @@ function showTasks(i, name)
             list_arr[j] = list_arr[j].concat(name);
             pushTaskToDB(name, events_arr[i][1], events_arr[i][2], list_arr); //NOTE
             $("#event_info").empty();
-            changeMade = true;
             this.remove();
             
           }).appendTo(document.getElementById("event_list"));
@@ -875,24 +872,6 @@ function pushTaskToDB(user_name, creator_name, event_name, task_list)
       request2.send();
       return request2.onreadystatechange();
 }
-
-
-
-  /*else
-  {
-    form.reset();
-    $("#name_form").hide();
-    $("#form_replace").show();
-    $("#event_list").empty();
-    for(let i=0; i<events_arr.length; i++)
-    {
-      $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
-        .click(function(){ showInfo(i,name);})
-        .appendTo(document.getElementById("event_list"));
-        $("#event_list").show();
-    }
-  }*/
-
 
 /**
  * Displays event information and calls "makeTable12" and "makeTable24" to populate time tables and allow attendee to RSVP for the event. Collects availability info for attendee and passes it to "pushToDB"
@@ -1482,11 +1461,6 @@ $(document).ready(function(){
 
   $("#all_event").click(function()
   {
-    if(changeMade == true)
-    {
-      changeMade == false;
-      window.location.reload()
-    }
     seeEvents = false;
     seeTasks = false;
 
@@ -1518,12 +1492,6 @@ $(document).ready(function(){
 
   $("#chooseTask").click(function()
   {
-    if(changeMade == true)
-    {
-      changeMade == false;
-      window.location.reload()
-    }
-    
     seeEvents = false;
     seeTasks = false;
 
@@ -1549,6 +1517,7 @@ $(document).ready(function(){
     $("#namePortion").show();
     $("#chooseTasks").toggle();
     $("#chooseSeeAllEvents").hide();
+    $("#namePortion2").show();
   });
 
   $("#name_submit").click(function()
@@ -1573,7 +1542,6 @@ $(document).ready(function(){
 
   $("#nameForm2Submit").click(function()
   {
-    seeTasks = true;
     document.getElementById('nameForm2Submit').value = "Submit";
     $("#nameForm2").hide();
     document.querySelector('.chooseEvent').innerHTML = 'Choose an Event:';
@@ -1582,6 +1550,18 @@ $(document).ready(function(){
     showAllEvents(document.getElementById("nameForm2"));
     $("#chooseDate").hide();
     $("#namePortion").hide();
+    getEventsFromDB('php/getEventsFromDB.php', /**
+    * Prints the info obtained from the path file to the console for debugging
+    */function printResults()
+   {
+     //document.getElementById("chooseEvent").style.visibility="hidden";
+     //console.log(events_arr.length); //DEBUGGING
+     //console.log(events_arr[0]); //DEBUGGING
+     //console.log(events_arr[1]); //DEBUGGING
+     //console.log(events_arr[1][1]);
+     //console.log(events_arr.length);
+ 
+   });
 
     $("#time_switch").empty();
     $("#event_info").empty();
