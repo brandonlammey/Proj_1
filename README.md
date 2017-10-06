@@ -24,6 +24,12 @@ To generate and host this documentation page, we used CodeDocs. This service let
 
 Link to their website: https://codedocs.xyz/
 
+We also used JSDoc and Doxygen to generate local documentation files for our project. 
+
+Link to JSDoc website: http://usejsdoc.org/
+
+Link to Doxygen website: http://www.stack.nl/~dimitri/doxygen/index.html
+
 ## Sources & References
 
 Source for learning how to split a string into an array:
