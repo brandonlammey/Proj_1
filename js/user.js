@@ -815,7 +815,7 @@ function showAllDates(i, name)
       $('.chooseDate').html('Choose a date for '+ events_arr[j][2] + ': \n');
       document.getElementById('name_submit').value = "Go back to All Events";
       $("#name_form").show();
-
+      $("#chooseSeeAllEvents").toggle();
       $("#event_list").show();
     }
   }
