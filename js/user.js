@@ -1545,6 +1545,11 @@ $(document).ready(function(){
     $("#chooseSeeAllEvents").hide();
     $("#noEvents").hide();
     $("#namePortion2").show();
+    getEventsFromDB('php/getEventsFromDB.php', /**
+    * Prints the info obtained from the path file to the console for debugging
+    */function printResults()
+   {
+   });
   });
 
   $("#name_submit").click(function()
