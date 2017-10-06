@@ -1577,6 +1577,7 @@ $(document).ready(function(){
     $("#time_submit").empty();
     $("#event_time").hide();
     $("#chooseSeeAllEvents").hide();
+    $("#noEvents").hide();
   });
 
   $("#nameForm2Submit").click(function()
