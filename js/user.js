@@ -7,6 +7,7 @@
 
 /** Array to store information for all events; populated whenever page loads */
 var events_arr;
+/** Boolean that checks which button on the far left was pressed to display correct information */
 var seeEvents;
 
 /**
@@ -723,11 +724,8 @@ function showAllEvents(form)
           let aa = events_arr[i][j].split(","); //Creates an array with all the attendees of event at given time
           for(let k = 0; k<aa.length; k++) //Checks every attendee for given time
           {
-            console.log(name);
-            console.log(aa[k]);
             if(name == aa[k] || (" " + name) == aa[k] || ("  " + name) == aa[k]) 
             {
-              console.log("hi!");
               inEvent = true;
             }
           }
@@ -753,7 +751,6 @@ function showAllEvents(form)
             $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
             .click(function(){ showTasks(i,name);})
             .appendTo(document.getElementById("event_list"));
-            console.log("Inside 1");
           }
           else if(shouldPrint)
           {
@@ -762,7 +759,6 @@ function showAllEvents(form)
             $("<button type='button'> <b>Event</b>:<br>"+events_arr[i][2]+"<br> <b>Organizer</b>:<br>"+events_arr[i][1]+"</button>")
             .click(function(){ showTasks(i,name);})
             .appendTo(document.getElementById("event_list"));
-            console.log("Inside 2");
             shouldPrint = false;
           }
           
@@ -863,18 +859,17 @@ function showTasks(i, name)
       
 }
 
-
-
-
+/**
+ * Sends and stores user task information for events to the database
+ * @param {*} user_name - The name of the attendee
+ * @param {*} creator_name - The name of the event organizer
+ * @param {*} event_name - The name of the event
+ * @param {*} task_list - The new list of tasks
+ */
 function pushTaskToDB(user_name, creator_name, event_name, task_list)
 {
-  
-  //function pushToDB(user_name, creator_name, event_name, time_array, date)
-  
-  //alert(JSON.stringify(task_list))
-    //alert(user_name + creator_name + event_name + time_array);
-    var request2 = new XMLHttpRequest();
-    request2.onreadystatechange = function ()
+  var request2 = new XMLHttpRequest();
+  request2.onreadystatechange = function ()
     {
       if (request2.readyState === XMLHttpRequest.DONE)
       {
@@ -1464,13 +1459,6 @@ $(document).ready(function(){
    * Prints the info obtained from the path file to the console for debugging
    */function printResults()
   {
-    //document.getElementById("chooseEvent").style.visibility="hidden";
-    //console.log(events_arr.length); //DEBUGGING
-    //console.log(events_arr[0]); //DEBUGGING
-    //console.log(events_arr[1]); //DEBUGGING
-    //console.log(events_arr[1][1]);
-    //console.log(events_arr.length);
-
   });
 
   $("#organizer_error").hide();
@@ -1594,13 +1582,6 @@ $(document).ready(function(){
     * Prints the info obtained from the path file to the console for debugging
     */function printResults()
    {
-     //document.getElementById("chooseEvent").style.visibility="hidden";
-     //console.log(events_arr.length); //DEBUGGING
-     //console.log(events_arr[0]); //DEBUGGING
-     //console.log(events_arr[1]); //DEBUGGING
-     //console.log(events_arr[1][1]);
-     //console.log(events_arr.length);
- 
    });
 
     $("#time_switch").empty();
@@ -1619,7 +1600,6 @@ $(document).ready(function(){
   $("#date_submit").click(
     function()
     {
-      console.log("Here!");
       $("#event_list").empty();
       getData(document.getElementById("date_form"));
     }
