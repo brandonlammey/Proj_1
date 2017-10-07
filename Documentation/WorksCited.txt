@@ -1,0 +1,11 @@
+Source for learning how to split a string into an array:
+
+    @author James Hill
+    @link https://stackoverflow.com/questions/7979727/split-string-into-array
+    @DateAccessed 9-30-17
+
+Project1 taken from https://github.com/ajgrowney/Proj_1
+
+  @author Juzer Zarif, Kaiser Mittenburg, Kari Cieslak, Andrew Growney
+  @link https://github.com/ajgrowney/Proj_1
+  @DateAccessed 10-06-17
